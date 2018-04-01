@@ -10,6 +10,6 @@ class Test extends CI_Controller {
 
     public function index() {
         $this->load->model('capstone');
-        print_r( $this->capstone->testing());
+        echo json_encode($this->capstone->getCapstoneSpecific('Todd','Bednarczyk'));
     }
 }
