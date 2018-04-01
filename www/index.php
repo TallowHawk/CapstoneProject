@@ -37,7 +37,10 @@
  */
 
 require_once("SiteConfigVars.php");
-
+require_once ("../meekrodb.2.3.class.php");
+DB::$user = getConfigValue('dbUser');
+DB::$password = 'dbPass';
+DB::$dbName = 'dbName';
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
