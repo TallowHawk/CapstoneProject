@@ -21,7 +21,10 @@ class Capstone extends CI_Model {
                                       JOIN user u ON s.uid = u.uid;"));
     }
 
-    function getCapstoneStudent($student){
-
+    function getCapstoneSpecific($first, $last){
+        return json_encode(DB::query("SELECT u.first_name , u.last_name, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type
+                                      FROM capstone cs JOIN student s ON cs.student_id = s.id
+                                      JOIN user u ON s.uid = u.uid
+                                      WHERE u.first_name = %s AND u.last_name = %s;",$first,$last));
     }
 }
