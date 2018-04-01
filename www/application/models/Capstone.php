@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: todd
- * Date: 4/1/18
- * Time: 10:58 AM
- */
 
 class Capstone extends CI_Model {
     function __construct() {
@@ -48,9 +42,28 @@ class Capstone extends CI_Model {
      */
     function setStatus($status,$capID) {
         return DB::insert('status_history',array(
-            'id' => DB::queryOneField("SELECT status_history_id FROM capstone WHERE capstone.id = %i", $capID),
+            'capstone_id' => $capID,
             'status_id' => DB::queryOneField("SELECT id FROM status WHERE status_desc = %s", $status),
             'date' => DB::sqlEval("NOW()")
+        ));
+    }
+
+    /**
+     * This will create a new capstone record for the selected student
+     * @param $student_id - the student who's capstone this is
+     * @param $title - the title of the capstone
+     * @param $description - the description of the capstone
+     * @param $type - the type of capstone
+     * @return mixed - not sure if this returns anything yet. Have to test. TODO: test this method's return
+     */
+    function createCapstone($student_id,$title,$description,$type) {
+        return DB::insert('capstone', array(
+            'student_id' => $student_id,
+            'title' => $title,
+            'description' => $description,
+            'plagerism_score' => null,
+            'grade' => null,
+            'type' => $type
         ));
     }
 }
