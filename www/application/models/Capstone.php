@@ -27,4 +27,12 @@ class Capstone extends CI_Model {
                                       JOIN user u ON s.uid = u.uid
                                       WHERE u.first_name = %s AND u.last_name = %s;",$first,$last));
     }
+
+    function setStatus($status,$capID) {
+        DB::insert('status_history',array(
+            'id' => DB::query("SELECT status_history_id FROM capstone WHERE capstone.id = %i", $capID),
+            'status_id' => DB::query("SELECT id FROM status WHERE status_desc = %s", $status),
+            'date' => DB::sqlEval("NOW()")
+        ));
+    }
 }
