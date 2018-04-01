@@ -15,6 +15,11 @@ class Capstone extends CI_Model {
         return json_encode( DB::query("SELECT * FROM roles"));
     }
 
+    /**
+     * this is for faculty and staff to see everything that is related to a student's capstone.
+     * @return string - json that includes all required data for all the capstones. Notice that it does not have all
+     *                  of the data for the the capstone statuses.
+     */
     function getCapstoneAll() {
         return json_encode(DB::query("SELECT u.first_name , u.last_name, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type
                                       FROM capstone cs JOIN student s ON cs.student_id = s.id
