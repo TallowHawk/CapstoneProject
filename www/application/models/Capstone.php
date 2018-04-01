@@ -28,10 +28,16 @@ class Capstone extends CI_Model {
                                       WHERE u.first_name = %s AND u.last_name = %s;",$first,$last));
     }
 
+    /**
+     * Sets the status of the capstone project. Only for staff.
+     * @param $status - the status to set the project to
+     * @param $capID - the specific capstone project id to add the status to
+     * @return mixed - not sure if this returns anything yet. Have to test. TODO: test this method's return
+     */
     function setStatus($status,$capID) {
-        DB::insert('status_history',array(
-            'id' => DB::query("SELECT status_history_id FROM capstone WHERE capstone.id = %i", $capID),
-            'status_id' => DB::query("SELECT id FROM status WHERE status_desc = %s", $status),
+        return DB::insert('status_history',array(
+            'id' => DB::queryOneField("SELECT status_history_id FROM capstone WHERE capstone.id = %i", $capID),
+            'status_id' => DB::queryOneField("SELECT id FROM status WHERE status_desc = %s", $status),
             'date' => DB::sqlEval("NOW()")
         ));
     }
