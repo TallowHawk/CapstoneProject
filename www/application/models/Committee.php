@@ -30,4 +30,18 @@ class Committee extends CI_Model {
             "has_accepted" => 1
         ), "fac_id = %i AND cap_id = %i", $fac_id, $cap_id);
     }
+
+    /**
+     * Grabs all records from committee table based on student id and if accepted attribute in committee table is true.
+     * @param $student_id - the student who's committee we are searching for
+     * @return mixed - An associative array of the faculty id, faculty username, capstone id, and capstone title
+     */
+    function getAcceptedCommittee($student_id) {
+        return DB::query("SELECT f.id \"fac_id\", u.username, c.id \"cap_id\", c.title
+                        FROM committee JOIN capstone c ON committee.cap_id = c.id
+                        JOIN faculty f ON committee.fac_id = f.id
+                        JOIN user u ON f.uid = u.uid
+                        JOIN student s ON c.student_id = s.id
+                        WHERE student_id = %i AND has_accepted = 1;", $student_id);
+    }
 }
