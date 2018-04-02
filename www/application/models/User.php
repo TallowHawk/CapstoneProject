@@ -22,4 +22,10 @@ class User extends CI_Model {
             'last_name'=>$lName
         ));
     }
+
+    function getGeneralData($uid){
+        return DB::query("SELECT u.username, u.phone, u.inactive_date, r.role_description, u.first_name, u.last_name FROM user u
+        JOIN roles r ON r.id = u.role_id
+        WHERE u.uid = %i", $uid);
+    }
 }
