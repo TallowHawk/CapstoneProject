@@ -18,4 +18,16 @@ class Committee extends CI_Model {
             "cap_id" => $cap_id,
         ));
     }
+
+    /**
+     * This will update the status of the a faculty member on the committee to accepted
+     * @param $fac_id - the faculty to change the state of
+     * @param $cap_id - the capstone in which we are changing the faculty's status
+     * @return mixed - the number of rows affected
+     */
+    function updateAccepted($fac_id, $cap_id) {
+        return DB::update('committee', array(
+            "has_accepted" => 1
+        ), "fac_id = %i AND cap_id = %i", $fac_id, $cap_id);
+    }
 }
