@@ -58,8 +58,20 @@ class User extends CI_Model {
     * @param $uid - the user's id#
     * @return string - json that includes the users full name
     */
-    function getName($uid){
+    function getFullName($uid){
         return DB::query("SELECT CONCAT(first_name, ' ', last_name) FROM user
+        WHERE uid = %i", $uid);
+    }
+
+
+    function getFirstName($uid){
+        return DB::query("SELECT first_name FROM user
+        WHERE uid = %i", $uid);
+    }
+
+
+    function getLastName($uid){
+        return DB::query("SELECT last_name FROM user
         WHERE uid = %i", $uid);
     }
 
