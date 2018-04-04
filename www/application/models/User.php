@@ -64,12 +64,22 @@ class User extends CI_Model {
     }
 
 
+    /**
+    * This retrievs the full name of the user based on user id#
+    * @param $uid - the user's id#
+    * @return string - json that includes the users first name
+    */
     function getFirstName($uid){
         return DB::query("SELECT first_name FROM user
         WHERE uid = %i", $uid);
     }
 
 
+    /**
+    * This retrievs the full name of the user based on user id#
+    * @param $uid - the user's id#
+    * @return string - json that includes the users last name
+    */
     function getLastName($uid){
         return DB::query("SELECT last_name FROM user
         WHERE uid = %i", $uid);
