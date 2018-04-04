@@ -51,7 +51,7 @@ class Committee extends CI_Model {
     * attribute is defaulted to 0 or false
     * @param $fac_id - the faculty to be deleted from the committee
     * @param $cap_id - the specific capstone that the faculty member is being removed from
-    * @return mixed - the number of rows affected
+    * @return mixed - boolean if the row was deleted or not
     */
     function removeFromCommittee($fac_id, $cap_id){
         return DB::delete('committee', 'fac_id = %i AND cap_id = %i', $fac_id, $cap_id);
