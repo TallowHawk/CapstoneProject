@@ -56,4 +56,13 @@ class Committee extends CI_Model {
     function removeFromCommittee($fac_id, $cap_id){
         return DB::delete('committee', 'fac_id = %i AND cap_id = %i', $fac_id, $cap_id);
     }
+
+    /**
+     * View the committee Id's that this person is on as well as the capstone's that they're on
+     * @param $fac_id - the faculty that is checking what committee's they are on
+     * @return mixed - Associative array of the id, cap_id, and if the faculty has accepted that capstone
+     */
+    function viewCommittee($fac_id) {
+        return DB::query("SELECT id,cap_id,has_accepted FROM committee WHERE fac_id = %i", $fac_id);
+    }
 }
