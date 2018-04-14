@@ -4,7 +4,13 @@ class Login extends CI_Controller {
 
 	public function index() {
         $this->load->model('user');
-	    if (!empty($_POST)) {
+
+        /* This is the server validation. TODO: Display server validation
+         * It takes and the user's username and password and makes sure it is okay. If it is then it it verifies that
+         * the password is correct. If it's correct it starts the session and sends the user to the correct page.
+         * If the password is incorrect then it displays an error message
+         */
+        if (!empty($_POST)) {
             $errors = [];
             print_r($_POST);
             
