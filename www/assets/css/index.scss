@@ -24,3 +24,12 @@ body{
         float: right;
     }
 }
+
+footer{
+    .footer-label{
+        padding: 1%;
+    }
+    background-color: $accent-color;
+    text-align: center;
+    color: #f8f8f8;
+}

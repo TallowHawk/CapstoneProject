@@ -14,4 +14,11 @@ body {
     display: inline-block;
     float: right; }
 
+footer {
+  background-color: #4d4d4d;
+  text-align: center;
+  color: #f8f8f8; }
+  footer .footer-label {
+    padding: 1%; }
+
 /*# sourceMappingURL=index.css.map */
