@@ -5,6 +5,16 @@
         <title>Login</title>
     </head>
     <body>
-        <button onclick="window.location.assign('App')">Click Me!</button>
+        <form method="POST"
+              onsubmit="return true"
+              action="">
+            <label>
+                <input type="text" name="username">
+            </label>
+            <label>
+                <input type="password" name="password">
+            </label>
+            <input type="submit">
+        </form>
     </body>
 </html>
