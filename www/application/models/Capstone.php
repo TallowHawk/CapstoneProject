@@ -22,8 +22,7 @@ class Capstone extends CI_Model {
 
     /**
      * This allows you to get a specific capstone project and all the data for it
-     * @param $first - first name of student
-     * @param $last - last name of the studnet
+     * @param $username - the username of the user's capstone to look up
      * @return string - json that includes all required data for all the capstones. Notice that it does not have all
      *                  of the data for the the capstone statuses.
      */
