@@ -20,5 +20,3 @@
                 <h1 class="project-name">Placeholder</h1>
             </div>
         </div>
-    </body>
-</html>
