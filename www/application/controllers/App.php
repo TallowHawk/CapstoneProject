@@ -12,8 +12,22 @@ class App extends CI_Controller {
 	}
 
 	public function student() {
-	    $this->load->view("header");
-        $this->load->view("student");
+        $this->load->model("capstone");
+        $this->load->view("header");
+
+        /*
+         * functionality to send a user to create a capstone if they don't yet have a capstone yet. If they do
+         * have a capstone then it navigates them to their app page.
+         */
+        $capstone = $this->capstone->getCapstoneSpecific($_SESSION["username"]);
+        if(!empty($capstone)){
+            $this->load->view("student");
+        }
+        else {
+            $this->load->view("create_capstone");
+        }
+
+
         $this->load->view("footer");
     }
 
