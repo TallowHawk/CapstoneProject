@@ -3,9 +3,10 @@
 class Login extends CI_Controller {
 
 	public function index() {
-        $this->load->model("user");
+        $this->load->model('user');
 	    if (!empty($_POST)) {
             $errors = [];
+            print_r($_POST);
             
             $username = $_POST["username"];
             $password = $_POST["password"];
@@ -24,14 +25,16 @@ class Login extends CI_Controller {
                 }
             }
             else {
-                $password = password_hash($password, PASSWORD_DEFAULT);
-                $login = $this->user->login($username,$password);
-                if ($login(0)["username"] == $username && $login(0)["password"] == $password) {
+                $hashedPass = $this->user->login($username);
+                if (password_verify($password,$hashedPass[0]["password"])) {
                     session_start();
                     $_SESSION["username"] = $username;
                     $_SESSION["userType"] = $this->user->getUserType($username);
                     echo $_SESSION["username"];
                     header("Location: app/student");
+                }
+                else {
+                    echo "Error Logging in";
                 }
 
             }

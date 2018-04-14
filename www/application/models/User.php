@@ -45,8 +45,8 @@ class User extends CI_Model {
      * @param $password - the password the
      * @return mixed
      */
-    function login($username, $password) {
-        return DB::query("SELECT u.username, p.password FROM user u WHERE u.username = %s AND p.password = %s",$username, $password);
+    function login($username) {
+        return DB::query("SELECT username, password FROM user WHERE username = %s",$username);
     }
 
     /**
