@@ -39,6 +39,9 @@ class User extends CI_Model {
         ));
     }
 
+    function login($username, $pasword) {
+        return DB::query("SELECT u.username, p.password FROM user u WHERE u.username = %s AND p.password = %s",$username, $pasword);
+    }
 
     /**
     * This function returns most information about a specific user

@@ -3,7 +3,8 @@
 class Login extends CI_Controller {
 
 	public function index() {
-        if (!empty($_POST)) {
+        $this->load->model("user");
+	    if (!empty($_POST)) {
             $errors = [];
             
             $username = $_POST["username"];
