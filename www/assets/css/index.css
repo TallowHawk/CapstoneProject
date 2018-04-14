@@ -21,4 +21,10 @@ footer {
   footer .footer-label {
     padding: 1%; }
 
+.project-details-wrapper {
+  border: solid 2px #4d4d4d; }
+
+.project-status-wrapper {
+  border: solid 2px #4d4d4d; }
+
 /*# sourceMappingURL=index.css.map */
