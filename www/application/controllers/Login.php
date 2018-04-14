@@ -29,9 +29,9 @@ class Login extends CI_Controller {
                 if (password_verify($password,$hashedPass[0]["password"])) {
                     session_start();
                     $_SESSION["username"] = $username;
-                    $_SESSION["userType"] = $this->user->getUserType($username);
+                    $_SESSION["userType"] = strtolower($this->user->getUserType($username));
                     echo $_SESSION["username"];
-                    header("Location: app/student");
+                    header("Location: app/" . $_SESSION["userType"]);
                 }
                 else {
                     echo "Error Logging in";

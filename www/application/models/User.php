@@ -100,7 +100,7 @@ class User extends CI_Model {
      * @return mixed - associative array of the role
      */
     function getUserType($username) {
-        return DB::queryFirstField("SELECT role_id FROM user WHERE username = %s", $username);
+        return DB::queryFirstField("SELECT role_description FROM user JOIN roles ON roles.id=user.role_id WHERE username = %s", $username);
     }
 
     /**
