@@ -24,19 +24,21 @@ class Login extends CI_Controller {
                 }
             }
             else {
+                $password = password_hash($password, PASSWORD_DEFAULT);
                 $login = $this->user->login($username,$password);
-                if ($login(0)["username"] == $username && $login(0)["password"] == password_hash($password, PASSWORD_DEFAULT)) {
+                if ($login(0)["username"] == $username && $login(0)["password"] == $password) {
                     session_start();
                     $_SESSION["username"] = $username;
+                    $_SESSION["userType"] = $this->user->getUserType($username);
+                    echo $_SESSION["username"];
                     header("Location: app/student");
                 }
-
 
             }
 
         }
 	    echo "Login Works";
-        $this->load->view("Login");
+        $this->load->view("login");
         
 	}
 

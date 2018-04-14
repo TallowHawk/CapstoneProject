@@ -2,7 +2,12 @@
 
 class App extends CI_Controller {
 
-	public function index() {
+    function __construct() {
+        parent::__construct();
+        session_start();
+    }
+
+    public function index() {
 		echo "hey";
 	}
 
