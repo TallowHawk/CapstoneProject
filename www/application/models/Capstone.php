@@ -34,6 +34,20 @@ class Capstone extends CI_Model {
     }
 
     /**
+     * This allows you to get all the
+     * @param $status - the status of the projects to look for
+     * @return mixed
+     */
+    function getCapstonesByStatus($status) {
+        return DB::query("SELECT u.username, c.title, c.description, c.type
+            FROM capstone c JOIN student s ON c.student_id = s.id
+            JOIN user u ON s.uid = u.uid
+            JOIN status_history h ON c.id = h.capstone_id
+            JOIN status s2 ON h.status_id = s2.id
+            WHERE status_desc = %s;", $status);
+    }
+
+    /**
      * Sets the status of the capstone project. Only for staff.
      * @param $status - the status to set the project to
      * @param $capID - the specific capstone project id to add the status to
