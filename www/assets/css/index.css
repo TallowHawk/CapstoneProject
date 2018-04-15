@@ -17,6 +17,12 @@ body {
   clear: both;
   display: table; }
 
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0; }
+
+.section-spacer {
+  padding: 2% 0; }
+
 /*========================================================= END GENERIC STYLES*/
 .header-wrapper {
   background-color: #eb6124; }
@@ -31,16 +37,17 @@ footer {
   footer .footer-label {
     padding: 1%; }
 
-.project-details-wrapper {
-  border: solid 2px #4d4d4d; }
+.committee-list-wrapper .committee-list-member {
+  padding: 1% 0; }
+.committee-list-wrapper .committee-list-title-wrapper {
+  padding: 1% 0; }
 
-.project-status-wrapper {
-  border: solid 2px #4d4d4d; }
-
-.committee-management-header .committee-add-btn-wrapper {
-  text-align: center; }
-
-.committee-list-wrapper .committee-delete-btn-wrapper {
-  text-align: center; }
+.logout-btn-wrapper {
+  text-align: center;
+  margin: 2%; }
+  .logout-btn-wrapper .logout-btn {
+    padding: 2% 5%;
+    display: inline-block;
+    background-color: #eb6124; }
 
 /*# sourceMappingURL=index.css.map */

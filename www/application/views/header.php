@@ -10,7 +10,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-        <div class='header-wrapper row no-padding'>
+        <div class='header-wrapper no-padding col-sm-12'>
             <div class='col-sm-6'>
                 <h1 class='program-title'>Capstone Tracker</h1>
             </div>
