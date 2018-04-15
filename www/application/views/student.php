@@ -1,6 +1,5 @@
 
 <div class="clearfix student-wrapper">
-    <p id="proj-det-description"><?php print_r($studentCommittee)?></p>
     <div class="col-sm-12">
         <div class="col-sm-2"></div>
         <div class="col-sm-8 no-padding">
@@ -122,20 +121,6 @@
                             </div>
                             <div class="col-sm-2">
                                 <div class="commitee-list-delete-btn">
-                                    <button type="button" name="committee-delete-btn">DELETE</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="committee-list-member clearfix">
-                            <div class="col-sm-10">
-                                <div class="commitee-list-name">
-                                    <h3>{Faculty Name}</h3>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="committee-list-delete-btn">
                                     <button type="button" name="committee-delete-btn">DELETE</button>
                                 </div>
                             </div>
