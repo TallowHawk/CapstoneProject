@@ -23,23 +23,15 @@
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-12">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2">
-                <button type="button" name="staff-add-plag-score">Enter Plagerism Score</button>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 no-padding">
+                <button class="staff-btn-options" type="button" name="staff-add-plag-score">Enter Plagerism Score</button>
+                <button class="staff-btn-options" type="button" name="staff-rej-prop">Rejected Proposals</button>
+                <button class="staff-btn-options" type="button" name="staff-acc-prop">Accepted Proposals</button>
+                <button class="staff-btn-options" type="button" name="staff-prop-resub">Proposal Resubmissions</button>
+                <button class="staff-btn-options" type="button" name="staff-defense-dates">Defense Dates</button>
             </div>
-            <div class="col-sm-2">
-                <button type="button" name="staff-rej-prop">Rejected Proposals</button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" name="staff-acc-prop">Accepted Proposals</button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" name="staff-prop-resub">Proposal Resubmissions</button>
-            </div>
-            <div class="col-sm-2">
-                <button type="button" name="staff-defense-dates">Defense Dates</button>
-            </div>
-            <div class="col-sm-1"></div>
+            <div class="col-sm-2"></div>
         </div>
         <div class="col-sm-12 section-spacer">
             <div class="col-sm-2"></div>
@@ -64,7 +56,7 @@
                     <div class="col-sm-12">
                         <div class="project-status-wrapper">
                             <div class="col-sm-12">
-                                <div class="col-sm-6">
+                                <div class="col-sm-6 no-padding">
                                     <div class="project-status-header">
                                         <h2>Project Status</h2>
                                     </div>

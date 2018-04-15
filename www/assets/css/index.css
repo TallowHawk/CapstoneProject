@@ -60,9 +60,14 @@ main#createAccount {
   padding: 2% 0; }
 
 .project-status-body {
-  padding: 10%; }
+  padding-top: 5%;
+  padding-bottom: 5%; }
 
 .project-title-wrapper {
   padding: 2% 0; }
+
+.staff-btn-options {
+  padding: 5px;
+  margin: 10px; }
 
 /*# sourceMappingURL=index.css.map */
