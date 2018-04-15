@@ -23,12 +23,13 @@ class App extends CI_Controller {
          * functionality to send a user to create a capstone if they don't yet have a capstone yet. If they do
          * have a capstone then it navigates them to their app page.
          */
+        $studentId = $this->user->getStudentId($_SESSION["uid"]);
         $capstone = $this->capstone->getCapstoneSpecific($_SESSION["username"]);
         if(!empty($capstone)){
             $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
             $data['capstone'] = $capstone;
             $data['capStatus'] = $this->capstone->getCapstoneStatus($_SESSION["username"]);
-            $data['studentCommittee'] = $this->committee->getAcceptedCommittee($_SESSION["studentId"]);
+            $data['studentCommittee'] = $this->committee->getAcceptedCommittee($studentId);
             $this->load->view("student", $data);
             //$this->load->view("student", $capstone);
         }
