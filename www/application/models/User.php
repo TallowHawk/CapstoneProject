@@ -39,6 +39,15 @@ class User extends CI_Model {
         ));
     }
 
+    /**
+     * Gets username and password based off values passed in
+     * @param $username - the username that the user has submitted
+     * @param $password - the password the
+     * @return mixed
+     */
+    function login($username) {
+        return DB::query("SELECT username, password FROM user WHERE username = %s",$username);
+    }
 
     /**
     * This function returns most information about a specific user
@@ -76,7 +85,7 @@ class User extends CI_Model {
 
 
     /**
-    * This retrievs the full name of the user based on user id#
+    * This retries the full name of the user based on user id#
     * @param $uid - the user's id#
     * @return string - json that includes the users last name
     */
@@ -85,6 +94,14 @@ class User extends CI_Model {
         WHERE uid = %i", $uid);
     }
 
+    /**
+     * gets the role id of the user
+     * @param $username - the username supplied by the user
+     * @return mixed - associative array of the role
+     */
+    function getUserType($username) {
+        return DB::queryFirstField("SELECT role_description FROM user JOIN roles ON roles.id=user.role_id WHERE username = %s", $username);
+    }
 
     /**
     * This function returns a specific user's username
