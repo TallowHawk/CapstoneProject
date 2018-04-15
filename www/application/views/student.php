@@ -1,11 +1,12 @@
 
 <div class="clearfix student-wrapper">
+    <p id="proj-det-name"><?php print_r($capstone) ?></p>
     <div class="col-sm-12">
         <div class="col-sm-2"></div>
         <div class="col-sm-8 no-padding">
             <div class="view-header-wrapper">
                 <div class="student-name">
-                    <h2>Hello, {Student Name}</h2>
+                    <h2>Hello, <span><?php echo $userData[0]["first_name"] . " " . $userData[0]["last_name"]?></span></h2>
                 </div>
             </div>
         </div>
@@ -38,7 +39,7 @@
                                     <h4>Title:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="proj-det-title">{Project Title}</p>
+                                    <p id="proj-det-title"><?php echo $capstone[0]['title']?></p>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +49,7 @@
                                     <h4>Description:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="proj-det-description">{The project description about kittens and stuff}</p>
+                                    <p id="proj-det-description"><?php echo $capstone[0]['description']?></p>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +59,7 @@
                                     <h4>Defense Date:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="proj-det-defense">{Date goes here}</p>
+                                    <p id="proj-det-defense"><?php echo $capstone[0]['defense_date']?></p>
                                 </div>
                             </div>
                         </div>
