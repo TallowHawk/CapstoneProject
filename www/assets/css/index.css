@@ -50,4 +50,10 @@ footer {
     display: inline-block;
     background-color: #eb6124; }
 
+form {
+  padding: 20px; }
+
+main#createAccount {
+  background-color: white; }
+
 /*# sourceMappingURL=index.css.map */

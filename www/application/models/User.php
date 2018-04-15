@@ -28,15 +28,30 @@ class User extends CI_Model {
     *                 Returns true if record was successfully created
     */
     function createAccount($username, $password, $phone, $role, $fName, $lName){
-        return DB::insert('user', array(
+        DB::startTransaction();
+        DB::insert('user', array(
             'username'=>$username,
             'password'=>password_hash($password, PASSWORD_DEFAULT),
             'phone'=>$phone,
             'inactive_date'=>null,
-            'role_id'=>$role,
+            'role_id'=> DB::queryFirstField("SELECT id FROM roles WHERE role_description = %s",$role),
             'first_name'=>$fName,
             'last_name'=>$lName
         ));
+
+        $counter = DB::affectedRows();
+        if ($counter > 0) {
+            DB::insert($role,array(
+                'uid'=> DB::queryFirstField("SELECT uid FROM user WHERE username=%s",$username)
+            ));
+            $counter =DB::affectedRows();
+            if ($counter >0 ){
+                DB::commit();
+                return true;
+            }
+        }
+        DB::rollback();
+        return false;
     }
 
     /**
