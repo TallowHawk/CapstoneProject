@@ -42,7 +42,7 @@ class User extends CI_Model {
         $counter = DB::affectedRows();
         if ($counter > 0) {
             DB::insert($role,array(
-                'uid'=> DB::queryFirstField("SELECT uid FROM user WHERE username=%s")
+                'uid'=> DB::queryFirstField("SELECT uid FROM user WHERE username=%s",$username)
             ));
             $counter =DB::affectedRows();
             if ($counter >0 ){

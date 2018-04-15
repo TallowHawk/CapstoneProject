@@ -2,7 +2,9 @@
 ?>
 
 <main id="createAccount">
-    <form>
+    <form method="POST"
+          onsubmit="return true"
+          action="">
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" id="firstName" name="fname" required>

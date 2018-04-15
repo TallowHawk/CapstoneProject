@@ -20,7 +20,7 @@ class Admin extends CI_Controller {
             $lName = $_POST["lname"];
             $username = $_POST["username"];
             $password = $_POST["password"];
-            $phoneNum = $_POST["phoneNum"];
+            $phoneNum = $_POST["phone"];
             $userType = $_POST["userType"];
 
             if (strlen($fName) == 0){
