@@ -5,7 +5,7 @@
             <div class="col-sm-8">
                 <div class="view-header-wrapper clearfix">
                     <div class="staff-name">
-                        <h2>Hello, {Faculty Name}</h2>
+                        <h2>Hello, <span id="faculty-name-header">{Staff Name}</span></h2>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@
             <div class="col-sm-8">
                 <div class="project-title-wrapper clearfix">
                     <div class="project-title">
-                        <h2>{Project Title Goes Here}</h2>
+                        <h2 id="project-title-header">{Project Title Goes Here}</h2>
                     </div>
                 </div>
             </div>
@@ -34,18 +34,63 @@
             <div class="col-sm-2"></div>
         </div>
         <div class="col-sm-12 section-spacer">
+            <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <form class="project-filter" action="" method="post">
+                        <label>Project Username: </label><input type="text" name="project-username-input">
+                        <input type="submit" name="project-search-submit-btn" value="Search"/>
+                    </form>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-4">
                 <div class="project-details-wrapper section-border clearfix">
                     <div class="col-sm-12">
                         <div class="col-sm-12">
                             <div class="project-details-header">
-                                <h2>Project Details</h2>
+                                <h2>Capstone Details</h2>
                             </div>
                         </div>
-                        <div class="col-sm-12 ">
-                            <div class="project-details-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div class="col-sm-12 no-padding">
+                            <div class="project-details-body clearfix">
+                                <div class="col-sm-6">
+                                    <h4>Student Name:</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p id="staff-proj-det-name">{Owners Name}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 no-padding">
+                            <div class="project-details-body clearfix">
+                                <div class="col-sm-6">
+                                    <h4>Title:</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p id="staff-proj-det-title">{Project Title}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 no-padding">
+                            <div class="project-details-body clearfix">
+                                <div class="col-sm-6">
+                                    <h4>Description:</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p id="staff-proj-det-description">{The project description about kittens and stuff}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 no-padding">
+                            <div class="project-details-body clearfix">
+                                <div class="col-sm-6">
+                                    <h4>Defense Date:</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p id="staff-proj-det-defense">{Date goes here}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -58,7 +103,7 @@
                             <div class="col-sm-12">
                                 <div class="col-sm-6 no-padding">
                                     <div class="project-status-header">
-                                        <h2>Project Status</h2>
+                                        <h2>Capstone Status</h2>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 no-padding">
@@ -74,13 +119,18 @@
                             </div>
                             <div class="col-sm-12 ">
                                 <div class="project-status">
-                                    <h2>{Project Status Here}</h2>
+                                    <h2 id="staff-cap-status">{Project Status Here}</h2>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12 ">
                             <div class="project-status">
-                                <h4>Plag Score: {Plag Score Here}</h4>
+                                <h4>Plagerism Score: <span id="staff-cap-status-plag-score">{Plag Score Here}<span></h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 ">
+                            <div class="project-status">
+                                <h4>Grade: <span id="staff-cap-status-grade">{Grade}</span></h4>
                             </div>
                         </div>
                     </div>
@@ -88,8 +138,10 @@
             </div>
             <div class="col-sm-2"></div>
         </div>
-        <div class="col-sm-12">
-
+    </div>
+    <div class="logout-btn-wrapper">
+        <div class="logout-btn">
+            <h1>LOGOUT</h1>
         </div>
     </div>
 </div>
