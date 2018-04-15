@@ -17,6 +17,7 @@ class App extends CI_Controller {
         }
         $this->load->model("capstone");
         $this->load->model("user");
+        $this->load->model("committee");
         $this->load->view("header");
         /*
          * functionality to send a user to create a capstone if they don't yet have a capstone yet. If they do
@@ -26,7 +27,9 @@ class App extends CI_Controller {
         if(!empty($capstone)){
             $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
             $data['capstone'] = $capstone;
-            $this->load->view("student", $data, $capstone);
+            $data['capStatus'] = $this->capstone->getCapstoneStatus($_SESSION["username"]);
+            $data['studentCommittee'] = $this->committee->getAcceptedCommittee($_SESSION["studentId"]);
+            $this->load->view("student", $data);
             //$this->load->view("student", $capstone);
         }
         else {

@@ -131,4 +131,11 @@ class User extends CI_Model {
     function getUid($username) {
         return DB::queryFirstField("SELECT uid FROM user WHERE username = %s", $username);
     }
+
+
+    function getStudentId($uid){
+        DB::query("SELECT student.id
+        FROM student JOIN user ON user.uid = student.uid
+        WHERE student.uid = %d, $uid");
+    }
 }

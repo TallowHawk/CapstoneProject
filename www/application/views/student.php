@@ -1,6 +1,6 @@
 
 <div class="clearfix student-wrapper">
-    <p id="proj-det-name"><?php print_r($capstone) ?></p>
+    <p id="proj-det-description"><?php print_r($studentCommittee)?></p>
     <div class="col-sm-12">
         <div class="col-sm-2"></div>
         <div class="col-sm-8 no-padding">
@@ -80,13 +80,13 @@
                         </div>
                         <div class="col-sm-12 ">
                             <div class="project-status-field">
-                                <h2 id="staff-cap-status">{Project Status Here}</h2>
+                                <h2 id="staff-cap-status"><?php echo $capStatus[0]["status_desc"] ?></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 ">
                         <div class="project-status-field">
-                            <h4>Grade: <span id="cap-status-grade">{Grade}</span></h4>
+                            <h4>Grade: <span id="cap-status-grade"><?php echo $capstone[0]['grade']?>%</span></h4>
                         </div>
                     </div>
                 </div>
