@@ -1,4 +1,15 @@
 <div class="clearfix student-wrapper">
+    <div class="col-sm-12">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 no-padding">
+            <div class="student-header-wrapper">
+                <div class="student-name">
+                    <h2>Hello, {Student Name}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
     <div class="col-sm-12 section-spacer">
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
