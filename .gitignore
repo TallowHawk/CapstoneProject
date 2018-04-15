@@ -32,3 +32,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 # Production files
 SiteConfigVars.php
+www/application/controllers/test.php
+*.map
