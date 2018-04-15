@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 /*========================================================= END GENERIC STYLES*/
 .header-wrapper {
-  background-color: #eb6124; }
+  background-color: #F36E21; }
   .header-wrapper .project-name {
     display: inline-block;
     float: right; }
@@ -48,7 +48,7 @@ footer {
   .logout-btn-wrapper .logout-btn {
     padding: 2% 5%;
     display: inline-block;
-    background-color: #eb6124; }
+    background-color: #F36E21; }
 
 form {
   padding: 20px; }
