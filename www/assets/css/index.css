@@ -1,3 +1,4 @@
+/*============================================================= GENERIC STYLES*/
 body {
   background-color: #f8f8f8;
   color: #2d3133; }
@@ -8,6 +9,15 @@ body {
 .no-margin {
   margin: 0; }
 
+.section-border {
+  border: solid 2px #4d4d4d; }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table; }
+
+/*========================================================= END GENERIC STYLES*/
 .header-wrapper {
   background-color: #eb6124; }
   .header-wrapper .project-name {
@@ -20,5 +30,17 @@ footer {
   color: #f8f8f8; }
   footer .footer-label {
     padding: 1%; }
+
+.project-details-wrapper {
+  border: solid 2px #4d4d4d; }
+
+.project-status-wrapper {
+  border: solid 2px #4d4d4d; }
+
+.committee-management-header .committee-add-btn-wrapper {
+  text-align: center; }
+
+.committee-list-wrapper .committee-delete-btn-wrapper {
+  text-align: center; }
 
 /*# sourceMappingURL=index.css.map */
