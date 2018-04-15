@@ -1,3 +1,4 @@
+
 <div class="clearfix student-wrapper">
     <div class="col-sm-12">
         <div class="col-sm-2"></div>
@@ -27,7 +28,7 @@
                                     <h4>Student Name:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="proj-det-name">{Owners Name}</p>
+                                    <p id="proj-det-name"><?php echo $userData[0]["first_name"] . " " . $userData[0]["last_name"] ?></p>
                                 </div>
                             </div>
                         </div>
