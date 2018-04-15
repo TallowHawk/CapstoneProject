@@ -38,7 +38,7 @@
                                     <h4>Title:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="proj-det-title">{Project Title}</p>
+                                    <p id="proj-det-title"><?php echo $capstoneName ?></p>
                                 </div>
                             </div>
                         </div>

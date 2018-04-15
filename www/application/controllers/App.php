@@ -25,6 +25,7 @@ class App extends CI_Controller {
         $capstone = $this->capstone->getCapstoneSpecific($_SESSION["username"]);
         if(!empty($capstone)){
             $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
+            $data['capstoneName'] = $capstone[0]['title'];
             $this->load->view("student", $data);
         }
         else {
