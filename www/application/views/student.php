@@ -27,7 +27,7 @@
                                     <h4>Student Name:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-name">{Owners Name}</p>
+                                    <p id="proj-det-name">{Owners Name}</p>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                                     <h4>Title:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-title">{Project Title}</p>
+                                    <p id="proj-det-title">{Project Title}</p>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                     <h4>Description:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-description">{The project description about kittens and stuff}</p>
+                                    <p id="proj-det-description">{The project description about kittens and stuff}</p>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                     <h4>Defense Date:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-defense">{Date goes here}</p>
+                                    <p id="proj-det-defense">{Date goes here}</p>
                                 </div>
                             </div>
                         </div>
@@ -75,16 +75,6 @@
                                     <h2>Capstone Status</h2>
                                 </div>
                             </div>
-                            <div class="col-sm-12 no-padding">
-                                <div class="project-status-field-edit-btn">
-                                    <button type="button" name="staff-edit-project-status-field">Edit Status</button>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 no-padding">
-                                <div class="project-status-field-plag-btn">
-                                    <button type="button" name="staff-enter-plag-score">Enter Plag Score</button>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-sm-12 ">
                             <div class="project-status-field">
@@ -94,12 +84,7 @@
                     </div>
                     <div class="col-sm-12 ">
                         <div class="project-status-field">
-                            <h4>Plagerism Score: <span id="staff-cap-status-plag-score">{Plag Score Here}<span></h4>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 ">
-                        <div class="project-status-field">
-                            <h4>Grade: <span id="staff-cap-status-grade">{Grade}</span></h4>
+                            <h4>Grade: <span id="cap-status-grade">{Grade}</span></h4>
                         </div>
                     </div>
                 </div>
