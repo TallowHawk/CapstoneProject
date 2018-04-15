@@ -1,25 +1,47 @@
 <?php
 ?>
 
-<main class="col-sm-12">
+<main id="createAccount">
     <form>
-        <div class="form-group row">
-            <label for="fName" class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="fName" name="fName">
-            </div>
-            <label for="lName" class="col-sm-2 col-form-label">Last Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="lName" name="lName">
-            </div>
-            <label for="username" class="col-sm-2 col-form-label">username</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="username" name="username">
-            </div>
-            <label for="phone" class="col-sm-2 col-form-label">phone</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="phone" name="phone">
-            </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName">
         </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName">
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="text" class="form-control" id="phone">
+        </div>
+
+        <div class="radio">
+            <label>
+                <input type="radio" name="userType" id="student">
+                Student
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="userType" id="faculty">
+                Faculty
+            </label>
+        </div>
+        <div class="radio disabled">
+            <label>
+                <input type="radio" name="userType" id="staff">
+                Staff
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
     </form>
 </main>

@@ -43,4 +43,10 @@ footer {
 .committee-list-wrapper .committee-delete-btn-wrapper {
   text-align: center; }
 
+form {
+  padding: 20px; }
+
+main#createAccount {
+  background-color: white; }
+
 /*# sourceMappingURL=index.css.map */
