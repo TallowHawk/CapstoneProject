@@ -26,6 +26,14 @@ body{
     clear: both;
     display: table;
 }
+
+h1, h2, h3, h4, h5, h6, p{
+    margin: 0;
+}
+
+.section-spacer{
+    padding: 2% 0;
+}
 /*========================================================= END GENERIC STYLES*/
 
 
@@ -46,23 +54,23 @@ footer{
     color: #f8f8f8;
 }
 
-.project-details-wrapper{
-    border: solid 2px $accent-color;
-}
+.committee-list-wrapper{
+    .committee-list-member{
+        padding: 1% 0;
+    }
 
-.project-status-wrapper{
-    border: solid 2px $accent-color;
-}
-
-.committee-management-header{
-     .committee-add-btn-wrapper{
-        text-align: center;
+    .committee-list-title-wrapper{
+        padding: 1% 0;
     }
 }
 
-.committee-list-wrapper{
-    .committee-delete-btn-wrapper{
-        text-align: center;
+.logout-btn-wrapper{
+    text-align: center;
+    margin: 2%;
+    .logout-btn{
+        padding: 2% 5%;
+        display: inline-block;
+        background-color: $secondary-color;
     }
 }
 
