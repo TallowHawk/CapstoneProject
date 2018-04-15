@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="col-sm-12 ">
-                            <div class="project-status-body">
+                            <div class="project-status">
                                 <h2>{Project Status Here}</h2>
                             </div>
                         </div>

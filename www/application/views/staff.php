@@ -25,7 +25,7 @@
         <div class="col-sm-12">
             <div class="col-sm-2"></div>
             <div class="col-sm-8 no-padding">
-                <button class="staff-btn-options" type="button" name="staff-add-plag-score">Enter Plagerism Score</button>
+                <button class="staff-btn-options" type="button" name="staff-pending-prop">Pending Proposals</button>
                 <button class="staff-btn-options" type="button" name="staff-rej-prop">Rejected Proposals</button>
                 <button class="staff-btn-options" type="button" name="staff-acc-prop">Accepted Proposals</button>
                 <button class="staff-btn-options" type="button" name="staff-prop-resub">Proposal Resubmissions</button>
@@ -61,16 +61,26 @@
                                         <h2>Project Status</h2>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12 no-padding">
                                     <div class="project-status-edit-btn">
                                         <button type="button" name="staff-edit-project-status">Edit Status</button>
                                     </div>
                                 </div>
+                                <div class="col-sm-12 no-padding">
+                                    <div class="project-status-plag-btn">
+                                        <button type="button" name="staff-enter-plag-score">Enter Plag Score</button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm-12 ">
-                                <div class="project-status-body">
+                                <div class="project-status">
                                     <h2>{Project Status Here}</h2>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 ">
+                            <div class="project-status">
+                                <h4>Plag Score: {Plag Score Here}</h4>
                             </div>
                         </div>
                     </div>
