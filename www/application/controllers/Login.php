@@ -38,7 +38,6 @@ class Login extends CI_Controller {
                     $_SESSION["userType"] = strtolower($this->user->getUserType($username));
                     $_SESSION["uid"] = $this->user->getUid($username);
 					$_SESSION["studentId"] = $this->user->getStudentId($_SESSION["uid"]);
-                    echo $_SESSION["username"];
                     header("Location: app/" . $_SESSION["userType"]);
                 }
                 else {
