@@ -1,14 +1,46 @@
 <div class="clearfix staff-wrapper">
     <div class="col-sm-12">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
-            <div class="view-header-wrapper clearfix">
-                <div class="staff-name">
-                    <h2>Hello, {Faculty Name}</h2>
+        <div class="col-sm-12 no-padding">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="view-header-wrapper clearfix">
+                    <div class="staff-name">
+                        <h2>Hello, {Faculty Name}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="col-sm-12 no-padding">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="project-title-wrapper clearfix">
+                    <div class="project-title">
+                        <h2>{Project Title Goes Here}</h2>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-2"></div>
+        <div class="col-sm-12">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <button type="button" name="staff-add-plag-score">Enter Plagerism Score</button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" name="staff-rej-prop">Rejected Proposals</button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" name="staff-acc-prop">Accepted Proposals</button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" name="staff-prop-resub">Proposal Resubmissions</button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" name="staff-defense-dates">Defense Dates</button>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
         <div class="col-sm-12 section-spacer">
             <div class="col-sm-2"></div>
             <div class="col-sm-4">
