@@ -13,7 +13,7 @@ class App extends CI_Controller {
 
 	public function student() {
         if (!isset($_SESSION["uid"])){
-            header("location: login/");
+            header("location: " .  base_url());
         }
         $this->load->model("capstone");
         $this->load->model("user");

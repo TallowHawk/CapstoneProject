@@ -52,4 +52,10 @@ class Login extends CI_Controller {
 
 	}
 
+	public function logout() {
+	    session_start();
+	    session_destroy();
+	    header("Location: ". base_url() . "");
+    }
+
 }
