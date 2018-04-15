@@ -1,0 +1,73 @@
+/*============================================================= GENERIC STYLES*/
+body {
+  background-color: #f8f8f8;
+  color: #2d3133; }
+
+.no-padding {
+  padding: 0; }
+
+.no-margin {
+  margin: 0; }
+
+.section-border {
+  border: solid 2px #4d4d4d; }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table; }
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0; }
+
+.section-spacer {
+  padding: 2% 0; }
+
+/*========================================================= END GENERIC STYLES*/
+.header-wrapper {
+  background-color: #F36E21; }
+  .header-wrapper .project-name {
+    display: inline-block;
+    float: right; }
+
+footer {
+  background-color: #4d4d4d;
+  text-align: center;
+  color: #f8f8f8; }
+  footer .footer-label {
+    padding: 1%; }
+
+.committee-list-wrapper .committee-list-member {
+  padding: 1% 0; }
+.committee-list-wrapper .committee-list-title-wrapper {
+  padding: 1% 0; }
+
+.logout-btn-wrapper {
+  text-align: center;
+  margin: 2%; }
+  .logout-btn-wrapper .logout-btn {
+    padding: 2% 5%;
+    display: inline-block;
+    background-color: #F36E21; }
+
+form {
+  padding: 20px; }
+
+main#createAccount {
+  background-color: white; }
+
+.view-header-wrapper {
+  padding: 2% 0; }
+
+.project-status-body {
+  padding-top: 5%;
+  padding-bottom: 5%; }
+
+.project-title-wrapper {
+  padding: 2% 0; }
+
+.staff-btn-options {
+  padding: 5px;
+  margin: 10px; }
+
+/*# sourceMappingURL=index.css.map */

@@ -22,16 +22,15 @@ class Capstone extends CI_Model {
 
     /**
      * This allows you to get a specific capstone project and all the data for it
-     * @param $first - first name of student
-     * @param $last - last name of the studnet
+     * @param $username - the username of the user's capstone to look up
      * @return string - json that includes all required data for all the capstones. Notice that it does not have all
      *                  of the data for the the capstone statuses.
      */
-    function getCapstoneSpecific($first, $last){
+    function getCapstoneSpecific($username){
         return DB::query("SELECT u.first_name , u.last_name, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type
                                       FROM capstone cs JOIN student s ON cs.student_id = s.id
                                       JOIN user u ON s.uid = u.uid
-                                      WHERE u.first_name = %s AND u.last_name = %s;",$first,$last);
+                                      WHERE u.username = %s;",$username);
     }
 
     /**

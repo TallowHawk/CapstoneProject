@@ -28,17 +28,41 @@ class User extends CI_Model {
     *                 Returns true if record was successfully created
     */
     function createAccount($username, $password, $phone, $role, $fName, $lName){
-        return DB::insert('user', array(
+        DB::startTransaction();
+        DB::insert('user', array(
             'username'=>$username,
             'password'=>password_hash($password, PASSWORD_DEFAULT),
             'phone'=>$phone,
             'inactive_date'=>null,
-            'role_id'=>$role,
+            'role_id'=> DB::queryFirstField("SELECT id FROM roles WHERE role_description = %s",$role),
             'first_name'=>$fName,
             'last_name'=>$lName
         ));
+
+        $counter = DB::affectedRows();
+        if ($counter > 0) {
+            DB::insert($role,array(
+                'uid'=> DB::queryFirstField("SELECT uid FROM user WHERE username=%s",$username)
+            ));
+            $counter =DB::affectedRows();
+            if ($counter >0 ){
+                DB::commit();
+                return true;
+            }
+        }
+        DB::rollback();
+        return false;
     }
 
+    /**
+     * Gets username and password based off values passed in
+     * @param $username - the username that the user has submitted
+     * @param $password - the password the
+     * @return mixed
+     */
+    function login($username) {
+        return DB::query("SELECT username, password FROM user WHERE username = %s",$username);
+    }
 
     /**
     * This function returns most information about a specific user
@@ -76,7 +100,7 @@ class User extends CI_Model {
 
 
     /**
-    * This retrievs the full name of the user based on user id#
+    * This retries the full name of the user based on user id#
     * @param $uid - the user's id#
     * @return string - json that includes the users last name
     */
@@ -85,6 +109,14 @@ class User extends CI_Model {
         WHERE uid = %i", $uid);
     }
 
+    /**
+     * gets the role id of the user
+     * @param $username - the username supplied by the user
+     * @return mixed - associative array of the role
+     */
+    function getUserType($username) {
+        return DB::queryFirstField("SELECT role_description FROM user JOIN roles ON roles.id=user.role_id WHERE username = %s", $username);
+    }
 
     /**
     * This function returns a specific user's username
