@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-    </head>
-    <body>
-        <form method="POST"
-              onsubmit="return true"
-              action="">
-            <label>
-                <input type="text" name="username">
-            </label>
-            <label>
-                <input type="password" name="password">
-            </label>
-            <input type="submit">
-        </form>
-    </body>
-</html>
+<div class="login">
+    <div class="col-sm-12">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form method="POST"
+                  onsubmit="return true"
+                  action="">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input class="form-control" type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" required>
+                </div>
+                <input type="submit">
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
