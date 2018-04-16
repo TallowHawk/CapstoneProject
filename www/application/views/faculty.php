@@ -91,6 +91,34 @@
             </div>
             <div class="col-sm-2"></div>
         </div>
+        <div class="col-sm-12 section-spacer">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="faculty-committee-list-wrapper section-border clearfix">
+                    <div class="col-sm-12">
+                        <h2>Committee List</h2>
+                    </div>
+                    <div class="committee-list-field clearfix">
+                        <div class="col-sm-4">
+                            <div class="committee-list-name">
+                                <h4>{Student Name}</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="committee-list-name">
+                                <h4>{Capstone Title}</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="committee-remove-btn-wrapper">
+                                <button type="button" name="faculty-remove-committee-btn">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
     </div>
     <div class="logout-btn-wrapper">
         <div class="logout-btn">
