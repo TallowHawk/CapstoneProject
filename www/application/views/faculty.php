@@ -121,7 +121,7 @@
         </div>
     </div>
     <div class="logout-btn-wrapper">
-        <div class="logout-btn">
+        <div class="logout-btn" onclick="window.location.assign('<?php echo base_url(); ?>login/logout/');">
             <h1>LOGOUT</h1>
         </div>
     </div>
