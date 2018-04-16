@@ -13,5 +13,4 @@ $(document).ready(function(){
         field += "</div></div></div></div>";
         $(".committee-list-member-wrapper").append(field);
     });
-    console.log("Stuff");
 });
