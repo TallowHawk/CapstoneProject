@@ -87,6 +87,15 @@ main#createAccount {
     background-color: white;
 }
 
+.login {
+    height: 93vh;
+    background-color: $accent-color;
+
+    label {
+        color: white;
+    }
+}
+
 .view-header-wrapper{
     padding: 2% 0;
 }

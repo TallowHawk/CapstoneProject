@@ -46,8 +46,9 @@ class Login extends CI_Controller {
             }
 
         }
-	    echo "Login Works";
+        $this->load->view("header");
         $this->load->view("login");
+        $this->load->view("footer");
 
 	}
 
