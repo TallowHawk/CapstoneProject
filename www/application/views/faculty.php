@@ -5,7 +5,7 @@
             <div class="col-sm-8">
                 <div class="view-header-wrapper clearfix">
                     <div class="view-header">
-                        <h2>Hello, <span id="faculty-name-header">{Faculty Name}</span></h2>
+                        <h2>Hello, <span id="faculty-name-header"><?php echo $userData[0]["first_name"] . " " . $userData[0]["last_name"] ?></span></h2>
                     </div>
                 </div>
             </div>
