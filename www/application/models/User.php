@@ -144,4 +144,12 @@ class User extends CI_Model {
         return DB::query("SELECT u.first_name, u.last_name, u.username
         FROM user u WHERE u.role_id = %d", $roleid);
     }
+    
+
+    function getSpecificFaculty($uid){
+        return DB::query("SELECT u.first_name, u.last_name, u.username, f.id, f.uid
+        FROM user u JOIN faculty f ON f.uid = u.uid
+        WHERE f.uid = %d", $uid);
+    }
+
 }

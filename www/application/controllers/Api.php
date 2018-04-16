@@ -24,5 +24,4 @@ class Api extends CI_Controller {
             echo "Error: Please Append Status";
         }
     }
-
 }

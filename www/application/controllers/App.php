@@ -57,4 +57,14 @@ class App extends CI_Controller {
         $this->load->view("staff");
         $this->load->view("footer");
     }
+
+    public function addToCommittee($fac_id, $cap_id){
+        if(isset($fac_id) && isset($cap_id)){
+            $this->load->model("committee");
+            echo json_encode($this->committee->addToCommittee($fac_id, $cap_id));
+        }
+        else{
+            echo "Error: Please Enter Valid fac_id and/or cap_id";
+        }
+    }
 }

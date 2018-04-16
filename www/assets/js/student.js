@@ -35,9 +35,11 @@ $(document).ready(function(){
         $('#myModal').modal('show');
 
         $(".modal-fac-invite-div button").attr('name', 'modal-fac-invite-btn').on('click', function(){
-
-
-
+            var capID = capstoneInfo[0].id;
+            //var facID = 
+            // $.ajax({url: "$this->input->post('')", success:function(result){
+            //
+            // }});
             $(".invite-success-toast").fadeIn();
             $('#myModal').modal('hide');
             setTimeout(function(){
