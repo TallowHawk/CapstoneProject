@@ -64,6 +64,7 @@ class Capstone extends CI_Model {
 
 
 
+
     /**
      * Sets the status of the capstone project. Only for staff.
      * @param $status - the status to set the project to
