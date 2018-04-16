@@ -37,7 +37,7 @@ class Committee extends CI_Model {
      * @return mixed - An associative array of the faculty id, faculty username, capstone id, and capstone title
      */
     function getAcceptedCommittee($student_id) {
-        return DB::query("SELECT f.id \"fac_id\", u.username, c.id \"cap_id\", c.title
+        return DB::query("SELECT f.id \"fac_id\", u.username, u.first_name, u.last_name, c.id \"cap_id\", c.title
                         FROM committee JOIN capstone c ON committee.cap_id = c.id
                         JOIN faculty f ON committee.fac_id = f.id
                         JOIN user u ON f.uid = u.uid

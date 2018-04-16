@@ -13,7 +13,7 @@ class Login extends CI_Controller {
         if (!empty($_POST)) {
             $errors = [];
             print_r($_POST);
-            
+
             $username = $_POST["username"];
             $password = $_POST["password"];
 
@@ -36,7 +36,7 @@ class Login extends CI_Controller {
                     session_start();
                     $_SESSION["username"] = $username;
                     $_SESSION["userType"] = strtolower($this->user->getUserType($username));
-                    echo $_SESSION["username"];
+                    $_SESSION["uid"] = $this->user->getUid($username);
                     header("Location: app/" . $_SESSION["userType"]);
                 }
                 else {
@@ -48,7 +48,13 @@ class Login extends CI_Controller {
         }
 	    echo "Login Works";
         $this->load->view("login");
-        
+
 	}
+
+	public function logout() {
+	    session_start();
+	    session_destroy();
+	    header("Location: ". base_url() . "");
+    }
 
 }

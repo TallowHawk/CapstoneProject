@@ -48,10 +48,14 @@ footer {
   .logout-btn-wrapper .logout-btn {
     padding: 2% 5%;
     display: inline-block;
-    background-color: #F36E21; }
+    background-color: #F36E21;
+    cursor: pointer; }
 
 form {
   padding: 20px; }
+
+.project-filter {
+  padding: 0; }
 
 main#createAccount {
   background-color: white; }
@@ -59,7 +63,7 @@ main#createAccount {
 .view-header-wrapper {
   padding: 2% 0; }
 
-.project-status-body {
+.project-status-field {
   padding-top: 5%;
   padding-bottom: 5%; }
 
@@ -69,5 +73,8 @@ main#createAccount {
 .staff-btn-options {
   padding: 5px;
   margin: 10px; }
+
+.invitation-choice-wrapper {
+  float: right; }
 
 /*# sourceMappingURL=index.css.map */
