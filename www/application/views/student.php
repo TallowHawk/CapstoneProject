@@ -1,4 +1,7 @@
-
+<script src="<?php echo base_url(); ?>assets/js/student.js"></script>
+<script>
+    var json = <?php echo json_encode($studentCommittee) ?>;
+</script>
 <div class="clearfix student-wrapper">
     <div class="col-sm-12">
         <div class="col-sm-2"></div>
@@ -112,20 +115,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12">
-                        <div class="committee-list-member clearfix">
-                            <div class="col-sm-10">
-                                <div class="commitee-list-name">
-                                    <h3>{Faculty Name}</h3>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="commitee-list-delete-btn">
-                                    <button type="button" name="committee-delete-btn">DELETE</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="committee-list-member-wrapper clearfix"></div>
                 </div>
             </div>
         </div>
