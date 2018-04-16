@@ -60,6 +60,12 @@ form {
 main#createAccount {
   background-color: white; }
 
+.login {
+  height: 93vh;
+  background-color: #4d4d4d; }
+  .login label {
+    color: white; }
+
 .view-header-wrapper {
   padding: 2% 0; }
 
