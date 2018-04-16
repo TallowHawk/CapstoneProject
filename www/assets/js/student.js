@@ -36,8 +36,8 @@ $(document).ready(function(){
 
         $(".modal-fac-invite-div button").attr('name', 'modal-fac-invite-btn').on('click', function(){
 
-            
 
+ 
             $(".invite-success-toast").fadeIn();
             $('#myModal').modal('hide');
             setTimeout(function(){
