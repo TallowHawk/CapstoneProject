@@ -67,8 +67,9 @@ class App extends CI_Controller {
         if ($_SESSION["userType"] != "staff"){
             header("Location: " . base_url() . "app/" . $_SESSION["userType"]);
         }
+        $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
         $this->load->view("header");
-        $this->load->view("staff");
+        $this->load->view("staff", $data);
         $this->load->view("footer");
     }
 }
