@@ -2,6 +2,7 @@
 
 class App extends CI_Controller {
 
+
     function __construct() {
         parent::__construct();
         session_start();
@@ -23,6 +24,9 @@ class App extends CI_Controller {
          * functionality to send a user to create a capstone if they don't yet have a capstone yet. If they do
          * have a capstone then it navigates them to their app page.
          */
+        $studentRoleId = 1;
+        $staffRoleId = 2;
+        $facultyRoleId = 3;
         $studentId = $this->user->getStudentId($_SESSION["uid"]);
         $capstone = $this->capstone->getCapstoneSpecific($_SESSION["username"]);
         if(!empty($capstone)){
@@ -30,6 +34,7 @@ class App extends CI_Controller {
             $data['capstone'] = $capstone;
             $data['capStatus'] = $this->capstone->getCapstoneStatus($_SESSION["username"]);
             $data['studentCommittee'] = $this->committee->getAcceptedCommittee($studentId);
+            $data['facultyMembers'] = $this->user->getUsersByRole($facultyRoleId);
             $this->load->view("student", $data);
             //$this->load->view("student", $capstone);
         }

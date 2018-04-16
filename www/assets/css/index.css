@@ -77,4 +77,18 @@ main#createAccount {
 .invitation-choice-wrapper {
   float: right; }
 
+.modal-body .modal-fac-member {
+  padding-top: 2%;
+  padding-bottom: 2%; }
+
+.invite-success-toast {
+  display: none;
+  position: fixed;
+  width: 50%;
+  top: 10px;
+  z-index: 1000;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%); }
+
 /*# sourceMappingURL=index.css.map */

@@ -1,8 +1,11 @@
-<script src="<?php echo base_url(); ?>assets/js/student.js"></script>
 <script>
-    var json = <?php echo json_encode($studentCommittee) ?>;
+    var committeeData = <?php echo json_encode($studentCommittee) ?>;
+    var facultyMembers = <?php echo json_encode($facultyMembers) ?>;
 </script>
 <div class="clearfix student-wrapper">
+    <div class="alert alert-success alert-dismissible invite-success-toast">
+      <strong>Invitation Successful!</strong>
+    </div>
     <div class="col-sm-12">
         <div class="col-sm-2"></div>
         <div class="col-sm-8 no-padding">
@@ -110,7 +113,7 @@
                             </div>
                             <div class="col-sm-2">
                                 <div class="committee-header-btn">
-                                    <button type="button" name="committee-add-btn">ADD</button>
+                                    <button type="button" name="committee-add-btn">INVITE FACULTY</button>
                                 </div>
                             </div>
                         </div>
@@ -127,3 +130,27 @@
         <h1>LOGOUT</h1>
     </div>
 </div>
+
+
+
+<!--============================================================ MODALS BEGIN HERE-->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Faculty Members</h4>
+      </div>
+      <div class="modal-body clearfix">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--================================================================MODALS END HERE-->
+<script src="<?php echo base_url(); ?>assets/js/student.js"></script>
