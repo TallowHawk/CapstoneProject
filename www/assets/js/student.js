@@ -56,7 +56,7 @@ $(document).ready(function(){
                      $('#myModal').modal('hide');
                      setTimeout(function(){
                          $(".invite-success-toast").fadeOut();
-                     }, 3000);
+                     }, 3000); 
                 },
                 error: function(){
                     console.log("There was an error in the ajax call to invite the faculty member to the committee");
