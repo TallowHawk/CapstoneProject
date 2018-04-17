@@ -9,6 +9,9 @@
     <div class="alert alert-success alert-dismissible invite-success-toast">
       <strong>Invitation Successful!</strong>
     </div>
+    <div class="alert alert-success alert-dismissible delete-success-toast">
+      <strong>Deletion Successful!</strong>
+    </div>
     <div class="col-sm-12">
         <div class="col-sm-2"></div>
         <div class="col-sm-8 no-padding">

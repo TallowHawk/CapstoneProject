@@ -58,9 +58,7 @@ class App extends CI_Controller {
         $this->load->view("footer");
     }
 
-    public function addToCommittee(){
-        $uid = $_GET['uid'];
-        $cap_id = $_GET['cap_id'];
+    public function addToCommittee($uid, $cap_id){
         if(isset($uid) && isset($cap_id)){
             $this->load->model("user");
             $this->load->model("committee");
@@ -72,7 +70,14 @@ class App extends CI_Controller {
         }
     }
 
-    public function test_endpoint(){
-        echo "Hello";
+
+    public function removeFromCommittee($fac_id, $cap_id){
+        if(isset($fac_id) && isset($cap_id)){
+            $this->load->model("committee");
+            echo json_encode($this->committee->removeFromCommittee($fac_id, $cap_id));
+        }
+        else{
+            echo "Error: Please Enter Valid fac_id and/or cap_id";
+        }
     }
 }
