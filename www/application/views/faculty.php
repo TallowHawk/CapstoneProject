@@ -1,4 +1,5 @@
 <script>
+    var committeeData = <?php echo json_encode($committeeList) ?> 
     var ajaxURLStart = "<?php echo base_url() ?>";
 </script>
 

@@ -63,6 +63,6 @@ class Committee extends CI_Model {
      * @return mixed - Associative array of the id, cap_id, and if the faculty has accepted that capstone
      */
     function viewCommittee($fac_id) {
-        return DB::queryFirstField("SELECT id,cap_id,has_accepted FROM committee WHERE fac_id = %i", $fac_id);
+        return DB::query("SELECT id,cap_id,has_accepted FROM committee WHERE fac_id = %i", $fac_id);
     }
 }
