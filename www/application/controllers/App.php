@@ -6,6 +6,7 @@ class App extends CI_Controller {
     function __construct() {
         parent::__construct();
         session_start();
+        $this->load->model("user");
     }
 
     public function index() {
@@ -16,8 +17,12 @@ class App extends CI_Controller {
         if (!isset($_SESSION["uid"])){
             header("location: " .  base_url());
         }
+
+        if ($_SESSION["userType"] != "student"){
+            header("Location: " . base_url() . "app/" . $_SESSION["userType"]);
+        }
+
         $this->load->model("capstone");
-        $this->load->model("user");
         $this->load->model("committee");
         $this->load->view("header");
         /*
@@ -47,14 +52,29 @@ class App extends CI_Controller {
     }
 
     public function faculty() {
+        if (!isset($_SESSION["uid"])){
+            header("location: " .  base_url());
+        }
+        if ($_SESSION["userType"] != "faculty"){
+            header("Location: " . base_url() . "app/" . $_SESSION["userType"]);
+        }
+
+        $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
         $this->load->view("header");
-        $this->load->view("faculty");
+        $this->load->view("faculty", $data);
         $this->load->view("footer");
     }
 
     public function staff() {
+        if (!isset($_SESSION["uid"])){
+            header("location: " .  base_url());
+        }
+        if ($_SESSION["userType"] != "staff"){
+            header("Location: " . base_url() . "app/" . $_SESSION["userType"]);
+        }
+        $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
         $this->load->view("header");
-        $this->load->view("staff");
+        $this->load->view("staff", $data);
         $this->load->view("footer");
     }
 

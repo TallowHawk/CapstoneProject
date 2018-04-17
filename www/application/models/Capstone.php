@@ -27,7 +27,7 @@ class Capstone extends CI_Model {
      *                  of the data for the the capstone statuses.
      */
     function getCapstoneSpecific($username){
-        return DB::query("SELECT u.first_name , u.last_name, cs.id, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type, cs.defense_date
+        return DB::queryFirstRow("SELECT u.first_name , u.last_name, cs.id, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type, cs.defense_date
                                       FROM capstone cs JOIN student s ON cs.student_id = s.id
                                       JOIN user u ON s.uid = u.uid
                                       WHERE u.username = %s;",$username);
@@ -54,7 +54,7 @@ class Capstone extends CI_Model {
      * @return string - the status of the capstone
      */
     function getCapstoneStatus($username){
-        return DB::query("SELECT s.status_code, s.status_desc
+        return DB::queryFirstRow("SELECT s.status_code, s.status_desc
             FROM status s JOIN status_history sh ON s.id = sh.status_id
             JOIN capstone c ON sh.capstone_id = c.id
             JOIN student stu ON c.student_id = stu.id

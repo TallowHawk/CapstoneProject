@@ -4,6 +4,10 @@ class Login extends CI_Controller {
 
 	public function index() {
         $this->load->model('user');
+        session_start();
+        if (isset($_SESSION["userType"])){
+            header("location: " .  base_url() ."app/" . $_SESSION["userType"]);
+        }
 
         /* This is the server validation. TODO: Display server validation
          * It takes and the user's username and password and makes sure it is okay. If it is then it it verifies that
@@ -33,7 +37,6 @@ class Login extends CI_Controller {
             else {
                 $hashedPass = $this->user->login($username);
                 if (password_verify($password,$hashedPass[0]["password"])) {
-                    session_start();
                     $_SESSION["username"] = $username;
                     $_SESSION["userType"] = strtolower($this->user->getUserType($username));
                     $_SESSION["uid"] = $this->user->getUid($username);

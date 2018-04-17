@@ -1,3 +1,4 @@
+<script src="<?php echo base_url() . "assets/js/staff.js"?>"></script>
 <div class="clearfix staff-wrapper">
     <div class="col-sm-12">
         <div class="col-sm-12 no-padding">
@@ -5,21 +6,11 @@
             <div class="col-sm-8">
                 <div class="view-header-wrapper clearfix">
                     <div class="staff-name">
-                        <h2>Hello, <span id="faculty-name-header">{Staff Name}</span></h2>
+                        <h2>Hello, <span id="faculty-name-header"><?php echo $userData[0]["first_name"] . " " . $userData[0]["last_name"] ?></span></h2>
                     </div>
                 </div>
             </div>
             <div class="col-sm-2"></div>
-        </div>
-        <div class="col-sm-12 no-padding">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div class="project-title-wrapper clearfix">
-                    <div class="project-title">
-                        <h2 id="project-title-header">{Project Title Goes Here}</h2>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-12">
@@ -37,10 +28,8 @@
             <div class="col-sm-12">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
-                    <form class="project-filter" action="" method="post">
-                        <label>Project Username: </label><input type="text" name="project-username-input">
-                        <input type="submit" name="project-search-submit-btn" value="Search"/>
-                    </form>
+                    <label>Project Username: </label><input type="text" name="project-username-input">
+                    <button onclick="staff.getCapstone(this.parentElement.getElementsByTagName('input')[0].value); return false;" value="Search">Search</button>
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -140,7 +129,7 @@
         </div>
     </div>
     <div class="logout-btn-wrapper">
-        <div class="logout-btn">
+        <div class="logout-btn" onclick="window.location.assign('<?php echo base_url(); ?>login/logout/');">
             <h1>LOGOUT</h1>
         </div>
     </div>
