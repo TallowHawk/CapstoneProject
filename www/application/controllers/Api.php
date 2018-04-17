@@ -32,4 +32,11 @@ class Api extends CI_Controller {
         }
     }
 
+    public function getCapstoneStatus($username) {
+	    if (isset($username)) {
+	        $this->load->model("capstone");
+	        echo json_encode($this->capstone->getCapstoneStatus($username));
+        }
+    }
+
 }

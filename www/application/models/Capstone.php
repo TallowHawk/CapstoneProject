@@ -54,7 +54,7 @@ class Capstone extends CI_Model {
      * @return string - the status of the capstone
      */
     function getCapstoneStatus($username){
-        return DB::query("SELECT s.status_code, s.status_desc
+        return DB::queryFirstRow("SELECT s.status_code, s.status_desc
             FROM status s JOIN status_history sh ON s.id = sh.status_id
             JOIN capstone c ON sh.capstone_id = c.id
             JOIN student stu ON c.student_id = stu.id

@@ -12,6 +12,15 @@ let staff = {
             document.getElementById("staff-proj-det-title").innerText = json.title;
             document.getElementById("staff-proj-det-description").innerText = json.description;
             document.getElementById("staff-proj-det-defense").innerText = json.defense_date;
+
+            $.ajax({
+                url: "/api/getCapstoneStatus/" + username,
+                method: "get",
+                dataType: "json"
+            }).done(function (json2) {
+                console.log(json2);
+            });
+
         });
     }
 };
