@@ -45,11 +45,11 @@ $(document).ready(function(){
         $('#myModal').modal('show');
 
         $(".modal-fac-invite-div button").attr('name', 'modal-fac-invite-btn').on('click', function(){
-            var capID = capstoneInfo[0].id;
+            var capID = capstoneInfo.id;
             var uid = $(this).attr("data-fac");
 
             $.ajax({
-                url: "/capstoneproject/www/index.php/app/addToCommittee/" + uid + "/" + capID,
+                url: ajaxURLStart + "app/addToCommittee/" + uid + "/" + capID,
                 success:function(result){
                      console.log(result);
                      $(".invite-success-toast").fadeIn();
@@ -66,11 +66,11 @@ $(document).ready(function(){
     });
 
     $(".committee-list-delete-btn button").attr('name', 'committee-delete-btn').on('click', function(){
-        var capID = capstoneInfo[0].id;
+        var capID = capstoneInfo.id;
         var facID = $(this).attr("data-fac");
 
         $.ajax({
-            url: "/capstoneproject/www/index.php/app/removeFromCommittee/" + facID + "/" + capID,
+            url: ajaxURLStart + "app/removeFromCommittee/" + facID + "/" + capID,
             success:function(result){
                  $(".delete-success-toast").fadeIn();
                  setTimeout(function(){
