@@ -16,7 +16,7 @@
             <div class="col-sm-8">
                 <div class="project-title-wrapper clearfix">
                     <div class="project-title">
-                        <h2 id="project-title-header">{Project Title Goes Here}</h2>
+                        <h2 id="project-title-header">No Project Selected</h2>
                     </div>
                 </div>
             </div>
