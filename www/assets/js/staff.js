@@ -23,11 +23,9 @@ let staff = {
         }).done(function (json) {
             document.getElementById("staff-cap-status").innerText = json.status_desc;
         });
-    }
-};
-$(document).ready(function() {
-    $("button.staff-btn-options").attr('name', 'staff-pending-prop').on('click', function () {
-        let facultyList = [];
+    },
+
+    handleModal: function (ajaxUrlEndpoint) {
         let modalBody = "";
         modalBody += "<div class='col-sm-12 modal-labels'><div class='col-sm-4'><h3>Name</h3></div>";
         modalBody += "<div class='col-sm-4'><h3>Username</h3></div></div>";
@@ -36,7 +34,7 @@ $(document).ready(function() {
         $('#myModal').modal('show');
 
         $.ajax({
-            url: ajaxURLStart + "api/getCapstonesByStatus/" + "pending",
+            url: ajaxURLStart + "api/getCapstonesByStatus/" + ajaxUrlEndpoint,
             method: "get",
             dataType: "json"
         }).done(function (json) {
@@ -61,6 +59,17 @@ $(document).ready(function() {
                 $('#myModal').modal('hide');
             });
         });
+    }
+};
+$(document).ready(function() {
+    $("#staff-pending-prop").on('click', function () {
+        staff.handleModal("pending");
+    });
+    $("#staff-rej-prop").on('click', function () {
+        staff.handleModal("rejected");
+    });
+    $("#staff-acc-prop").on('click', function () {
+        staff.handleModal("approved");
     });
 
 });

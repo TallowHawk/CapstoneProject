@@ -17,11 +17,11 @@
         <div class="col-sm-12">
             <div class="col-sm-2"></div>
             <div class="col-sm-8 no-padding">
-                <button class="staff-btn-options" type="button" name="staff-pending-prop">Pending Proposals</button>
-                <button class="staff-btn-options" type="button" name="staff-rej-prop">Rejected Proposals</button>
-                <button class="staff-btn-options" type="button" name="staff-acc-prop">Accepted Proposals</button>
-                <button class="staff-btn-options" type="button" name="staff-prop-resub">Proposal Resubmissions</button>
-                <button class="staff-btn-options" type="button" name="staff-defense-dates">Defense Dates</button>
+                <button class="staff-btn-options" id="staff-pending-prop" type="button" name="staff-pending-prop">Pending Proposals</button>
+                <button class="staff-btn-options" id="staff-rej-prop" type="button" name="staff-rej-prop">Rejected Proposals</button>
+                <button class="staff-btn-options" id="staff-acc-prop" type="button" name="staff-acc-prop">Accepted Proposals</button>
+                <button class="staff-btn-options" id="staff-prop-resub" type="button" name="staff-prop-resub">Proposal Resubmissions</button>
+                <button class="staff-btn-options" id="staff-defense-prop" type="button" name="staff-defense-dates">Defense Dates</button>
             </div>
             <div class="col-sm-2"></div>
         </div>
