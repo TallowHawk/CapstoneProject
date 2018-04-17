@@ -7,6 +7,8 @@ let staff = {
             dataType: "json"
         }).done(function (json) {
             console.log(json);
+            let projectDetails = document.getElementsByClassName("project-details-wrapper")[0];
+            document.getElementById()
         });
     }
 };
