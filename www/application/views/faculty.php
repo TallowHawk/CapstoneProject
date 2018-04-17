@@ -1,3 +1,7 @@
+<script>
+    var ajaxURLStart = "<?php echo base_url() ?>";
+</script>
+
 <div class="clearfix view-wrapper">
     <div class="col-sm-12">
         <div class="col-sm-12 no-padding">
