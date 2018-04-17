@@ -30,10 +30,8 @@
             <div class="col-sm-12">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
-                    <form class="project-filter" action="" method="post">
-                        <label>Project Username: </label><input type="text" name="project-username-input">
-                        <input type="submit" name="project-search-submit-btn" value="Search"/>
-                    </form>
+                    <label>Project Username: </label><input type="text" name="project-username-input">
+                    <button onclick="faculty.getCapstone(this.parentElement.getElementsByTagName('input')[0].value); return false;" value="Search">Search</button>
                 </div>
                 <div class="col-sm-2"></div>
             </div>
