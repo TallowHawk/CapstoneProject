@@ -2,7 +2,9 @@
     var committeeData = <?php echo json_encode($studentCommittee) ?>;
     var facultyMembers = <?php echo json_encode($facultyMembers) ?>;
     var capstoneInfo = <?php echo json_encode($capstone) ?>;
+    var ajaxURLStart = "<?php echo base_url() ?>";
 </script>
+
 <div class="clearfix student-wrapper">
     <div class="alert alert-success alert-dismissible invite-success-toast">
       <strong>Invitation Successful!</strong>

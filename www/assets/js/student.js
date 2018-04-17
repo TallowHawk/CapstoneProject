@@ -16,18 +16,29 @@ $(document).ready(function(){
 
 
     $(".committee-header-btn button").attr('name', 'committee-add-btn').on('click', function(){
-            let modalBody = "";
-            modalBody += "<div class='col-sm-12 modal-labels'><div class='col-sm-4'><h3>Name</h3></div>";
-            modalBody += "<div class='col-sm-4'><h3>Username</h3></div></div>";
+        let modalBody = "";
+        modalBody += "<div class='col-sm-12 modal-labels'><div class='col-sm-4'><h3>Name</h3></div>";
+        modalBody += "<div class='col-sm-4'><h3>Username</h3></div></div>";
 
-        $.each(committeeData, function(i, ele){
+        // checks if faculty members are already invited to the committee
+        // and only shows the faculty members who are not a part of the
+        // committee
+        let facultyList = [];
+        $.each(facultyMembers, function(i, ele){
+            if(!committeeData.some(item => item.username == ele.username)){
+                facultyList.push(ele);
+            }
+        });
+
+        $.each(facultyList, function(i, ele){
+            console.log(ele);
             modalBody += "<div class='col-sm-12'><div class='modal-fac-member clearfix'>";
             modalBody += "<div class='col-sm-4'><div class='modal-fac-name'>";
             modalBody += "<h4>" + ele.first_name + " " + ele.last_name + "</h4></div></div>";
             modalBody += "<div class='col-sm-4'><div class='modal-fac-username'>"
             modalBody += "<h4>" + ele.username + "</h4></div></div>";
             modalBody += "<div class='col-sm-4'><div class='modal-fac-invite-div'>";
-            modalBody += "<button type='button' data-fac='" + ele.username + "' name='modal-fac-invite-btn'>INVITE</button>";
+            modalBody += "<button type='button' data-fac='" + ele.uid + "' name='modal-fac-invite-btn'>INVITE</button>";
             modalBody += "</div></div></div></div>";
         });
 
@@ -36,15 +47,22 @@ $(document).ready(function(){
 
         $(".modal-fac-invite-div button").attr('name', 'modal-fac-invite-btn').on('click', function(){
             var capID = capstoneInfo[0].id;
-            //var facID = 
-            // $.ajax({url: "$this->input->post('')", success:function(result){
-            //
-            // }});
-            $(".invite-success-toast").fadeIn();
-            $('#myModal').modal('hide');
-            setTimeout(function(){
-                $(".invite-success-toast").fadeOut();
-            }, 3000);
+            var uid = $(this).attr("data-fac");
+
+            $.ajax({
+                url: "/capstoneproject/www/index.php/app/addToCommittee?uid=" + uid + "&cap_id=" + capID + "",
+                success:function(result){
+                     console.log(result);
+                     $(".invite-success-toast").fadeIn();
+                     $('#myModal').modal('hide');
+                     setTimeout(function(){
+                         $(".invite-success-toast").fadeOut();
+                     }, 3000);
+                },
+                error: function(){
+                    console.log("There was an error in the ajax call to invite the faculty member to the committee");
+                }
+            });
         });
     });
 });

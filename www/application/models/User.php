@@ -141,15 +141,13 @@ class User extends CI_Model {
 
 
     function getUsersByRole($roleid){
-        return DB::query("SELECT u.first_name, u.last_name, u.username
+        return DB::query("SELECT u.uid, u.first_name, u.last_name, u.username
         FROM user u WHERE u.role_id = %d", $roleid);
     }
-    
 
-    function getSpecificFaculty($uid){
-        return DB::query("SELECT u.first_name, u.last_name, u.username, f.id, f.uid
-        FROM user u JOIN faculty f ON f.uid = u.uid
+
+    function getFacIdByUid($uid){
+        return DB::query("SELECT f.id FROM faculty f
         WHERE f.uid = %d", $uid);
     }
-
 }
