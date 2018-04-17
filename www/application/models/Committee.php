@@ -65,4 +65,20 @@ class Committee extends CI_Model {
     function viewCommittee($fac_id) {
         return DB::query("SELECT id,cap_id,has_accepted FROM committee WHERE fac_id = %i", $fac_id);
     }
+
+    function viewAcceptedCommittee($fac_id) {
+        return DB::query("SELECT c.*, cs.*, u.first_name, u.last_name FROM committee c
+            JOIN capstone cs ON c.cap_id = cs.id
+            JOIN student stu ON stu.id = cs.student_id
+            JOIN user u ON u.uid = stu.uid
+            WHERE fac_id = %i AND has_accepted = 1", $fac_id);
+    }
+
+    function viewInvitations($fac_id) {
+        return DB::query("SELECT c.*, cs.*, u.first_name, u.last_name FROM committee c
+            JOIN capstone cs ON c.cap_id = cs.id
+            JOIN student stu ON stu.id = cs.student_id
+            JOIN user u ON u.uid = stu.uid
+            WHERE fac_id = %i AND has_accepted = 0", $fac_id);
+    }
 }

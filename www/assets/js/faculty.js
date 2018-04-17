@@ -27,15 +27,55 @@ let faculty = {
 
 $(document).ready(function(){
 
-    $.each(committeeData, function(i, ele){
+    $.each(invitationData, function(i, ele){
+        console.log(ele);
         let field = "";
-        field += "<div class='col-sm-12'><div class='committee-list-member clearfix'>";
-        field += "<div class='col-sm-10'><div class='committee-list-name'>";
-        field += "<h3>" + ele.first_name + " " + ele.last_name + "</h3>";
+        field += "<div class='col-sm-12'><div class='faculty-committee-list clearfix'>";
+        field += "<div class='faculty-committee-field clearfix'>";
+        field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-name'>";
+        field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
         field += "</div></div>";
-        field += "<div class='col-sm-2'><div class='committee-list-delete-btn'>";
-        field += "<button type='button' data-fac='" + ele.fac_id + "' name='committee-delete-btn'>DELETE</button>";
-        field += "</div></div></div></div>";
-        $(".committee-list-member-wrapper").append(field);
+        field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
+        field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><button type='button' name='accept-invite-btn'>&#10004;</button>"
+        field += "<button type='button' name='reject-invite-btn'>X</button></div></div>";
+        field += "</div></div>";
+        $(".invitations-body").append(field);
+    });
+
+
+
+    $.each(committeeData, function(i, ele){
+
+        let field = "";
+        field += "<div class='col-sm-12'><div class='faculty-committee-list clearfix'>";
+        field += "<div class='faculty-committee-field clearfix'>";
+        field += "<div class='col-sm-4'><div class='faculty-committee-list-name'>";
+        field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
+        field += "</div></div>";
+        field += "<div class='col-sm-4'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
+        field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + ele.fac_id + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
+        field += "</div></div></div>";
+        $(".committee-list-field").append(field);
+    });
+
+    $(".faculty-committee-list-remove-btn button").attr('name', 'fac-committee-remove-btn').on('click', function(){
+        var capID = $(this).attr("cap-id");
+        var facID = $(this).attr("fac-id");
+        $.ajax({
+            url: ajaxURLStart + "app/removeFromCommittee/" + facID + "/" + capID,
+            success:function(result){
+                 $(".delete-success-toast").fadeIn();
+                 setTimeout(function(){
+                     $(".delete-success-toast").fadeOut();
+                 }, 3000);
+            },
+            error: function(){
+                console.log("There was an error in the ajax call to delete the faculty member from the committee");
+            }
+        }).done(function(){
+            setTimeout(function(){
+                location.reload();
+            }, 3000);
+        });
     });
 });

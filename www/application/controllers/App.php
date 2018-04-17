@@ -64,7 +64,8 @@ class App extends CI_Controller {
 
 
         $fac_id = $this->user->getFacIdByUid($_SESSION["uid"]);
-        $data['committeeList'] = $this->committee->viewCommittee($fac_id);
+        $data['committeeList'] = $this->committee->viewAcceptedCommittee($fac_id);
+        $data['invitationData'] = $this->committee->viewInvitations($fac_id);
         $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
         $this->load->view("header");
         $this->load->view("faculty", $data);

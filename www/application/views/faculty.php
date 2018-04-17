@@ -1,5 +1,6 @@
 <script>
-    var committeeData = <?php echo json_encode($committeeList) ?> 
+    var committeeData = <?php echo json_encode($committeeList) ?>;
+    var invitationData = <?php echo json_encode($invitationData) ?>;
     var ajaxURLStart = "<?php echo base_url() ?>";
 </script>
 
@@ -47,16 +48,8 @@
                         </div>
                         <div class="col-sm-12 no-padding">
                             <div class="invitations-body clearfix">
-                                <div class="col-sm-4">
-                                    <h4 id="invitations-student-name">{Student Name}</h4>
-                                </div>
-                                <div class="col-sm-4">
-                                    <p id="invitations-project-name">{Project Name}</p>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="invitation-choice-wrapper clearfix">
-                                        <button type="button" name="accept-invite-btn">&#10004;</button>
-                                        <button type="button" name="reject-invite-btn">X</button>
+                                <div class="col-sm-12 no-padding">
+                                    <div class="invitation-field clearfix">
                                     </div>
                                 </div>
                             </div>
@@ -101,23 +94,7 @@
                     <div class="col-sm-12">
                         <h2>Committee List</h2>
                     </div>
-                    <div class="committee-list-field clearfix">
-                        <div class="col-sm-4">
-                            <div class="committee-list-name">
-                                <h4>{Student Name}</h4>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="committee-list-name">
-                                <h4>{Capstone Title}</h4>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="committee-remove-btn-wrapper">
-                                <button type="button" name="faculty-remove-committee-btn">Remove</button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="committee-list-field clearfix"></div>
                 </div>
             </div>
             <div class="col-sm-2"></div>
