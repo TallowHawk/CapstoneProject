@@ -1,4 +1,5 @@
 <script src="<?php echo base_url() . "assets/js/staff.js"?>"></script>
+<script>let ajaxURLStart = "<?php echo base_url() ?>";</script>
 <div class="clearfix staff-wrapper">
     <div class="col-sm-12">
         <div class="col-sm-12 no-padding">
@@ -16,11 +17,11 @@
         <div class="col-sm-12">
             <div class="col-sm-2"></div>
             <div class="col-sm-8 no-padding">
-                <button class="staff-btn-options" type="button" name="staff-pending-prop">Pending Proposals</button>
-                <button class="staff-btn-options" type="button" name="staff-rej-prop">Rejected Proposals</button>
-                <button class="staff-btn-options" type="button" name="staff-acc-prop">Accepted Proposals</button>
-                <button class="staff-btn-options" type="button" name="staff-prop-resub">Proposal Resubmissions</button>
-                <button class="staff-btn-options" type="button" name="staff-defense-dates">Defense Dates</button>
+                <button class="staff-btn-options" id="staff-pending-prop" type="button" name="staff-pending-prop">Pending Proposals</button>
+                <button class="staff-btn-options" id="staff-rej-prop" type="button" name="staff-rej-prop">Rejected Proposals</button>
+                <button class="staff-btn-options" id="staff-acc-prop" type="button" name="staff-acc-prop">Accepted Proposals</button>
+                <button class="staff-btn-options" id="staff-prop-resub" type="button" name="staff-prop-resub">Proposal Resubmissions</button>
+                <button class="staff-btn-options" id="staff-defense-prop" type="button" name="staff-defense-dates">Defense Dates</button>
             </div>
             <div class="col-sm-2"></div>
         </div>
@@ -134,3 +135,23 @@
         </div>
     </div>
 </div>
+<!--============================================================ MODALS BEGIN HERE-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Capstone Projects</h4>
+            </div>
+            <div class="modal-body clearfix">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--================================================================MODALS END HERE-->
