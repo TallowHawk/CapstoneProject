@@ -138,4 +138,16 @@ class User extends CI_Model {
         FROM student JOIN user ON user.uid = student.uid
         WHERE student.uid = %s", $uid);
     }
+
+
+    function getUsersByRole($roleid){
+        return DB::query("SELECT u.uid, u.first_name, u.last_name, u.username
+        FROM user u WHERE u.role_id = %d", $roleid);
+    }
+
+
+    function getFacIdByUid($uid){
+        return DB::query("SELECT f.id FROM faculty f
+        WHERE f.uid = %d", $uid);
+    }
 }
