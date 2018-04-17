@@ -50,7 +50,7 @@
                                     <h4>Title:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="proj-det-title"><?php echo $capstone[0]['title']?></p>
+                                    <p id="proj-det-title"><?php echo $capstone['title']?></p>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                                     <h4>Description:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="proj-det-description"><?php echo $capstone[0]['description']?></p>
+                                    <p id="proj-det-description"><?php echo $capstone['description']?></p>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                     <h4>Defense Date:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="proj-det-defense"><?php echo $capstone[0]['defense_date']?></p>
+                                    <p id="proj-det-defense"><?php echo $capstone['defense_date']?></p>
                                 </div>
                             </div>
                         </div>
@@ -91,13 +91,13 @@
                         </div>
                         <div class="col-sm-12 ">
                             <div class="project-status-field">
-                                <h2 id="staff-cap-status"><?php echo $capStatus[0]["status_desc"] ?></h2>
+                                <h2 id="staff-cap-status"><?php echo $capStatus["status_desc"] ?></h2>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 ">
                         <div class="project-status-field">
-                            <h4>Grade: <span id="cap-status-grade"><?php echo $capstone[0]['grade']?>%</span></h4>
+                            <h4>Grade: <span id="cap-status-grade"><?php echo $capstone['grade']?>%</span></h4>
                         </div>
                     </div>
                 </div>
