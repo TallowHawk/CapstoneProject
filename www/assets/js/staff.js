@@ -12,15 +12,16 @@ let staff = {
             document.getElementById("staff-proj-det-title").innerText = json.title;
             document.getElementById("staff-proj-det-description").innerText = json.description;
             document.getElementById("staff-proj-det-defense").innerText = json.defense_date;
+            document.getElementById("staff-cap-status-plag-score").innerText = json.plagerism_score;
+            document.getElementById("staff-cap-status-grade").innerText = json.grade;
+        });
 
-            $.ajax({
-                url: "/api/getCapstoneStatus/" + username,
-                method: "get",
-                dataType: "json"
-            }).done(function (json2) {
-                console.log(json2);
-            });
-
+        $.ajax({
+            url: "/api/getCapstoneStatus/" + username,
+            method: "get",
+            dataType: "json"
+        }).done(function (json) {
+            document.getElementById("staff-cap-status").innerText = json.status_desc;
         });
     }
 };
