@@ -35,3 +35,4 @@ SiteConfigVars.php
 www/application/controllers/test.php
 *.map
 .sass-cache
+.remote-sync.json
