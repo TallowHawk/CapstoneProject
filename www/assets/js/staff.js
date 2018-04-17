@@ -26,7 +26,6 @@ let staff = {
     }
 };
 $(document).ready(function() {
-    $("button.staff-btn-options").attr('name', 'staff-pending-prop').html = "hi";
     $("button.staff-btn-options").attr('name', 'staff-pending-prop').on('click', function () {
         let facultyList = [];
         let modalBody = "";
@@ -51,10 +50,15 @@ $(document).ready(function() {
                 ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-username'>";
                 ajaxAddition += "<h4>" + ele.username + "</h4></div></div>";
                 ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-view-div'>";
-                ajaxAddition += "<button type='button' data-user='" + ele.uid + "' name='modal-cap-view-btn'>VIEW</button>";
+                ajaxAddition += "<button type='button' data-user='" + ele.username + "' name='modal-cap-view-btn'>VIEW</button>";
                 ajaxAddition += "</div></div></div></div>";
             });
             $(".modal-body").append(ajaxAddition);
+
+            $(".modal-cap-view-div button").attr('name', 'modal-cap-view-btn').on('click', function () {
+                let username = $(this).attr("data-user");
+                staff.getCapstone(username);
+            });
         });
     });
 
