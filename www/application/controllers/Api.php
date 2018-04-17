@@ -25,6 +25,7 @@ class Api extends CI_Controller {
         }
     }
 
+
     public function getCapstoneByUsername($username){
 	    if (isset($username)){
 	        $this->load->model("capstone");
@@ -38,5 +39,6 @@ class Api extends CI_Controller {
 	        echo json_encode($this->capstone->getCapstoneStatus($username));
         }
     }
+
 
 }

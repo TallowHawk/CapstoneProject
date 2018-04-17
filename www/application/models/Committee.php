@@ -15,7 +15,7 @@ class Committee extends CI_Model {
     function addToCommittee($fac_id, $cap_id) {
         return DB::insert('committee', array(
             "fac_id" => $fac_id,
-            "cap_id" => $cap_id,
+            "cap_id" => $cap_id
         ));
     }
 
