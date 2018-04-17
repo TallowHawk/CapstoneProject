@@ -81,7 +81,9 @@ $(document).ready(function(){
                 console.log("There was an error in the ajax call to delete the faculty member from the committee");
             }
         }).done(function(){
-            location.reload();
+            setTimeout(function(){
+                location.reload();
+            }, 3000);
         });
     });
 });
