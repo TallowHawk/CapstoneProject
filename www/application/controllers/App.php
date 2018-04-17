@@ -51,6 +51,8 @@ class App extends CI_Controller {
         $this->load->view("footer");
     }
 
+
+
     public function faculty() {
         if (!isset($_SESSION["uid"])){
             header("location: " .  base_url());
@@ -58,12 +60,18 @@ class App extends CI_Controller {
         if ($_SESSION["userType"] != "faculty"){
             header("Location: " . base_url() . "app/" . $_SESSION["userType"]);
         }
+        $this->load->model("committee");
 
+
+        $fac_id = $this->user->getFacIdByUid($_SESSION["uid"]);
+        $data['committeeList'] = $this->committee->viewCommittee($fac_id);
         $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
         $this->load->view("header");
         $this->load->view("faculty", $data);
         $this->load->view("footer");
     }
+
+
 
     public function staff() {
         if (!isset($_SESSION["uid"])){
@@ -78,12 +86,14 @@ class App extends CI_Controller {
         $this->load->view("footer");
     }
 
+
+
     public function addToCommittee($uid, $cap_id){
         if(isset($uid) && isset($cap_id)){
             $this->load->model("user");
             $this->load->model("committee");
             $fac_id = $this->user->getFacIdByUid($uid);
-            echo json_encode($this->committee->addToCommittee($fac_id[0]["id"], $cap_id));
+            echo json_encode($this->committee->addToCommittee($fac_id, $cap_id));
         }
         else{
             echo "Error: Please Enter Valid fac_id and/or cap_id";
