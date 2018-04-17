@@ -36,3 +36,4 @@ www/application/controllers/test.php
 *.map
 .sass-cache
 .remote-sync.json
+sftp-config.json
