@@ -58,6 +58,7 @@ $(document).ready(function() {
             $(".modal-cap-view-div button").attr('name', 'modal-cap-view-btn').on('click', function () {
                 let username = $(this).attr("data-user");
                 staff.getCapstone(username);
+                $('#myModal').modal('hide');
             });
         });
     });
