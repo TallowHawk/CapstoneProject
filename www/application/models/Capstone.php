@@ -59,7 +59,7 @@ class Capstone extends CI_Model {
             JOIN capstone c ON sh.capstone_id = c.id
             JOIN student stu ON c.student_id = stu.id
             JOIN user u ON u.uid = stu.uid
-            WHERE username = %s", $username);
+            WHERE username = %s ORDER BY sh.date ASC", $username);
     }
 
 

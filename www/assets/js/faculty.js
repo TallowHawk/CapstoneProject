@@ -10,32 +10,6 @@ let faculty = {
             let projectDetails = document.getElementsByClassName("project-details-wrapper")[0];
             $("#project-title-header").html(json.title);
 
-            if(json.grade != null){
-                $(".cap-status-grade-btn").css("display", "none");
-                $("#cap-status-grade").html(json.grade + "%");
-            }
-            else{
-                $(".cap-status-grade-btn").css("display", "block");
-                $(".project-status button").attr("name", "cap-status-grade").on("click", function(){
-                    $("#grade-modal").modal('show');
-                    $(".grade-modal-submit-button").on("click", function(){
-                        let grade = $(".grade-modal-input-box").val();
-                        if($.isNumeric(grade) && grade.length <= 2){
-                            $.ajax({
-                                url: "/app/updateCapstoneGrade/" + grade + "/" + json.id,
-                                method: "get",
-                                dataType: "json"
-                            }).done(function (ele) {
-                                console.log(ele);
-                            });
-                        }
-                        else{
-                            $(".grade-modal-error-div").html("<p style='color:red;'>Please enter a two digit whole number</p>");
-                        }
-                    })
-                });
-                $("#cap-status-grade").html("-%");
-            }
 
             $.ajax({
                 url: "/api/getCapstoneStatus/" + username,
@@ -44,6 +18,45 @@ let faculty = {
             }).done(function (json2) {
                 console.log(json2);
                 $("#cap-status").html(json2.status_desc);
+                let capstoneStatus = json2.status_desc;
+                let approvedStatus = "approved";
+                if(json.grade == null && capstoneStatus.toLowerCase() === approvedStatus.toLowerCase()){
+                    $(".cap-status-grade-btn").css("display", "block");
+                    $(".project-status button").attr("name", "cap-status-grade").on("click", function(){
+                        $("#grade-modal").modal('show');
+                        $(".grade-modal-submit-button").on("click", function(){
+                            let grade = $(".grade-modal-input-box").val();
+                            if($.isNumeric(grade) && grade.length <= 2){
+                                $.ajax({
+                                    url: "/app/updateCapstoneGrade/" + grade + "/" + json.id,
+                                    method: "get",
+                                    dataType: "json"
+                                }).done(function (ele) {
+                                    $.ajax({
+                                        url: "/app/updateCapstoneStatus/Complete/" + json.id,
+                                        method: "get",
+                                        dataType: "json"
+                                    }).done(function (ele) {
+                                        console.log(ele);
+                                    });
+                                });
+                            }
+                            else{
+                                $(".grade-modal-error-div").html("<p style='color:red;'>Please enter a two digit whole number</p>");
+                            }
+                        })
+                    });
+                    $("#cap-status-grade").html("-%");
+                }
+                else{
+                    $(".cap-status-grade-btn").css("display", "none");
+                    if(json.grade != null){
+                        $("#cap-status-grade").html(json.grade + "%");
+                    }
+                    else{
+                        $("#cap-status-grade").html("-%");
+                    }
+                }
             });
         });
     }
