@@ -61,4 +61,12 @@ class Admin extends CI_Controller {
         $this->load->view("footer");
     }
 
+    public function massAccounts() {
+        $this->load->view("header");
+        $this->load->view("mass_accounts");
+        $this->load->view("footer");
+    }
+
+
+
 }
