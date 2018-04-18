@@ -10,7 +10,32 @@ let faculty = {
             let projectDetails = document.getElementsByClassName("project-details-wrapper")[0];
             $("#project-title-header").html(json.title);
 
-            $("#cap-status-grade").html(json.grade);
+            if(json.grade != null){
+                $(".cap-status-grade-btn").css("display", "none");
+                $("#cap-status-grade").html(json.grade + "%");
+            }
+            else{
+                $(".cap-status-grade-btn").css("display", "block");
+                $(".project-status button").attr("name", "cap-status-grade").on("click", function(){
+                    $("#grade-modal").modal('show');
+                    $(".grade-modal-submit-button").on("click", function(){
+                        let grade = $(".grade-modal-input-box").val();
+                        if($.isNumeric(grade) && grade.length <= 2){
+                            $.ajax({
+                                url: "/app/updateCapstoneGrade/" + grade + "/" + json.id,
+                                method: "get",
+                                dataType: "json"
+                            }).done(function (ele) {
+                                console.log(ele);
+                            });
+                        }
+                        else{
+                            $(".grade-modal-error-div").html("<p style='color:red;'>Please enter a two digit whole number</p>");
+                        }
+                    })
+                });
+                $("#cap-status-grade").html("-%");
+            }
 
             $.ajax({
                 url: "/api/getCapstoneStatus/" + username,
@@ -20,7 +45,6 @@ let faculty = {
                 console.log(json2);
                 $("#cap-status").html(json2.status_desc);
             });
-
         });
     }
 };

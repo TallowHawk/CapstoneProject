@@ -156,4 +156,15 @@ class App extends CI_Controller {
             echo "Error: Please Enter Valid fac_id and/or cap_id";
         }
     }
+
+
+    public function updateCapstoneGrade($grade, $cap_id){
+        if(isset($grade) && isset($cap_id)){
+            $this->load->model("capstone");
+            echo json_encode($this->capstone->updateCapstoneGrade($grade, $cap_id));
+        }
+        else{
+            echo "Error: function updateCapstoneGrade failed in App.php";
+        }
+    }
 }

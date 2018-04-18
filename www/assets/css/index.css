@@ -157,4 +157,7 @@ main#createAccount {
   left: 50%;
   transform: translateX(-50%); }
 
+.cap-status-grade-btn {
+  display: none; }
+
 /*# sourceMappingURL=index.css.map */

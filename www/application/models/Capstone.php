@@ -98,4 +98,17 @@ class Capstone extends CI_Model {
             'type' => $type
         ));
     }
+
+
+    /**
+     * This will update a capstone record's grade attribute
+     * @param $grade - the grade to be given to the capstone
+     * @param $cap_id - the id of the capstone that needs the grade
+     * @return mixed - returns the rows affected
+     */
+    function updateCapstoneGrade($grade, $cap_id){
+        return DB::update('capstone', array(
+            'grade' => $grade
+        ), "id = %s",$cap_id);
+    }
 }
