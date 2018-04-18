@@ -14,7 +14,7 @@ class Login extends CI_Controller {
          * the password is correct. If it's correct it starts the session and sends the user to the correct page.
          * If the password is incorrect then it displays an error message
          */
-        $errorBol = 0;
+        $errorBool = 0;
         if (!empty($_POST)) {
             $errors = [];
 
@@ -44,13 +44,13 @@ class Login extends CI_Controller {
                     header("Location: app/" . $_SESSION["userType"]);
                 }
                 else {
-                    $errorBol = 1;
+                    $errorBool = 1;
                 }
 
             }
 
         }
-        $data["errorBol"] = $errorBol;
+        $data["errorBool"] = $errorBool;
         $this->load->view("header");
         $this->load->view("login",$data);
         $this->load->view("footer");

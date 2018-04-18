@@ -25,7 +25,7 @@
     </div>
 </div>
 <script>
-    if (<?php echo $errorBol ?>){
+    if (<?php echo $errorBool ?>){
         $("#errorDiv").append(
             "<h3>Error: Incorrect Username or Password</h3>"
         );
