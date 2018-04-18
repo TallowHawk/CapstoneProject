@@ -81,7 +81,7 @@ main#createAccount {
   margin: 10px; }
 
 .invitation-choice-wrapper {
-  float: right; }
+  text-align: center; }
 
 .modal-body .modal-fac-member {
   padding-top: 2%;
@@ -98,6 +98,36 @@ main#createAccount {
   transform: translateX(-50%); }
 
 .delete-success-toast {
+  display: none;
+  position: fixed;
+  width: 50%;
+  top: 10px;
+  z-index: 1000;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.faculty-accept-invite-toast {
+  display: none;
+  position: fixed;
+  width: 50%;
+  top: 10px;
+  z-index: 1000;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.faculty-decline-invite-toast {
+  display: none;
+  position: fixed;
+  width: 50%;
+  top: 10px;
+  z-index: 1000;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.faculty-remove-from-committee-toast {
   display: none;
   position: fixed;
   width: 50%;

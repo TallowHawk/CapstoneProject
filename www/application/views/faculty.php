@@ -5,6 +5,15 @@
 </script>
 
 <div class="clearfix view-wrapper">
+    <div class="alert alert-success alert-dismissible faculty-accept-invite-toast">
+      <strong>Invitation Successful!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible faculty-decline-invite-toast">
+      <strong>Declined Invitation!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible faculty-remove-from-committee-toast">
+      <strong>Left Committee!</strong>
+    </div>
     <div class="col-sm-12">
         <div class="col-sm-12 no-padding">
             <div class="col-sm-2"></div>
@@ -70,7 +79,7 @@
                             </div>
                             <div class="col-sm-12 ">
                                 <div class="project-status">
-                                    <h2 id="cap-status">{Project Status Here}</h2>
+                                    <h2 id="cap-status">N/A</h2>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +88,7 @@
                                 <button type="button" name="cap-status-grade">Enter Grade</button>
                             </div>
                             <div class="project-status">
-                                <h4>Grade: <span id="cap-status-grade">{Grade}</span></h4>
+                                <h4>Grade: <span id="cap-status-grade">N/A</span></h4>
                             </div>
                         </div>
                     </div>

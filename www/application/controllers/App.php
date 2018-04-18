@@ -111,4 +111,14 @@ class App extends CI_Controller {
             echo "Error: Please Enter Valid fac_id and/or cap_id";
         }
     }
+
+    public function updateAccepted($fac_id, $cap_id){
+        if(isset($fac_id) && isset($cap_id)){
+            $this->load->model("committee");
+            echo json_encode($this->committee->updateAccepted($fac_id, $cap_id));
+        }
+        else{
+            echo "Error: Please Enter Valid fac_id and/or cap_id";
+        }
+    }
 }
