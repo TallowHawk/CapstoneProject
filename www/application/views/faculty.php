@@ -3,6 +3,7 @@
     var invitationData = <?php echo json_encode($invitationData) ?>;
     var trackedInfo = <?php echo json_encode($trackedInfo) ?>;
     var allCapstones = <?php echo json_encode($allCapstones) ?>;
+    var facultyID = <?php echo json_encode($facID) ?>;
     var ajaxURLStart = "<?php echo base_url() ?>";
 </script>
 
@@ -18,6 +19,9 @@
     </div>
     <div class="alert alert-success alert-dismissible faculty-remove-from-tracker-toast">
       <strong>Successfully Untracked Capstone!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible faculty-add-to-tracker-toast">
+      <strong>Successfully Tracked Capstone!</strong>
     </div>
     <div class="col-sm-12">
         <div class="col-sm-12 no-padding">

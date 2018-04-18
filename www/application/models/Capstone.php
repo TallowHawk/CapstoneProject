@@ -15,7 +15,7 @@ class Capstone extends CI_Model {
      *                  of the data for the the capstone statuses.
      */
     function getCapstoneAll() {
-        return DB::query("SELECT u.first_name , u.last_name, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type
+        return DB::query("SELECT cs.id, u.first_name , u.last_name, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type
                                       FROM capstone cs JOIN student s ON cs.student_id = s.id
                                       JOIN user u ON s.uid = u.uid;");
     }

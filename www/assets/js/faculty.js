@@ -34,7 +34,6 @@ $(document).ready(function(){
     else{
         $(".invitations-body").html("");
         $.each(invitationData, function(i, ele){
-            console.log(ele);
             let field = "";
             field += "<div class='col-sm-12'><div class='faculty-committee-list clearfix'>";
             field += "<div class='faculty-committee-field clearfix'>";
@@ -42,8 +41,8 @@ $(document).ready(function(){
             field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
             field += "</div></div>";
             field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-cap-title'><p>" + ele.title + "</p></div></div>"
-            field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button type='button' fac-id = " + ele.fac_id + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
-            field += "<div class='declined-invite-btn-div'><button type='button' fac-id = " + ele.fac_id + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
+            field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
+            field += "<div class='declined-invite-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
             field += "</div></div>";
             $(".invitations-body").append(field);
         });
@@ -58,7 +57,6 @@ $(document).ready(function(){
     else{
         $(".tracking-list-body").html("");
         $.each(trackedInfo, function(i, ele){
-            console.log(ele);
             let field = "";
             field += "<div class='col-sm-12'><div class='faculty-tracking-list clearfix'>";
             field += "<div class='faculty-tracking-field clearfix'>";
@@ -66,7 +64,7 @@ $(document).ready(function(){
             field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
             field += "</div></div>";
             field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-list-cap-title'><p>" + ele.title + "</p></div></div>"
-            field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-btn-wrapper clearfix'><div class='faculty-tracking-btn-div'><button type='button' fac-id = " + ele.fac_id + " cap-id='" + ele.cap_id + "' name='remove-tracking-btn'>Stop Tracking</button></div>"
+            field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-btn-wrapper clearfix'><div class='faculty-tracking-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='remove-tracking-btn'>Stop Tracking</button></div>"
             field += "</div></div>";
             field += "</div></div></div>";
             $(".tracking-list-body").append(field);
@@ -83,7 +81,7 @@ $(document).ready(function(){
         field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
         field += "</div></div>";
         field += "<div class='col-sm-4'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
-        field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + ele.fac_id + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
+        field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
         field += "</div></div></div>";
         $(".committee-list-field").append(field);
     });
@@ -187,43 +185,51 @@ $(document).ready(function(){
 
         // // checks if the faculty member is already tracking a specific capstone
         // // and only shows the capstones that the faculty isnt tracking
-        // let trackedList = [];
-        // console.log(trackedInfo);
-        // $.each(trackedInfo, function(i, ele){
-        //     if(!committeeData.some(item => item.username == ele.username)){
-        //         trackedList.push(ele);
-        //     }
-        // });
-
+        let untrackedList = [];
         $.each(allCapstones, function(i, ele){
-            console.log(ele);
-            modalBody += "<div class='col-sm-12'><div class='modal-fac-member clearfix'>";
-            modalBody += "<div class='col-sm-4'><div class='modal-fac-name'>";
+            if(!trackedInfo.some(item => item.id == ele.id)){
+                untrackedList.push(ele);
+            }
+        });
+
+        if(untrackedList.length == 0 ){
+            modalBody += "<div class='col-sm-12'><h3>Already Tracking All Capstones</h3></div>";
+        }
+
+        $.each(untrackedList, function(i, ele){
+            modalBody += "<div class='col-sm-12'><div class='modal-track-member clearfix'>";
+            modalBody += "<div class='col-sm-4'><div class='modal-track-name'>";
             modalBody += "<h4>" + ele.first_name + " " + ele.last_name + "</h4></div></div>";
-            modalBody += "<div class='col-sm-4'><div class='modal-fac-username'>"
-            modalBody += "<h4>" + ele.username + "</h4></div></div>";
-            modalBody += "<div class='col-sm-4'><div class='modal-fac-invite-div'>";
-            modalBody += "<button type='button' data-fac='" + ele.uid + "' name='modal-fac-invite-btn'>INVITE</button>";
+            modalBody += "<div class='col-sm-4'><div class='modal-track-username'>"
+            modalBody += "<h4>" + ele.title + "</h4></div></div>";
+            modalBody += "<div class='col-sm-4'><div class='modal-track-add-div'>";
+            modalBody += "<button type='button' fac-id='" + facultyID + "' cap-id='" + ele.id + "' name='modal-track-add-btn'>ADD</button>";
             modalBody += "</div></div></div></div>";
         });
 
         $(".modal-body").html(modalBody);
         $('#myModal').modal('show');
-        // $.ajax({
-        //     url: ajaxURLStart + "app/removeFromTracker/" + facID + "/" + capID,
-        //     success:function(result){
-        //          $(".faculty-remove-from-tracker-toast").fadeIn();
-        //          setTimeout(function(){
-        //              $(".faculty-remove-from-tracker-toast").fadeOut();
-        //          }, 3000);
-        //     },
-        //     error: function(){
-        //         console.log("There was an error in the ajax call to stop tracking a capstone");
-        //     }
-        // }).done(function(){
-        //     setTimeout(function(){
-        //         location.reload();
-        //     }, 3000);
-        // });
+
+        $(".modal-track-add-div button").attr('name', 'modal-track-add-btn').on('click', function(){
+            var capID = $(this).attr("cap-id");
+            var facID = $(this).attr("fac-id");
+            $.ajax({
+                url: ajaxURLStart + "app/addToTracker/" + facID + "/" + capID,
+                success:function(result){
+                     $(".faculty-add-to-tracker-toast").fadeIn();
+                     $('#myModal').modal('hide');
+                     setTimeout(function(){
+                         $(".faculty-add-to-tracker-toast").fadeOut();
+                     }, 3000);
+                },
+                error: function(){
+                    console.log("There was an error in the ajax call to start tracking a capstone");
+                }
+            }).done(function(){
+                setTimeout(function(){
+                    location.reload();
+                }, 3000);
+            });
+        });
     });
 });

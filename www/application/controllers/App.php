@@ -69,6 +69,7 @@ class App extends CI_Controller {
         $data['invitationData'] = $this->committee->viewInvitations($fac_id);
         $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
         $data['trackedInfo'] = $this->facultytracker->showTrackedProjects($fac_id);
+        $data['facID'] = $fac_id;
         $data['allCapstones'] = $this->capstone->getCapstoneAll();
         $this->load->view("header");
         $this->load->view("faculty", $data);
@@ -139,6 +140,17 @@ class App extends CI_Controller {
         if(isset($fac_id) && isset($cap_id)){
             $this->load->model("facultytracker");
             echo json_encode($this->facultytracker->removeFromTracker($fac_id, $cap_id));
+        }
+        else{
+            echo "Error: Please Enter Valid fac_id and/or cap_id";
+        }
+    }
+
+
+    public function addToTracker($fac_id,$cap_id){
+        if(isset($fac_id) && isset($cap_id)){
+            $this->load->model("facultytracker");
+            echo json_encode($this->facultytracker->addToTracker($fac_id, $cap_id));
         }
         else{
             echo "Error: Please Enter Valid fac_id and/or cap_id";
