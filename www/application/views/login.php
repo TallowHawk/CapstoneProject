@@ -18,7 +18,7 @@
                     <label for="password">Password</label>
                     <input class="form-control" type="password" id="password" name="password" required>
                 </div>
-                <input type="submit">
+                <input class="submitButton" type="submit">
             </form>
         </div>
         <div class="col-sm-4"></div>
