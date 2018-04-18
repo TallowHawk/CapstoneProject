@@ -18,6 +18,7 @@ let staff = {
             document.getElementById("staff-proj-det-defense").innerText = json.defense_date;
             document.getElementById("staff-cap-status-plag-score").innerText = json.plagerism_score;
             document.getElementById("staff-cap-status-grade").innerText = json.grade;
+            capstoneUsername = json.username;
         });
 
         $.ajax({
@@ -115,6 +116,9 @@ let staff = {
 
     }
 };
+
+let capstoneUsername = "";
+
 $(document).ready(function() {
     $("#staff-pending-prop").on('click', function () {
         staff.handleModal("pending");
