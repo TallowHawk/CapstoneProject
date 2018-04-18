@@ -111,8 +111,27 @@ let staff = {
     },
 
     editStatusModal: function () {
-        let modalBody = "";
+        if (capstoneUsername !== ""){
+            let modalBody = "";
+            let statuses = [
+                "Approved",
+                "Rejected",
+                "Pending"
+            ];
+            $('#myModal').modal('show');
 
+            modalBody += "<div class='col-sm-12'><div class='modal-cap-edit-status'>";
+            modalBody += "<div class='col-sm-8'><div class='modal-cap-select-status'>";
+            modalBody += "<select><option value='"+ statuses[0] +"'>" + statuses[0] + "</option>" +
+                "<option value='" + statuses[1] + "'>" + statuses[1] + "</option>" +
+                "<option value='" + statuses[2] + "'>" + statuses[2] + "</option></select>";
+            modalBody += "</div></div>";
+            modalBody += "<div class='col-sm-4'><div class='modal-cap-update-status'>";
+            modalBody += "<button id='modal-cap-update-status-button'>UPDATE</button>";
+            modalBody += "</div></div></div></div>"
+
+            $(".modal-body").html(modalBody);
+        }
 
     }
 };
@@ -132,6 +151,10 @@ $(document).ready(function() {
 
     $("#staff-defense-prop").on('click', function () {
         staff.defenseDateModal();
-    })
+    });
+
+    $(".project-status-edit-btn button").on('click', function () {
+        staff.editStatusModal();
+    });
 
 });
