@@ -179,3 +179,14 @@ main#createAccount {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.faculty-remove-from-tracker-toast{
+    display: none;
+    position: fixed;
+    width: 50%;
+    top: 10px;
+    z-index: 1000;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+}

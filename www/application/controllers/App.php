@@ -62,12 +62,14 @@ class App extends CI_Controller {
         }
         $this->load->model("committee");
         $this->load->model("facultytracker");
+        $this->load->model("capstone");
 
         $fac_id = $this->user->getFacIdByUid($_SESSION["uid"]);
         $data['committeeList'] = $this->committee->viewAcceptedCommittee($fac_id);
         $data['invitationData'] = $this->committee->viewInvitations($fac_id);
         $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
         $data['trackedInfo'] = $this->facultytracker->showTrackedProjects($fac_id);
+        $data['allCapstones'] = $this->capstone->getCapstoneAll();
         $this->load->view("header");
         $this->load->view("faculty", $data);
         $this->load->view("footer");
@@ -125,11 +127,21 @@ class App extends CI_Controller {
 
     public function getTrackedProjectsInfo($fac_id){
         if(isset($fac_id)){
-            $this->load->model("faculty_tracker");
-            echo json_encode($this->committee->showTrackedProjects($fac_id));
+            $this->load->model("facultytracker");
+            echo json_encode($this->facultytracker->showTrackedProjects($fac_id));
         }
         else{
             echo "Error: Please Enter Valid fac_id";
+        }
+    }
+
+    public function removeFromTracker($fac_id,$cap_id){
+        if(isset($fac_id) && isset($cap_id)){
+            $this->load->model("facultytracker");
+            echo json_encode($this->facultytracker->removeFromTracker($fac_id, $cap_id));
+        }
+        else{
+            echo "Error: Please Enter Valid fac_id and/or cap_id";
         }
     }
 }

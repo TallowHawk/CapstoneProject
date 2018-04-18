@@ -2,6 +2,7 @@
     var committeeData = <?php echo json_encode($committeeList) ?>;
     var invitationData = <?php echo json_encode($invitationData) ?>;
     var trackedInfo = <?php echo json_encode($trackedInfo) ?>;
+    var allCapstones = <?php echo json_encode($allCapstones) ?>;
     var ajaxURLStart = "<?php echo base_url() ?>";
 </script>
 
@@ -14,6 +15,9 @@
     </div>
     <div class="alert alert-success alert-dismissible faculty-remove-from-committee-toast">
       <strong>Left Committee!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible faculty-remove-from-tracker-toast">
+      <strong>Successfully Untracked Capstone!</strong>
     </div>
     <div class="col-sm-12">
         <div class="col-sm-12 no-padding">
@@ -125,7 +129,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="tracking-add-btn-wrapper">
-                                        <button type="button" name="faculty-add-committee-btn">Add</button>
+                                        <button type="button" name="faculty-add-tracker-btn">Add</button>
                                     </div>
                                 </div>
                             </div>
@@ -146,4 +150,26 @@
         </div>
     </div>
 </div>
+
+
+<!--============================================================ MODALS BEGIN HERE-->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Faculty Members</h4>
+      </div>
+      <div class="modal-body clearfix">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--================================================================MODALS END HERE-->
 <script src="<?php echo base_url() . "assets/js/faculty.js"?>"></script>
