@@ -280,3 +280,10 @@ main#createAccount {
     color: $accent-color;
     border-color: transparent;
 }
+
+.loginError {
+    text-align: center; 
+    color: red;
+    font-size: 1em;
+    margin-top: 25px;
+}
