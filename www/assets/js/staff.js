@@ -107,6 +107,12 @@ let staff = {
                 $('#myModal').modal('hide');
             });
         });
+    },
+
+    editStatusModal: function () {
+        let modalBody = "";
+
+
     }
 };
 $(document).ready(function() {

@@ -49,7 +49,7 @@
                                     <h4>Student Name:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-name">{Owners Name}</p>
+                                    <p id="staff-proj-det-name"></p>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                     <h4>Title:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-title">{Project Title}</p>
+                                    <p id="staff-proj-det-title"></p>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                     <h4>Description:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-description">{The project description about kittens and stuff}</p>
+                                    <p id="staff-proj-det-description"></p>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                     <h4>Defense Date:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-defense">{Date goes here}</p>
+                                    <p id="staff-proj-det-defense"></p>
                                 </div>
                             </div>
                         </div>
@@ -109,18 +109,18 @@
                             </div>
                             <div class="col-sm-12 ">
                                 <div class="project-status">
-                                    <h2 id="staff-cap-status">{Project Status Here}</h2>
+                                    <h2 id="staff-cap-status"></h2>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12 ">
                             <div class="project-status">
-                                <h4>Plagerism Score: <span id="staff-cap-status-plag-score">{Plag Score Here}<span></h4>
+                                <h4>Plagerism Score: <span id="staff-cap-status-plag-score"><span></h4>
                             </div>
                         </div>
                         <div class="col-sm-12 ">
                             <div class="project-status">
-                                <h4>Grade: <span id="staff-cap-status-grade">{Grade}</span></h4>
+                                <h4>Grade: <span id="staff-cap-status-grade"></span></h4>
                             </div>
                         </div>
                     </div>
