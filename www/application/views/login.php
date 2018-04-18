@@ -1,6 +1,11 @@
 <div class="login">
     <div class="col-sm-12">
         <div class="col-sm-4"></div>
+        <div class="col-sm-4" id="errorDiv"></div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <form method="POST"
                   onsubmit="return true"
@@ -19,3 +24,10 @@
         <div class="col-sm-4"></div>
     </div>
 </div>
+<script>
+    if (<?php echo $errorBool ?>){
+        $("#errorDiv").append(
+            "<h3>Error: Incorrect Username or Password</h3>"
+        );
+    }
+</script>
