@@ -1,4 +1,28 @@
+<script>
+    var committeeData = <?php echo json_encode($committeeList) ?>;
+    var invitationData = <?php echo json_encode($invitationData) ?>;
+    var trackedInfo = <?php echo json_encode($trackedInfo) ?>;
+    var allCapstones = <?php echo json_encode($allCapstones) ?>;
+    var facultyID = <?php echo json_encode($facID) ?>;
+    var ajaxURLStart = "<?php echo base_url() ?>";
+</script>
+
 <div class="clearfix view-wrapper">
+    <div class="alert alert-success alert-dismissible faculty-accept-invite-toast">
+      <strong>Invitation Successful!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible faculty-decline-invite-toast">
+      <strong>Declined Invitation!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible faculty-remove-from-committee-toast">
+      <strong>Left Committee!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible faculty-remove-from-tracker-toast">
+      <strong>Successfully Untracked Capstone!</strong>
+    </div>
+    <div class="alert alert-success alert-dismissible faculty-add-to-tracker-toast">
+      <strong>Successfully Tracked Capstone!</strong>
+    </div>
     <div class="col-sm-12">
         <div class="col-sm-12 no-padding">
             <div class="col-sm-2"></div>
@@ -26,10 +50,8 @@
             <div class="col-sm-12">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
-                    <form class="project-filter" action="" method="post">
-                        <label>Project Username: </label><input type="text" name="project-username-input">
-                        <input type="submit" name="project-search-submit-btn" value="Search"/>
-                    </form>
+                    <label>Project Username: </label><input type="text" name="project-username-input">
+                    <button onclick="faculty.getCapstone(this.parentElement.getElementsByTagName('input')[0].value); return false;" value="Search">Search</button>
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -44,16 +66,8 @@
                         </div>
                         <div class="col-sm-12 no-padding">
                             <div class="invitations-body clearfix">
-                                <div class="col-sm-4">
-                                    <h4 id="invitations-student-name">{Student Name}</h4>
-                                </div>
-                                <div class="col-sm-4">
-                                    <p id="invitations-project-name">{Project Name}</p>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="invitation-choice-wrapper clearfix">
-                                        <button type="button" name="accept-invite-btn">&#10004;</button>
-                                        <button type="button" name="reject-invite-btn">X</button>
+                                <div class="col-sm-12 no-padding">
+                                    <div class="invitation-field clearfix">
                                     </div>
                                 </div>
                             </div>
@@ -74,16 +88,20 @@
                             </div>
                             <div class="col-sm-12 ">
                                 <div class="project-status">
-                                    <h2 id="cap-status">{Project Status Here}</h2>
+                                    <h2 id="cap-status">N/A</h2>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12 ">
-                            <div class="project-status">
-                                <button type="button" name="cap-status-grade">Enter Grade</button>
+                            <div class="col-sm-6 no-padding">
+                                <div class="project-status">
+                                    <button class="cap-status-grade-btn" type="button" name="cap-status-grade">Enter Grade</button>
+                                </div>
                             </div>
-                            <div class="project-status">
-                                <h4>Grade: <span id="cap-status-grade">{Grade}</span></h4>
+                            <div class="col-sm-6 no-padding">
+                                <div class="project-status" id="faculty-capstone-grade">
+                                    <h4>Grade: <span id="cap-status-grade">N/A</span></h4>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,23 +116,7 @@
                     <div class="col-sm-12">
                         <h2>Committee List</h2>
                     </div>
-                    <div class="committee-list-field clearfix">
-                        <div class="col-sm-4">
-                            <div class="committee-list-name">
-                                <h4>{Student Name}</h4>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="committee-list-name">
-                                <h4>{Capstone Title}</h4>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="committee-remove-btn-wrapper">
-                                <button type="button" name="faculty-remove-committee-btn">Remove</button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="committee-list-field clearfix"></div>
                 </div>
             </div>
             <div class="col-sm-2"></div>
@@ -124,30 +126,20 @@
             <div class="col-sm-8">
                 <div class="faculty-tracking-list-wrapper section-border clearfix">
                     <div class="col-sm-12 no-padding">
-                            <div class="col-sm-8">
-                                <h2>Tracking List</h2>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="tracking-add-btn-wrapper">
-                                    <button type="button" name="faculty-add-committee-btn">Add</button>
+                        <div class="col-sm-12 no-padding">
+                            <div class="faculty-tracking-list-header">
+                                <div class="col-sm-8">
+                                    <h2>Tracking List</h2>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="tracking-add-btn-wrapper">
+                                        <button type="button" name="faculty-add-tracker-btn">Add</button>
+                                    </div>
                                 </div>
                             </div>
-                    </div>
-
-                    <div class="tracking-list-field clearfix">
-                        <div class="col-sm-4">
-                            <div class="tracking-list-name">
-                                <h4>{Student Name}</h4>
-                            </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="tracking-list-name">
-                                <h4>{Capstone Title}</h4>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="tracking-remove-btn-wrapper">
-                                <button type="button" name="faculty-remove-tracking-btn">Remove</button>
+                        <div class="col-sm-12">
+                            <div class="tracking-list-body clearfix">
                             </div>
                         </div>
                     </div>
@@ -162,3 +154,49 @@
         </div>
     </div>
 </div>
+
+
+<!--============================================================ MODALS BEGIN HERE-->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Faculty Members</h4>
+      </div>
+      <div class="modal-body clearfix">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="grade-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Enter a Grade</h4>
+      </div>
+      <div class="modal-body clearfix">
+          <div class="grade-modal-error-div"></div>
+          <input class="grade-modal-input-box" type="text" name="faculty-input-grade" pattern="^\d{5}(\d{3})?$">
+          <button class="grade-modal-submit-button" type="button" name="button">Submit</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--================================================================MODALS END HERE-->
+<script src="<?php echo base_url() . "assets/js/faculty.js"?>"></script>

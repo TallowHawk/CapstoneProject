@@ -147,7 +147,7 @@ class User extends CI_Model {
 
 
     function getFacIdByUid($uid){
-        return DB::query("SELECT f.id FROM faculty f
+        return DB::queryFirstField("SELECT f.id FROM faculty f
         WHERE f.uid = %d", $uid);
     }
 }
