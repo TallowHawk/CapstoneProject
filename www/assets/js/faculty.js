@@ -51,6 +51,45 @@ $(document).ready(function(){
 
 
 
+    if(trackedInfo.length == 0){
+        $(".tracking-list-body").html("");
+        $(".tracking-list-body").html("<div class='col-sm-12'><h3>Nothing Being Tracked</h3></div>");
+    }
+    else{
+        $(".tracking-list-body").html("");
+        $.each(trackedInfo, function(i, ele){
+            console.log(ele);
+            let field = "";
+            field += "<div class='col-sm-12'><div class='faculty-tracking-list clearfix'>";
+            field += "<div class='faculty-tracking-field clearfix'>";
+            field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-list-name'>";
+            field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
+            field += "</div></div>";
+            field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-list-cap-title'><p>" + ele.title + "</p></div></div>"
+            field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button type='button' fac-id = " + ele.fac_id + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>Stop Tracking</button></div>"
+            field += "</div></div>";
+            field += "</div></div></div>";
+            $(".tracking-list-body").append(field);
+        });
+    }
+
+
+
+    $.each(committeeData, function(i, ele){
+
+        let field = "";
+        field += "<div class='col-sm-12'><div class='faculty-committee-list clearfix'>";
+        field += "<div class='faculty-committee-field clearfix'>";
+        field += "<div class='col-sm-4'><div class='faculty-committee-list-name'>";
+        field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
+        field += "</div></div>";
+        field += "<div class='col-sm-4'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
+        field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + ele.fac_id + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
+        field += "</div></div></div>";
+        $(".committee-list-field").append(field);
+    });
+
+
     $.each(committeeData, function(i, ele){
 
         let field = "";
