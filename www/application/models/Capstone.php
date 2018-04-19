@@ -121,4 +121,12 @@ class Capstone extends CI_Model {
             'grade' => $grade
         ), "id = %s",$cap_id);
     }
+
+
+    function getCapstoneHistory($cap_id){
+        return DB::query("SELECT sh.date, sh.status_id, s.status_desc
+            FROM status_history sh
+            JOIN status s ON sh.status_id = s.id
+            WHERE capstone_id = %i", $cap_id);
+    }
 }

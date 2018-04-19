@@ -8,6 +8,34 @@ let faculty = {
         }).done(function (json) {
             console.log(json);
             let projectDetails = document.getElementsByClassName("project-details-wrapper")[0];
+            $(".cap-status-history-btn").css("display", "block");
+            $(".cap-status-history-btn").on("click", function(){
+                $.ajax({
+                    url: "/api/getCapstoneHistory/" + json.id,
+                    method: "get",
+                    dataType: "json"
+                }).done(function (jsonele) {
+                    $("#history-modal").modal('show');
+                    let field = "<div class='col-sm-12'><div class='col-sm-4'><h4>Defense Date</h4></div><div class='col-sm-4'><h4>Capstone Status</h4></div><div class='col-sm-4'><h4>Status Change Date</h4></div></div>";
+                    $(".history-modal-body").html(field);
+                    $.each(jsonele, function(i, ele){
+                        console.log(ele);
+                        let field = "";
+                        field += "<div class='col-sm-12'><div class='faculty-capstone-history clearfix'>";
+                        field += "<div class='faculty-capstone-history-field clearfix'>";
+                        field += "<div class='col-sm-4'><div class='faculty-capstone-history-name'>";
+                        field += "<h4>" + json.defense_date + "</h4>";
+                        field += "</div></div>";
+                        field += "<div class='col-sm-4'><div class='faculty-capstone-history-status'><p>" + ele.status_desc + "</p></div></div>"
+                        field += "<div class='col-sm-4'><div class='faculty-capstone-history-date'><p>" + ele.date + "</p></div>"
+                        field += "</div></div>";
+                        field += "</div></div>";
+                        $(".history-modal-body").append(field);
+                    });
+                });
+            });
+
+
             $("#project-title-header").html(json.title);
 
 
@@ -109,19 +137,23 @@ $(document).ready(function(){
     }
 
 
-    $.each(committeeData, function(i, ele){
-
+    if(committeeData.length == 0){
+        $(".committee-list-field").html("<div class='col-sm-12'><div class='no-committee-groups-msg'><h3>Not a part of any committees at this time</h3></div></div>");
+    }
+    else{
         let field = "";
-        field += "<div class='col-sm-12'><div class='faculty-committee-list clearfix'>";
-        field += "<div class='faculty-committee-field clearfix'>";
-        field += "<div class='col-sm-4'><div class='faculty-committee-list-name'>";
-        field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
-        field += "</div></div>";
-        field += "<div class='col-sm-4'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
-        field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
-        field += "</div></div></div>";
-        $(".committee-list-field").append(field);
-    });
+        $.each(committeeData, function(i, ele){
+            field += "<div class='col-sm-12'><div class='faculty-committee-list clearfix'>";
+            field += "<div class='faculty-committee-field clearfix'>";
+            field += "<div class='col-sm-4'><div class='faculty-committee-list-name'>";
+            field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
+            field += "</div></div>";
+            field += "<div class='col-sm-4'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
+            field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
+            field += "</div></div></div>";
+        });
+        $(".committee-list-field").html(field);
+    }
 
     $(".accepted-invite-btn-div button").attr('name', 'accept-invite-btn').on('click', function(){
         var capID = $(this).attr("cap-id");
