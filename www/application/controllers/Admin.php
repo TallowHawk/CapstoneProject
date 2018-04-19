@@ -144,6 +144,7 @@ class Admin extends CI_Controller {
                 echo "error";
             }
         }
+        echo "done";
     }
 
 }

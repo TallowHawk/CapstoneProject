@@ -1,7 +1,7 @@
 <div class="login">
     <div class="col-sm-12">
         <div class="col-sm-4"></div>
-        <div class="col-sm-4" id="errorDiv"></div>
+        <div class="col-sm-4 loginError" id="errorDiv"></div>
         <div class="col-sm-4"></div>
     </div>
     <div class="col-sm-12">
@@ -18,10 +18,18 @@
 </div>
 <script>
     $("#makeAccounts").on('click',function () {
-        let num = $("amount-accounts").val();
+        let num = $("#amount-accounts").val();
+        console.log("test");
+        document.getElementById("errorDiv").innerText = "Working";
+        console.log("<?php echo base_url(); ?>admin/createMassAccounts/" + num);
         $.ajax({
             url: "<?php echo base_url(); ?>admin/createMassAccounts/" + num,
-            method: "post"
+            method: "get"
+        }).done(function (response) {
+            document.getElementById("errorDiv").innerText = response;
+        }).fail(function (error) {
+            console.error(error);
+            document.getElementById("errorDiv").innerText = "error";
         });
     });
 </script>
