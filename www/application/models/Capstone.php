@@ -98,14 +98,15 @@ class Capstone extends CI_Model {
      * @param $type - the type of capstone
      * @return mixed - returns the rows affected
      */
-    function createCapstone($student_id,$title,$description,$type) {
+    function createCapstone($student_id,$title,$description,$type, $defenseDate) {
         return DB::insert('capstone', array(
             'student_id' => $student_id,
             'title' => $title,
             'description' => $description,
             'plagerism_score' => null,
             'grade' => null,
-            'type' => $type
+            'type' => $type,
+            'defense_date' => $defenseDate
         ));
     }
 
