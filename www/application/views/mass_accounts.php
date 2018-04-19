@@ -16,3 +16,12 @@
         <div class="col-sm-4"></div>
     </div>
 </div>
+<script>
+    $("#makeAccounts").on('click',function () {
+        let num = $("amount-accounts").val();
+        $.ajax({
+            url: "<?php echo base_url(); ?>admin/createMassAccounts/" + num,
+            method: "post"
+        });
+    });
+</script>

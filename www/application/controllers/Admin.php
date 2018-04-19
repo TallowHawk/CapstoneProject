@@ -87,9 +87,9 @@ class Admin extends CI_Controller {
             $account["lastName"] = $names[rand(0,sizeof($names)-1)];
 
             $account["username"] = "";
-            $account["username"] .= substr($account["firstName"],0,1);
-            $account["username"] .= substr($account["middleName"],0,1);
-            $account["username"] .= substr($account["lastName"],0,1);
+            $account["username"] .= strtolower(substr($account["firstName"],0,1));
+            $account["username"] .= strtolower(substr($account["middleName"],0,1));
+            $account["username"] .= strtolower(substr($account["lastName"],0,1));
             $account["username"] .= "1234";
 
             $account["password"] = "password";
@@ -100,8 +100,48 @@ class Admin extends CI_Controller {
 
             if ($this->user->createAccount($account["username"],$account["password"],$account["phoneNum"],$account["type"],$account["firstName"],$account["middleName"],$account["lastName"])){
                 if ($account["type"] == "student"){
+                    $capstone["studentId"] = $this->user->getStudentId($this->user->getUid($account["username"]));
+                    $capstone["title"] = "Default Title";
+                    $capstone["description"] = "This is a generic description";
+                    if($this->capstone->createCapstone($capstone["studentId"],$capstone["title"],$capstone["description"],"capstone","2018-05-19 05:29:57")>0) {
+                        if (rand(0,3)>0){
+                            $status = [
+                                "Approved",
+                                "Rejected",
+                                "Pending",
+                                "Complete"
+                            ];
+                            $statusNum = rand(0,3);
+                            $capId = $this->capstone->getCapstoneSpecific($account["username"]);
+                            $this->capstone->setStatus($status[$statusNum],$capId["id"]);
+                            if ($statusNum == 3) {
+                                $this->capstone->updateCapstoneGrade(rand(75,99),$capId["id"]);
+                            }
+                        }
+                    }
+                    else {
+                        echo "error";
+                    }
+                }
+                elseif ($account["type"] == "faculty") {
+                    $this->load->model("committee");
+                    $this->load->model("facultytracker");
+
+                    $allCapstones = $this->capstone->getCapstoneAll();
+                    $capstone = $allCapstones[rand(0,sizeof($allCapstones)-1)]["id"];
+                    $facid = $this->user->getFacIdByUid($this->user->getUid($account["username"]));
+                    $this->committee->addToCommittee($facid,$capstone);
+
+                    if (rand(0,1) == 1){
+                        $this->committee->updateAccepted($facid,$capstone);
+                    }
+                    $capstone = $allCapstones[rand(0,sizeof($allCapstones)-1)];
+                    $this->facultytracker->addToTracker($facid,$capstone["id"]);
 
                 }
+            }
+            else {
+                echo "error";
             }
         }
     }
