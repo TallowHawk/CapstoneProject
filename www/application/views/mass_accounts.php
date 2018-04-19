@@ -9,7 +9,7 @@
         <div class="col-sm-4">
                 <div class="form-group">
                     <label for="amount-accounts">Amount of Accounts</label>
-                    <input type="number" id="amount-accounts" name="amount">
+                    <input class="form-control" type="number" id="amount-accounts" name="amount">
                 </div>
             <button class="submitButton" id="makeAccounts">MakeAccounts</button>
         </div>
@@ -19,7 +19,6 @@
 <script>
     $("#makeAccounts").on('click',function () {
         let num = $("#amount-accounts").val();
-        console.log("test");
         document.getElementById("errorDiv").innerText = "Working";
         console.log("<?php echo base_url(); ?>admin/createMassAccounts/" + num);
         $.ajax({
