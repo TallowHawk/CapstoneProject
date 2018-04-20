@@ -61,7 +61,7 @@ class User extends CI_Model {
      * @return mixed
      */
     function login($username) {
-        return DB::query("SELECT username, password FROM user WHERE username = %s",$username);
+        return DB::queryFirstRow("SELECT username, password FROM user WHERE username = %s",$username);
     }
 
     /**
@@ -147,7 +147,7 @@ class User extends CI_Model {
 
 
     function getFacIdByUid($uid){
-        return DB::query("SELECT f.id FROM faculty f
+        return DB::queryFirstField("SELECT f.id FROM faculty f
         WHERE f.uid = %d", $uid);
     }
 }

@@ -34,6 +34,10 @@ class Facultytracker extends CI_Model {
      * @return mixed - associative array of all the capstone_id's the faculty member is a part of
      */
     function showTrackedProjects($fac_ID) {
-        return DB::query("SELECT cap_id FROM faculty_tracker WHERE fac_id = %i",$fac_ID);
+        return DB::query("SELECT ft.cap_id, ft.fac_id, cs.*, u.first_name, u.last_name, u.username FROM faculty_tracker ft
+        JOIN capstone cs ON cs.id = ft.cap_id
+        JOIN student stu ON stu.id = cs.student_id
+        JOIN user u ON u.uid = stu.uid
+        WHERE ft.fac_id = %i",$fac_ID);
     }
 }

@@ -15,7 +15,7 @@ class Capstone extends CI_Model {
      *                  of the data for the the capstone statuses.
      */
     function getCapstoneAll() {
-        return DB::query("SELECT u.first_name , u.last_name, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type
+        return DB::query("SELECT cs.id, u.first_name , u.last_name, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type
                                       FROM capstone cs JOIN student s ON cs.student_id = s.id
                                       JOIN user u ON s.uid = u.uid;");
     }
@@ -107,5 +107,18 @@ class Capstone extends CI_Model {
             'grade' => null,
             'type' => $type
         ));
+    }
+
+
+    /**
+     * This will update a capstone record's grade attribute
+     * @param $grade - the grade to be given to the capstone
+     * @param $cap_id - the id of the capstone that needs the grade
+     * @return mixed - returns the rows affected
+     */
+    function updateCapstoneGrade($grade, $cap_id){
+        return DB::update('capstone', array(
+            'grade' => $grade
+        ), "id = %s",$cap_id);
     }
 }
