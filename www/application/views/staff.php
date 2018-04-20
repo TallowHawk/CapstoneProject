@@ -58,6 +58,16 @@
                         <div class="col-sm-12 no-padding">
                             <div class="project-details-body clearfix">
                                 <div class="col-sm-6">
+                                    <h4 class="detail">Student Username:</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="detail" id="staff-proj-det-username"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 no-padding">
+                            <div class="project-details-body clearfix">
+                                <div class="col-sm-6">
                                     <h4 class="detail">Title:</h4>
                                 </div>
                                 <div class="col-sm-6">
@@ -139,7 +149,7 @@
 </div>
 <!--============================================================ MODALS BEGIN HERE-->
 <div id="myModal" class="modal fade" role="dialog" >
-    <div class="modal-dialog">
+    <div class="modal-dialog" id="modal-staff">
 
         <!-- Modal content-->
         <div class="modal-content">

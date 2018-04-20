@@ -92,6 +92,7 @@ class App extends CI_Controller {
     }
 
 
+    // Faculty Functions
 
     public function addToCommittee($uid, $cap_id){
         if(isset($uid) && isset($cap_id)){
@@ -165,6 +166,17 @@ class App extends CI_Controller {
         }
         else{
             echo "Error: function updateCapstoneGrade failed in App.php";
+        }
+    }
+
+    ///////////////End faculty functions//////////////////
+
+    //////////////Start Staff Functions///////////////////
+
+    public function updateStatus($status,$cap_id) {
+        if (isset($status,$cap_id)){
+            $this->load->model("capstone");
+            $this->capstone->setStatus($status,$cap_id);
         }
     }
 }

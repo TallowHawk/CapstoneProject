@@ -8,8 +8,7 @@ let staff = {
         $.ajax({
             url: "/api/getCapstoneByUsername/" + username,
             method: "get",
-            dataType: "json",
-            pagination: "local"
+            dataType: "json"
         }).done(function (json) {
             console.log(json);
             let projectDetails = document.getElementsByClassName("project-details-wrapper")[0];
@@ -19,6 +18,7 @@ let staff = {
             document.getElementById("staff-proj-det-defense").innerText = json.defense_date;
             document.getElementById("staff-cap-status-plag-score").innerText = json.plagerism_score;
             document.getElementById("staff-cap-status-grade").innerText = json.grade;
+            document.getElementById("staff-proj-det-username").innerText = json.username;
             capstoneUsername = json.username;
         });
 
@@ -102,10 +102,10 @@ let staff = {
                 ],
                 rowClick: function (e, row) {
                     staff.getCapstone(row.getData().username);
+                    $('#myModal').modal('hide');
                 }
             });
 
-            console.log(json);
             ajaxAddition.tabulator("setData", json);
             // console.log(json);
             //
@@ -141,7 +141,7 @@ let staff = {
 
             modalBody += "<div class='col-sm-12'><div class='modal-cap-edit-status'>";
             modalBody += "<div class='col-sm-8'><div class='modal-cap-select-status'>";
-            modalBody += "<select><option value='"+ statuses[0] +"'>" + statuses[0] + "</option>" +
+            modalBody += "<select id='modal-cap-statuses-input'><option value='"+ statuses[0] +"'>" + statuses[0] + "</option>" +
                 "<option value='" + statuses[1] + "'>" + statuses[1] + "</option>" +
                 "<option value='" + statuses[2] + "'>" + statuses[2] + "</option></select>";
             modalBody += "</div></div>";
@@ -150,6 +150,21 @@ let staff = {
             modalBody += "</div></div></div></div>"
 
             $(".modal-body").html(modalBody);
+
+            $("#modal-cap-update-status-button").on('click',function () {
+                let username = document.getElementById("staff-proj-det-username").innerText;
+                let statusUpdate = document.getElementById("modal-cap-statuses-input").value;
+                $.ajax({
+                    url: ajaxURLStart + "api/getCapstoneByUsername/" + username,
+                    method: "get",
+                    dataType: "json"
+                }).done(function (json) {
+                    $.ajax({
+                        url: ajaxURLStart + "app/updateStatus/" + statusUpdate + "/" + json.id,
+                        method: "get"
+                    })
+                })
+            });
         }
 
     }
