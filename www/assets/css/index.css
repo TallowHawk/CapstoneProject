@@ -194,7 +194,6 @@ main#createAccount {
   left: 50%;
   transform: translateX(-50%); }
 
-
 .faculty-accept-invite-toast {
   display: none;
   position: fixed;
