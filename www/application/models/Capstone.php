@@ -15,9 +15,10 @@ class Capstone extends CI_Model {
      *                  of the data for the the capstone statuses.
      */
     function getCapstoneAll() {
-        return DB::query("SELECT cs.id, u.first_name , u.last_name, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type
+        return DB::query("SELECT cs.id, u.first_name , u.last_name, u.username, cs.title, cs.description, cs.defense_date, cs.plagerism_score, cs.grade, cs.type
                                       FROM capstone cs JOIN student s ON cs.student_id = s.id
-                                      JOIN user u ON s.uid = u.uid;");
+                                      JOIN user u ON s.uid = u.uid
+                                      ORDER BY cs.defense_date;");
     }
 
     /**
@@ -27,7 +28,7 @@ class Capstone extends CI_Model {
      *                  of the data for the the capstone statuses.
      */
     function getCapstoneSpecific($username){
-        return DB::queryFirstRow("SELECT u.first_name , u.last_name, cs.id, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type, cs.defense_date
+        return DB::queryFirstRow("SELECT u.first_name , u.last_name, u.username, cs.id, cs.title, cs.description, cs.plagerism_score, cs.grade, cs.type, cs.defense_date
                                       FROM capstone cs JOIN student s ON cs.student_id = s.id
                                       JOIN user u ON s.uid = u.uid
                                       WHERE u.username = %s;",$username);
@@ -52,7 +53,7 @@ class Capstone extends CI_Model {
      * @return mixed - associative array of all the capstones sorted by defense date
      */
     function getCapstoneDefenseDates() {
-        return DB::query("SELECT c.defense_date, c.title, u.username
+        return DB::query("SELECT c.id, c.defense_date, c.title, u.username, u.first_name, u.last_name, c.type, c.plagerism_score
             FROM capstone c JOIN student s ON c.student_id = s.id
             JOIN user u ON s.uid = u.uid
             ORDER BY defense_date ASC;");

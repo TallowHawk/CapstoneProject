@@ -18,6 +18,8 @@ let staff = {
             document.getElementById("staff-proj-det-defense").innerText = json.defense_date;
             document.getElementById("staff-cap-status-plag-score").innerText = json.plagerism_score;
             document.getElementById("staff-cap-status-grade").innerText = json.grade;
+            document.getElementById("staff-proj-det-username").innerText = json.username;
+            capstoneUsername = json.username;
         });
 
         $.ajax({
@@ -86,29 +88,90 @@ let staff = {
             method: "get",
             dataType: "json"
         }).done(function (json) {
-            let ajaxAddition = "";
-            console.log(json);
-
-            $.each(json, function (i, ele) {
-                ajaxAddition += "<div class='col-sm-12'><div class='modal-cap-project clearfix'>";
-                ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-title'>";
-                ajaxAddition += "<h4>" + ele.defense_date + "</h4></div></div>";
-                ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-username'>";
-                ajaxAddition += "<h4>" + ele.title + "</h4></div></div>";
-                ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-view-div'>";
-                ajaxAddition += "<button type='button' data-user='" + ele.username + "' name='modal-cap-view-btn'>VIEW</button>";
-                ajaxAddition += "</div></div></div></div>";
+            let ajaxAddition = $("<div>").tabulator({
+                height: 500,
+                layout: "fitColumns",
+                columns: [
+                    {title:"Username",field:"username"},
+                    {title:"First Name",field:"first_name"},
+                    {title:"Last Name",field:"last_name"},
+                    {title:"Title",field:"title"},
+                    {title:"Plagiarism Score",field:"plagerism_score"},
+                    {title:"Type",field:"type"},
+                    {title:"Defense Date",field:"defense_date"}
+                ],
+                rowClick: function (e, row) {
+                    staff.getCapstone(row.getData().username);
+                    $('#myModal').modal('hide');
+                }
             });
+
+            ajaxAddition.tabulator("setData", json);
+            // console.log(json);
+            //
+            // $.each(json, function (i, ele) {
+            //     ajaxAddition += "<div class='col-sm-12'><div class='modal-cap-project clearfix'>";
+            //     ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-title'>";
+            //     ajaxAddition += "<h4>" + ele.defense_date + "</h4></div></div>";
+            //     ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-username'>";
+            //     ajaxAddition += "<h4>" + ele.title + "</h4></div></div>";
+            //     ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-view-div'>";
+            //     ajaxAddition += "<button type='button' data-user='" + ele.username + "' name='modal-cap-view-btn'>VIEW</button>";
+            //     ajaxAddition += "</div></div></div></div>";
+            // });
             $(".modal-body").append(ajaxAddition);
 
-            $(".modal-cap-view-div button").attr('name', 'modal-cap-view-btn').on('click', function () {
-                let username = $(this).attr("data-user");
-                staff.getCapstone(username);
-                $('#myModal').modal('hide');
-            });
+            // $(".modal-cap-view-div button").attr('name', 'modal-cap-view-btn').on('click', function () {
+            //     let username = $(this).attr("data-user");
+            //     staff.getCapstone(username);
+            //     $('#myModal').modal('hide');
+            // });
         });
+    },
+
+    editStatusModal: function () {
+        if (capstoneUsername !== ""){
+            let modalBody = "";
+            let statuses = [
+                "Approved",
+                "Rejected",
+                "Pending"
+            ];
+            $('#myModal').modal('show');
+
+            modalBody += "<div class='col-sm-12'><div class='modal-cap-edit-status'>";
+            modalBody += "<div class='col-sm-8'><div class='modal-cap-select-status'>";
+            modalBody += "<select id='modal-cap-statuses-input'><option value='"+ statuses[0] +"'>" + statuses[0] + "</option>" +
+                "<option value='" + statuses[1] + "'>" + statuses[1] + "</option>" +
+                "<option value='" + statuses[2] + "'>" + statuses[2] + "</option></select>";
+            modalBody += "</div></div>";
+            modalBody += "<div class='col-sm-4'><div class='modal-cap-update-status'>";
+            modalBody += "<button id='modal-cap-update-status-button'>UPDATE</button>";
+            modalBody += "</div></div></div></div>"
+
+            $(".modal-body").html(modalBody);
+
+            $("#modal-cap-update-status-button").on('click',function () {
+                let username = document.getElementById("staff-proj-det-username").innerText;
+                let statusUpdate = document.getElementById("modal-cap-statuses-input").value;
+                $.ajax({
+                    url: ajaxURLStart + "api/getCapstoneByUsername/" + username,
+                    method: "get",
+                    dataType: "json"
+                }).done(function (json) {
+                    $.ajax({
+                        url: ajaxURLStart + "app/updateStatus/" + statusUpdate + "/" + json.id,
+                        method: "get"
+                    })
+                })
+            });
+        }
+
     }
 };
+
+let capstoneUsername = "";
+
 $(document).ready(function() {
     $("#staff-pending-prop").on('click', function () {
         staff.handleModal("pending");
@@ -122,6 +185,10 @@ $(document).ready(function() {
 
     $("#staff-defense-prop").on('click', function () {
         staff.defenseDateModal();
-    })
+    });
+
+    $(".project-status-edit-btn button").on('click', function () {
+        staff.editStatusModal();
+    });
 
 });

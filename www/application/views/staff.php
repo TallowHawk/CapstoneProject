@@ -51,7 +51,17 @@
                                     <h4 class="detail">Student Name:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="detail" id="staff-proj-det-name">{Owners Name}</p>
+                                    <p class="detail" id="staff-proj-det-name"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 no-padding">
+                            <div class="project-details-body clearfix">
+                                <div class="col-sm-6">
+                                    <h4 class="detail">Student Username:</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="detail" id="staff-proj-det-username"></p>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +71,7 @@
                                     <h4 class="detail">Title:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="detail" id="staff-proj-det-title">{Project Title}</p>
+                                    <p class="detail" id="staff-proj-det-title"></p>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +81,7 @@
                                     <h4>Description:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-description">{The project description about kittens and stuff}</p>
+                                    <p id="staff-proj-det-description"></p>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +91,7 @@
                                     <h4>Defense Date:</h4>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p id="staff-proj-det-defense">{Date goes here}</p>
+                                    <p id="staff-proj-det-defense"></p>
                                 </div>
                             </div>
                         </div>
@@ -111,18 +121,18 @@
                             </div>
                             <div class="col-sm-12 ">
                                 <div class="project-status">
-                                    <h2 class="detail" id="staff-cap-status">{Project Status Here}</h2>
+                                    <h2 class="detail" id="staff-cap-status"></h2>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12 ">
                             <div class="project-status">
-                                <h4 class="detail">Plagerism Score: <span id="staff-cap-status-plag-score">{Plag Score Here}<span></h4>
+                                <h4 class="detail">Plagerism Score: <span id="staff-cap-status-plag-score"><span></h4>
                             </div>
                         </div>
                         <div class="col-sm-12 ">
                             <div class="project-status">
-                                <h4 class="detail">Grade: <span id="staff-cap-status-grade">{Grade}</span></h4>
+                                <h4 class="detail">Grade: <span id="staff-cap-status-grade"></span></h4>
                             </div>
                         </div>
                     </div>
@@ -138,8 +148,8 @@
     </div>
 </div>
 <!--============================================================ MODALS BEGIN HERE-->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+<div id="myModal" class="modal fade" role="dialog" >
+    <div class="modal-dialog" id="modal-staff">
 
         <!-- Modal content-->
         <div class="modal-content">

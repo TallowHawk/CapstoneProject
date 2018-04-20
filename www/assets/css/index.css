@@ -170,6 +170,9 @@ main#createAccount {
 .invitation-choice-wrapper {
   text-align: center; }
 
+#modal-staff {
+  width: 80%; }
+
 .modal-body .modal-fac-member {
   padding-top: 2%;
   padding-bottom: 2%; }
