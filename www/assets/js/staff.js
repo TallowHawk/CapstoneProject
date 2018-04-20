@@ -8,7 +8,8 @@ let staff = {
         $.ajax({
             url: "/api/getCapstoneByUsername/" + username,
             method: "get",
-            dataType: "json"
+            dataType: "json",
+            pagination: "local"
         }).done(function (json) {
             console.log(json);
             let projectDetails = document.getElementsByClassName("project-details-wrapper")[0];
@@ -104,6 +105,7 @@ let staff = {
                 }
             });
 
+            console.log(json);
             ajaxAddition.tabulator("setData", json);
             // console.log(json);
             //

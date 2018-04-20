@@ -53,7 +53,7 @@ class Capstone extends CI_Model {
      * @return mixed - associative array of all the capstones sorted by defense date
      */
     function getCapstoneDefenseDates() {
-        return DB::query("SELECT c.defense_date, c.title, u.username
+        return DB::query("SELECT c.defense_date, c.title, u.username, u.first_name, u.last_name, c.type, c.plagerism_score
             FROM capstone c JOIN student s ON c.student_id = s.id
             JOIN user u ON s.uid = u.uid
             ORDER BY defense_date ASC;");
