@@ -94,14 +94,19 @@
                         </div>
                         <div class="col-sm-12 ">
                             <div class="col-sm-6 no-padding">
+                                <div class="project-status" id="faculty-capstone-grade">
+                                    <h4>Grade: <span id="cap-status-grade">N/A</span></h4>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 no-padding">
                                 <div class="project-status">
                                     <button class="cap-status-grade-btn" type="button" name="cap-status-grade">Enter Grade</button>
                                 </div>
                             </div>
-                            <div class="col-sm-6 no-padding">
-                                <div class="project-status" id="faculty-capstone-grade">
-                                    <h4>Grade: <span id="cap-status-grade">N/A</span></h4>
-                                </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="project-status">
+                                <button class="cap-status-history-btn" type="button" name="cap-status-history">View History</button>
                             </div>
                         </div>
                     </div>
@@ -157,6 +162,7 @@
 
 
 <!--============================================================ MODALS BEGIN HERE-->
+<!-- TRACKING STUDENT CAPSTONES MODAL -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -164,7 +170,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Faculty Members</h4>
+        <h4 class="modal-title">Student Capstones</h4>
       </div>
       <div class="modal-body clearfix">
       </div>
@@ -176,7 +182,7 @@
   </div>
 </div>
 
-
+<!-- GRADE MODAL -->
 <div id="grade-modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -190,6 +196,27 @@
           <div class="grade-modal-error-div"></div>
           <input class="grade-modal-input-box" type="text" name="faculty-input-grade" pattern="^\d{5}(\d{3})?$">
           <button class="grade-modal-submit-button" type="button" name="button">Submit</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- HISTORY MODAL -->
+<div id="history-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Capstone Status History</h4>
+      </div>
+      <div class="history-modal-body clearfix">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -70,7 +70,7 @@ class Capstone extends CI_Model {
             JOIN capstone c ON sh.capstone_id = c.id
             JOIN student stu ON c.student_id = stu.id
             JOIN user u ON u.uid = stu.uid
-            WHERE username = %s", $username);
+            WHERE username = %s ORDER BY sh.date ASC", $username);
     }
 
 
@@ -122,5 +122,13 @@ class Capstone extends CI_Model {
         return DB::update('capstone', array(
             'grade' => $grade
         ), "id = %s",$cap_id);
+    }
+
+
+    function getCapstoneHistory($cap_id){
+        return DB::query("SELECT sh.date, sh.status_id, s.status_desc
+            FROM status_history sh
+            JOIN status s ON sh.status_id = s.id
+            WHERE capstone_id = %i", $cap_id);
     }
 }

@@ -177,6 +177,16 @@ class App extends CI_Controller {
         if (isset($status,$cap_id)){
             $this->load->model("capstone");
             $this->capstone->setStatus($status,$cap_id);
+
+
+    public function updateCapstoneStatus($status, $cap_id){
+        if(isset($status) && isset($cap_id)){
+            $this->load->model("capstone");
+            echo json_encode($this->capstone->setStatus($status, $cap_id));
+        }
+        else{
+            echo "Error: function updateCapstoneGrade failed in App.php";
+
         }
     }
 }

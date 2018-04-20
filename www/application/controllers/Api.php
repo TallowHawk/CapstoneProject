@@ -46,4 +46,14 @@ class Api extends CI_Controller {
     }
 
 
+    public function getCapstoneHistory($cap_id){
+        if(isset($cap_id)){
+            $this->load->model("capstone");
+            echo json_encode($this->capstone->getCapstoneHistory($cap_id));
+        }
+        else{
+            echo "Error: function viewCapstoneHistory failed in App.php";
+        }
+    }
+
 }
