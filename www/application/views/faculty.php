@@ -78,18 +78,16 @@
             <div class="col-sm-4">
                 <div class="project-status-wrapper section-border clearfix">
                     <div class="col-sm-12">
-                        <div class="project-status-wrapper">
-                            <div class="col-sm-12">
-                                <div class="col-sm-6 no-padding">
-                                    <div class="project-status-header">
-                                        <h2>Capstone Status</h2>
-                                    </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6 no-padding">
+                                <div class="project-status-header">
+                                    <h2>Capstone Status</h2>
                                 </div>
                             </div>
-                            <div class="col-sm-12 ">
-                                <div class="project-status">
-                                    <h2 id="cap-status">N/A</h2>
-                                </div>
+                        </div>
+                        <div class="col-sm-12 ">
+                            <div class="project-status">
+                                <h2 id="cap-status">N/A</h2>
                             </div>
                         </div>
                         <div class="col-sm-12 ">
