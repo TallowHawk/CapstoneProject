@@ -52,28 +52,41 @@ let faculty = {
                     $(".cap-status-grade-btn").on("click", function(){
                         $("#grade-modal").modal('show');
                         $(".grade-modal-submit-button").on("click", function(){
-                            let grade = $(".grade-modal-input-box").val();
-                            if($.isNumeric(grade) && grade.length <= 2){
+                            let grade = $("#grade-input-selection").val();
+                            if(grade != ""){
                                 $.ajax({
                                     url: "/app/updateCapstoneGrade/" + grade + "/" + json.id,
                                     method: "get",
                                     dataType: "json"
-                                }).done(function (ele) {
+                                }).done(function () {
                                     $.ajax({
                                         url: "/app/updateCapstoneStatus/Complete/" + json.id,
                                         method: "get",
                                         dataType: "json"
-                                    }).done(function (ele) {
-                                        console.log(ele);
+                                    }).done(function () {
+                                        $.ajax({
+                                            url: "/api/getCapstoneStatus/" + username,
+                                            method: "get",
+                                            dataType: "json"
+                                        }).done(function (newStatus) {
+                                            $("#cap-status").html(newStatus.status_desc);
+                                            $.ajax({
+                                                url: "/api/getCapstoneByUsername/" + username,
+                                                method: "get",
+                                                dataType: "json"
+                                            }).done(function (newGrade) {
+                                                $("#cap-status-grade").html(newGrade.grade);
+                                            });
+                                        });
+                                        $("#grade-modal").modal('hide');
                                     });
                                 });
                             }
                             else{
-                                $(".grade-modal-error-div").html("<p style='color:red;'>Please enter a two digit whole number</p>");
+                                $(".grade-modal-error-div").html("<p style='color:red;'>Please enter a letter grade</p>");
                             }
                         })
                     });
-                    $("#cap-status-grade").html("-%");
                 }
                 else{
                     $(".cap-status-grade-btn").css("display", "none");
@@ -81,7 +94,7 @@ let faculty = {
                         $("#cap-status-grade").html(json.grade);
                     }
                     else{
-                        $("#cap-status-grade").html("-%");
+                        $("#cap-status-grade").html("N/A");
                     }
                 }
             });
