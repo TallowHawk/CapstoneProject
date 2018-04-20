@@ -11,16 +11,16 @@ body{
 
 button {
     outline: none;
-    appearence: none; 
+    appearence: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border-style: solid; 
+    border-style: solid;
     border-width: 3px;
-    border-radius: 25px; 
+    border-radius: 25px;
     border-color: $accent-color;
     color: $accent-color;
-    background-color: transparent;  
+    background-color: transparent;
     transition: background-color 0.5s;
 }
 
@@ -59,17 +59,17 @@ h1, h2, h3, h4, h5, h6, p{
 
 .header-wrapper{
     background-color: $secondary-color;
-    height: 80px; 
+    height: 80px;
     .project-name{
         display: inline-block;
         float: right;
         color: white;
-        margin: 20px; 
+        margin: 20px;
     }
 
     .program-title {
         color: white;
-        margin-top: 20px; 
+        margin-top: 20px;
     }
 }
 
@@ -102,16 +102,16 @@ footer{
         cursor: pointer;
         font-size: 1em;
         margin: 10px;
-        appearence: none; 
+        appearence: none;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        border-style: solid; 
+        border-style: solid;
         border-width: 3px;
-        border-radius: 25px; 
+        border-radius: 25px;
         border-color: $accent-color;
         color: $accent-color;
-        background-color: transparent;  
+        background-color: transparent;
         transition: all 0.5s;
     }
 
@@ -158,47 +158,47 @@ main#createAccount {
 }
 
 .detail {
-    margin-top: 10px; 
-    margin-bottom: 10px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .staff-btn-options{
     padding: 5px;
-    padding-right: 10px; 
+    padding-right: 10px;
     padding-left: 10px;
     margin: 10px;
     font-size: 1em;
 }
 
 .statusButton {
-    margin-top: 5px; 
-    margin-bottom: 5px; 
+    margin-top: 5px;
+    margin-bottom: 5px;
     float: left;
 }
 
 
 .searchBar {
     display: block;
-    width: 400px; 
+    width: 400px;
     margin: 0 auto;
-    margin-bottom: 25px; 
+    margin-bottom: 25px;
 
     .searchBarInput {
 
-        border-radius: 8px;  
-        margin: 10px; 
+        border-radius: 8px;
+        margin: 10px;
         -webkit-appearance: none;
-        appearance: none; 
-        -moz-appearance: none; 
-        outline: none; 
-        border-style: solid; 
-        border-width: 2px; 
+        appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        border-style: solid;
+        border-width: 2px;
         border-color: $accent-color;
     }
 
     .searchButton {
         padding: 3px;
-        padding-right: 8px; 
+        padding-right: 8px;
         padding-left: 8px;
         margin: 5px;
         font-size: 1em;
@@ -208,9 +208,9 @@ main#createAccount {
 
 .project-details-wrapper {
     border-color: $accent-color;
-    border-radius: 15px; 
+    border-radius: 15px;
     height: 230px;
-    overflow: scroll; 
+    overflow: scroll;
 }
 
 .project-status-wrapper {
@@ -313,24 +313,28 @@ main#createAccount {
     display: none;
 }
 
+.cap-status-history-btn{
+    display: none;
+}
+
 .submitButton {
         padding: 5px 2%;
         display: block;
         margin: 0 auto;
         cursor: pointer;
         font-size: 1em;
-        width: 150px; 
-        margin-top: 25px; 
-        appearence: none; 
+        width: 150px;
+        margin-top: 25px;
+        appearence: none;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        border-style: solid; 
+        border-style: solid;
         border-width: 3px;
-        border-radius: 25px; 
+        border-radius: 25px;
         border-color: white;
         color: white;
-        background-color: transparent;  
+        background-color: transparent;
         transition: all 0.5s;
         outline: none;
 }
@@ -342,7 +346,7 @@ main#createAccount {
 }
 
 .loginError {
-    text-align: center; 
+    text-align: center;
     color: red;
     font-size: 1em;
     margin-top: 25px;
