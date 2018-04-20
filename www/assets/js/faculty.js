@@ -79,7 +79,7 @@ let faculty = {
                 else{
                     $(".cap-status-grade-btn").css("display", "none");
                     if(json.grade != null){
-                        $("#cap-status-grade").html(json.grade + "%");
+                        $("#cap-status-grade").html(json.grade);
                     }
                     else{
                         $("#cap-status-grade").html("-%");

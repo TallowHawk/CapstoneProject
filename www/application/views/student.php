@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-sm-12 ">
                         <div class="project-status-field">
-                            <h4>Grade: <span id="cap-status-grade"><?php echo $capstone['grade']?>%</span></h4>
+                            <h4>Grade: <span id="cap-status-grade"><?php echo $capstone['grade']?></span></h4>
                         </div>
                     </div>
                 </div>
