@@ -173,10 +173,13 @@ class App extends CI_Controller {
 
     //////////////Start Staff Functions///////////////////
 
-    public function updateStatus($status,$cap_id) {
-        if (isset($status,$cap_id)){
+    public function updateStatus($status,$cap_id)
+    {
+        if (isset($status, $cap_id)) {
             $this->load->model("capstone");
-            $this->capstone->setStatus($status,$cap_id);
+            $this->capstone->setStatus($status, $cap_id);
+        }
+    }
 
 
     public function updateCapstoneStatus($status, $cap_id){
