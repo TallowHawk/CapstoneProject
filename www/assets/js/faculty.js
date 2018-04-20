@@ -1,12 +1,11 @@
 let faculty = {
-
     getCapstone: function(username) {
+
         $.ajax({
             url: "/api/getCapstoneByUsername/" + username,
             method: "get",
             dataType: "json"
         }).done(function (json) {
-            console.log(json);
             let projectDetails = document.getElementsByClassName("project-details-wrapper")[0];
             $(".cap-status-history-btn").css("display", "block");
             $(".cap-status-history-btn").on("click", function(){
@@ -44,11 +43,12 @@ let faculty = {
                 method: "get",
                 dataType: "json"
             }).done(function (json2) {
-                console.log(json2);
+                console.log(committeeData);
+                console.log(json);
                 $("#cap-status").html(json2.status_desc);
                 let capstoneStatus = json2.status_desc;
                 let approvedStatus = "approved";
-                if(json.grade == null && capstoneStatus.toLowerCase() === approvedStatus.toLowerCase()){
+                if(json.grade == null && capstoneStatus.toLowerCase() === approvedStatus.toLowerCase() && inCommittee(json)){
                     $(".cap-status-grade-btn").css("display", "block");
                     $(".project-status button").attr("name", "cap-status-grade").on("click", function(){
                         $("#grade-modal").modal('show');
@@ -302,3 +302,7 @@ $(document).ready(function(){
         });
     });
 });
+
+function inCommittee(json){
+    return committeeData.some(item => item.cap_id == json.id);
+}
