@@ -15,11 +15,9 @@ let faculty = {
                     method: "get",
                     dataType: "json"
                 }).done(function (jsonele) {
-                    $("#history-modal").modal('show');
                     let field = "<div class='col-sm-12'><div class='col-sm-4'><h4>Defense Date</h4></div><div class='col-sm-4'><h4>Capstone Status</h4></div><div class='col-sm-4'><h4>Status Change Date</h4></div></div>";
                     $(".history-modal-body").html(field);
                     $.each(jsonele, function(i, ele){
-                        console.log(ele);
                         let field = "";
                         field += "<div class='col-sm-12'><div class='faculty-capstone-history clearfix'>";
                         field += "<div class='faculty-capstone-history-field clearfix'>";
@@ -32,6 +30,7 @@ let faculty = {
                         field += "</div></div>";
                         $(".history-modal-body").append(field);
                     });
+                    $("#history-modal").modal('show');
                 });
             });
 
@@ -50,7 +49,7 @@ let faculty = {
                 let approvedStatus = "approved";
                 if(json.grade == null && capstoneStatus.toLowerCase() === approvedStatus.toLowerCase()){
                     $(".cap-status-grade-btn").css("display", "block");
-                    $(".project-status button").attr("name", "cap-status-grade").on("click", function(){
+                    $(".cap-status-grade-btn").on("click", function(){
                         $("#grade-modal").modal('show');
                         $(".grade-modal-submit-button").on("click", function(){
                             let grade = $(".grade-modal-input-box").val();
