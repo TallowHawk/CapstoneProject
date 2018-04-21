@@ -161,18 +161,17 @@ $(document).ready(function(){
 
         $.ajax({
             url: ajaxURLStart + "app/updateAccepted/" + facID + "/" + capID,
-            success:function(result){
-                 $(".faculty-accept-invite-toast").fadeIn();
-                 setTimeout(function(){
-                     $(".faculty-accept-invite-toast").fadeOut();
-                 }, 3000);
+            success:function(){
+                updateInvitations(capID, facID);
+                updateCommitteeList(capID);
             },
             error: function(){
                 console.log("There was an error in the ajax call to accept the invitation to a committee");
             }
         }).done(function(){
+            $(".faculty-accept-invite-toast").fadeIn();
             setTimeout(function(){
-                location.reload();
+                $(".faculty-accept-invite-toast").fadeOut();
             }, 3000);
         });
     });
@@ -302,3 +301,70 @@ $(document).ready(function(){
         });
     });
 });
+
+
+
+
+function updateInvitations(capID, facID){
+    $.ajax({
+        url: ajaxURLStart + "api/getInvitations/" + facID,
+        success:function(result){
+            result = JSON.parse(result);
+            if(result.length < 1){
+                $(".invitations-body").html("");
+                $(".invitations-body").html("<div class='col-sm-12'><h3>No invitations at this time</h3></div>");
+            }
+            else{
+                $(".invitations-body").html("");
+                $.each(result, function(i, ele){
+                    let field = "";
+                    field += "<div class='col-sm-12'><div class='faculty-committee-list clearfix'>";
+                    field += "<div class='faculty-committee-field clearfix'>";
+                    field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-name'>";
+                    field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
+                    field += "</div></div>";
+                    field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-cap-title'><p>" + ele.title + "</p></div></div>"
+                    field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
+                    field += "<div class='declined-invite-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
+                    field += "</div></div>";
+                    $(".invitations-body").append(field);
+                });
+            }
+        },
+        error: function(){
+            console.log("There was an error in the ajax call to update the faculty's committee list");
+            console.log("Check the updateInvitations function");
+        }
+    });
+}
+
+
+function updateCommitteeList(facID){
+    $.ajax({
+        url: ajaxURLStart + "api/getCommitteeList/" + facID,
+        success:function(result){
+            result = JSON.parse(result);
+            if(result.length < 1){
+                $(".committee-list-field").html("<div class='col-sm-12'><div class='no-committee-groups-msg'><h3>Not a part of any committees at this time</h3></div></div>");
+            }
+            else{
+                let field = "";
+                $.each(result, function(i, ele){
+                    field += "<div class='col-sm-12'><div class='faculty-committee-list clearfix'>";
+                    field += "<div class='faculty-committee-field clearfix'>";
+                    field += "<div class='col-sm-4'><div class='faculty-committee-list-name'>";
+                    field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
+                    field += "</div></div>";
+                    field += "<div class='col-sm-4'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
+                    field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
+                    field += "</div></div></div>";
+                });
+                $(".committee-list-field").html(field);
+            }
+        },
+        error: function(){
+            console.log("There was an error in the ajax call to update the faculty's committee list");
+            console.log("Check the updateCommitteeList function");
+        }
+    });
+}
