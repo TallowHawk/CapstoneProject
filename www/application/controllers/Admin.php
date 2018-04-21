@@ -96,7 +96,13 @@ class Admin extends CI_Controller {
 
             $account["phoneNum"] = "11234567890";
 
-            $account["type"] = $accountTypes[rand(0,2)];
+            $rand = rand(0,10);
+            if ($rand == 0 || $rand > 2){
+                $account["type"] = $accountTypes[0];
+            }
+            else {
+                $account["type"] = $accountTypes[$rand];
+            }
 
             if ($this->user->createAccount($account["username"],$account["password"],$account["phoneNum"],$account["type"],$account["firstName"],$account["middleName"],$account["lastName"])){
                 if ($account["type"] == "student"){

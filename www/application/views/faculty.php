@@ -78,18 +78,16 @@
             <div class="col-sm-4">
                 <div class="project-status-wrapper section-border clearfix">
                     <div class="col-sm-12">
-                        <div class="project-status-wrapper">
-                            <div class="col-sm-12">
-                                <div class="col-sm-6 no-padding">
-                                    <div class="project-status-header">
-                                        <h2>Capstone Status</h2>
-                                    </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6 no-padding">
+                                <div class="project-status-header">
+                                    <h2>Capstone Status</h2>
                                 </div>
                             </div>
-                            <div class="col-sm-12 ">
-                                <div class="project-status">
-                                    <h2 id="cap-status">N/A</h2>
-                                </div>
+                        </div>
+                        <div class="col-sm-12 ">
+                            <div class="project-status">
+                                <h2 id="cap-status">N/A</h2>
                             </div>
                         </div>
                         <div class="col-sm-12 ">
@@ -194,8 +192,21 @@
       </div>
       <div class="modal-body clearfix">
           <div class="grade-modal-error-div"></div>
-          <input class="grade-modal-input-box" type="text" name="faculty-input-grade" pattern="^\d{5}(\d{3})?$">
-          <button class="grade-modal-submit-button" type="button" name="button">Submit</button>
+          <form class="grade-input-form" action="index.html" method="post">
+              <select id='grade-input-selection' class="" name="">
+                  <option value="">--SELECT--</option>
+                  <option value="A">A</option>
+                  <option value="A-">A-</option>
+                  <option value="B">B</option>
+                  <option value="B-">B-</option>
+                  <option value="C">C</option>
+                  <option value="C-">C-</option>
+                  <option value="D">D</option>
+                  <option value="D-">D-</option>
+                  <option value="F">F</option>
+              </select>
+              <button class="grade-modal-submit-button" type="button" name="enter-grade-submit-btn">Submit</button>
+          </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
