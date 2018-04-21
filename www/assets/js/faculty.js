@@ -380,6 +380,8 @@ function updateCommitteeList(facID){
         }
     });
 }
+
+
 function inCommittee(json){
     return committeeData.some(item => item.cap_id == json.id);
 }
