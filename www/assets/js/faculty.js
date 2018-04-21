@@ -259,60 +259,9 @@ $(document).ready(function(){
 
 
 
-    $(".tracking-add-btn-wrapper button").attr('name', 'faculty-add-tracker-btn').on('click', function(){
-
-        let modalBody = "";
-        modalBody += "<div class='col-sm-12 modal-labels'><div class='col-sm-4'><h3>Name</h3></div>";
-        modalBody += "<div class='col-sm-4'><h3>Capstone</h3></div></div>";
-
-        // // checks if the faculty member is already tracking a specific capstone
-        // // and only shows the capstones that the faculty isnt tracking
-        let untrackedList = [];
-        $.each(allCapstones, function(i, ele){
-            if(!trackedInfo.some(item => item.id == ele.id)){
-                untrackedList.push(ele);
-            }
-        });
-
-        if(untrackedList.length == 0 ){
-            modalBody += "<div class='col-sm-12'><h3>Already Tracking All Capstones</h3></div>";
-        }
-
-        $.each(untrackedList, function(i, ele){
-            modalBody += "<div class='col-sm-12'><div class='modal-track-member clearfix'>";
-            modalBody += "<div class='col-sm-4'><div class='modal-track-name'>";
-            modalBody += "<h4>" + ele.first_name + " " + ele.last_name + "</h4></div></div>";
-            modalBody += "<div class='col-sm-4'><div class='modal-track-username'>"
-            modalBody += "<h4>" + ele.title + "</h4></div></div>";
-            modalBody += "<div class='col-sm-4'><div class='modal-track-add-div'>";
-            modalBody += "<button type='button' fac-id='" + facultyID + "' cap-id='" + ele.id + "' name='modal-track-add-btn'>ADD</button>";
-            modalBody += "</div></div></div></div>";
-        });
-
-        $(".modal-body").html(modalBody);
+    $(".tracking-add-btn").on('click', function(){
+        populateUntrackedCapstones();
         $('#myModal').modal('show');
-
-        $(".modal-track-add-div button").attr('name', 'modal-track-add-btn').on('click', function(){
-            var capID = $(this).attr("cap-id");
-            var facID = $(this).attr("fac-id");
-            $.ajax({
-                url: ajaxURLStart + "app/addToTracker/" + facID + "/" + capID,
-                success:function(result){
-                     $(".faculty-add-to-tracker-toast").fadeIn();
-                     $('#myModal').modal('hide');
-                     setTimeout(function(){
-                         $(".faculty-add-to-tracker-toast").fadeOut();
-                     }, 3000);
-                },
-                error: function(){
-                    console.log("There was an error in the ajax call to start tracking a capstone");
-                }
-            }).done(function(){
-                setTimeout(function(){
-                    location.reload();
-                }, 3000);
-            });
-        });
     });
 });
 
@@ -474,6 +423,7 @@ function updateTrackingList(facID){
              setTimeout(function(){
                  $(".faculty-remove-from-committee-toast").fadeOut();
              }, 3000);
+             populateUntrackedCapstones();
         },
         error: function(){
             console.log("There was an error in the ajax call to leave the committee as faculty");
@@ -494,8 +444,72 @@ function updateTrackingList(facID){
                 setTimeout(function(){
                     $(".faculty-remove-from-tracker-toast").fadeOut();
                 }, 3000);
+                populateUntrackedCapstones();
             });
         });
+    });
+}
+
+
+
+function populateUntrackedCapstones(){
+    let modalBody = "";
+    modalBody += "<div class='col-sm-12 modal-labels'><div class='col-sm-4'><h3>Name</h3></div>";
+    modalBody += "<div class='col-sm-4'><h3>Capstone</h3></div></div>";
+
+    $.ajax({
+        url: ajaxURLStart + "api/getTrackingList/" + facultyID,
+        success:function(result){
+            result = JSON.parse(result);
+            // // checks if the faculty member is already tracking a specific capstone
+            // // and only shows the capstones that the faculty isnt tracking
+            let untrackedList = [];
+            $.each(allCapstones, function(i, ele){
+                if(!result.some(item => item.id == ele.id)){
+                    untrackedList.push(ele);
+                }
+            });
+
+            if(untrackedList.length == 0 ){
+                modalBody += "<div class='col-sm-12'><h3>Already Tracking All Capstones</h3></div>";
+            }
+
+            $.each(untrackedList, function(i, ele){
+                modalBody += "<div class='col-sm-12'><div class='modal-track-member clearfix'>";
+                modalBody += "<div class='col-sm-4'><div class='modal-track-name'>";
+                modalBody += "<h4>" + ele.first_name + " " + ele.last_name + "</h4></div></div>";
+                modalBody += "<div class='col-sm-4'><div class='modal-track-username'>"
+                modalBody += "<h4>" + ele.title + "</h4></div></div>";
+                modalBody += "<div class='col-sm-4'><div class='modal-track-add-div'>";
+                modalBody += "<button class='modal-track-add-btn' type='button' fac-id='" + facultyID + "' cap-id='" + ele.id + "' name='modal-track-add-btn'>ADD</button>";
+                modalBody += "</div></div></div></div>";
+            });
+
+            $(".modal-body").html(modalBody);
+
+            $(".modal-track-add-btn").on('click', function(){
+                var capID = $(this).attr("cap-id");
+                var facID = $(this).attr("fac-id");
+                $.ajax({
+                    url: ajaxURLStart + "app/addToTracker/" + facID + "/" + capID,
+                    success:function(result){
+                        updateTrackingList(facultyID);
+                    },
+                    error: function(){
+                        console.log("There was an error in the ajax call to start tracking a capstone");
+                    }
+                }).done(function(){
+                    $(".faculty-add-to-tracker-toast").fadeIn();
+                    $('#myModal').modal('hide');
+                    setTimeout(function(){
+                        $(".faculty-add-to-tracker-toast").fadeOut();
+                    }, 3000);
+                });
+            });
+        },
+        error: function(){
+            console.log("There was an error in the ajax call in populateUntrackedCapstones");
+        }
     });
 }
 

@@ -88,4 +88,9 @@ class Api extends CI_Controller {
             echo "Error: function getInvitations failed in Api.php";
         }
     }
+
+    public function getAllCapstones(){
+        $this->load->model("capstone");
+        echo json_encode($this->capstone->getCapstoneAll($fac_id));
+    }
 }
