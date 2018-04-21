@@ -102,8 +102,12 @@ let faculty = {
     }
 };
 
+
+// ============================================================================================================================== BEGINS DOCUMENT READY
 $(document).ready(function(){
 
+
+    // fills in all of the invitation data if any
     if(invitationData.length == 0){
         $(".invitations-body").html("");
         $(".invitations-body").html("<div class='col-sm-12'><h3>No invitations at this time</h3></div>");
@@ -118,15 +122,15 @@ $(document).ready(function(){
             field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
             field += "</div></div>";
             field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-cap-title'><p>" + ele.title + "</p></div></div>"
-            field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
-            field += "<div class='declined-invite-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
+            field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button class='accepted-invite-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
+            field += "<div class='declined-invite-btn-div'><button class='declined-invite-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
             field += "</div></div>";
             $(".invitations-body").append(field);
         });
     }
 
 
-
+    // fills in all of the tracking data if any
     if(trackedInfo.length == 0){
         $(".tracking-list-body").html("");
         $(".tracking-list-body").html("<div class='col-sm-12'><h3>Nothing Being Tracked</h3></div>");
@@ -149,6 +153,7 @@ $(document).ready(function(){
     }
 
 
+    // fills in the committee list data if any
     if(committeeData.length == 0){
         $(".committee-list-field").html("<div class='col-sm-12'><div class='no-committee-groups-msg'><h3>Not a part of any committees at this time</h3></div></div>");
     }
@@ -161,21 +166,22 @@ $(document).ready(function(){
             field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
             field += "</div></div>";
             field += "<div class='col-sm-4'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
-            field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
+            field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button class='fac-committee-remove-btn' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
             field += "</div></div></div>";
         });
         $(".committee-list-field").html(field);
     }
 
-    $(".accepted-invite-btn-div button").attr('name', 'accept-invite-btn').on('click', function(){
+
+    $(".accepted-invite-btn").on('click', function(){
+        console.log("Accepted invite first go round");
         var capID = $(this).attr("cap-id");
         var facID = $(this).attr("fac-id");
 
         $.ajax({
             url: ajaxURLStart + "app/updateAccepted/" + facID + "/" + capID,
             success:function(){
-                updateInvitations(capID, facID);
-                updateCommitteeList(capID);
+                updateInvitations(facID);
             },
             error: function(){
                 console.log("There was an error in the ajax call to accept the invitation to a committee");
@@ -185,34 +191,34 @@ $(document).ready(function(){
             setTimeout(function(){
                 $(".faculty-accept-invite-toast").fadeOut();
             }, 3000);
+            updateCommitteeList(facID);
         });
     });
 
 
-    $(".declined-invite-btn-div button").attr('name', 'reject-invite-btn').on('click', function(){
+    $(".declined-invite-btn").on('click', function(){
         var capID = $(this).attr("cap-id");
         var facID = $(this).attr("fac-id");
         $.ajax({
             url: ajaxURLStart + "app/removeFromCommittee/" + facID + "/" + capID,
             success:function(result){
-                 $(".faculty-decline-invite-toast").fadeIn();
-                 setTimeout(function(){
-                     $(".faculty-decline-invite-toast").fadeOut();
-                 }, 3000);
+                updateInvitations(facID);
             },
             error: function(){
                 console.log("There was an error in the ajax call to decline the invitation to the committee");
             }
         }).done(function(){
+            $(".faculty-decline-invite-toast").fadeIn();
             setTimeout(function(){
-                location.reload();
+                $(".faculty-decline-invite-toast").fadeOut();
             }, 3000);
+            updateCommitteeList(facID);
         });
     });
 
 
 
-    $(".faculty-committee-list-remove-btn button").attr('name', 'fac-committee-remove-btn').on('click', function(){
+    $(".fac-committee-remove-btn").on('click', function(){
         var capID = $(this).attr("cap-id");
         var facID = $(this).attr("fac-id");
         $.ajax({
@@ -227,9 +233,7 @@ $(document).ready(function(){
                 console.log("There was an error in the ajax call to leave the committee as faculty");
             }
         }).done(function(){
-            setTimeout(function(){
-                location.reload();
-            }, 3000);
+            updateCommitteeList(facID);
         });
     });
 
@@ -317,11 +321,12 @@ $(document).ready(function(){
 
 
 
-function updateInvitations(capID, facID){
+function updateInvitations(facID){
     $.ajax({
         url: ajaxURLStart + "api/getInvitations/" + facID,
         success:function(result){
             result = JSON.parse(result);
+            console.log(result);
             if(result.length < 1){
                 $(".invitations-body").html("");
                 $(".invitations-body").html("<div class='col-sm-12'><h3>No invitations at this time</h3></div>");
@@ -336,8 +341,8 @@ function updateInvitations(capID, facID){
                     field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
                     field += "</div></div>";
                     field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-cap-title'><p>" + ele.title + "</p></div></div>"
-                    field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
-                    field += "<div class='declined-invite-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
+                    field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button class='accepted-invite-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
+                    field += "<div class='declined-invite-btn-div'><button class='declined-invite-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
                     field += "</div></div>";
                     $(".invitations-body").append(field);
                 });
@@ -347,8 +352,30 @@ function updateInvitations(capID, facID){
             console.log("There was an error in the ajax call to update the faculty's committee list");
             console.log("Check the updateInvitations function");
         }
+    }).done(function(){
+        $(".accepted-invite-btn").on('click', function(){
+            var capID = $(this).attr("cap-id");
+            $.ajax({
+                url: ajaxURLStart + "app/updateAccepted/" + facID + "/" + capID,
+                success:function(){
+                    console.log("FacID:" + facID + " CapID:" + capID);
+                    updateInvitations(facID);
+                },
+                error: function(){
+                    console.log("There was an error in the ajax call to accept the invitation to a committee");
+                }
+            }).done(function(){
+                $(".faculty-accept-invite-toast").fadeIn();
+                setTimeout(function(){
+                    $(".faculty-accept-invite-toast").fadeOut();
+                }, 3000);
+                updateCommitteeList(facID);
+            });
+        });
     });
 }
+
+
 
 
 function updateCommitteeList(facID){
@@ -368,7 +395,7 @@ function updateCommitteeList(facID){
                     field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
                     field += "</div></div>";
                     field += "<div class='col-sm-4'><div class='faculty-committee-list-cap-title'><h4>" + ele.title + "</h4></div></div>"
-                    field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
+                    field += "<div class='col-sm-4'><div class='faculty-committee-list-remove-btn'><button class='fac-committee-remove-btn' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='fac-committee-remove-btn'>Leave Committee</button></div></div>";
                     field += "</div></div></div>";
                 });
                 $(".committee-list-field").html(field);
@@ -378,6 +405,44 @@ function updateCommitteeList(facID){
             console.log("There was an error in the ajax call to update the faculty's committee list");
             console.log("Check the updateCommitteeList function");
         }
+    }).done(function(){
+        $(".declined-invite-btn").on('click', function(){
+            var capID = $(this).attr("cap-id");
+            $.ajax({
+                url: ajaxURLStart + "app/removeFromCommittee/" + facID + "/" + capID,
+                success:function(result){
+                    updateInvitations(facID);
+                },
+                error: function(){
+                    console.log("There was an error in the ajax call to decline the invitation to the committee");
+                }
+            }).done(function(){
+                $(".faculty-decline-invite-toast").fadeIn();
+                setTimeout(function(){
+                    $(".faculty-decline-invite-toast").fadeOut();
+                }, 3000);
+                updateCommitteeList(facID);
+            });
+        });
+
+        $(".fac-committee-remove-btn").on('click', function(){
+            var capID = $(this).attr("cap-id");
+            var facID = $(this).attr("fac-id");
+            $.ajax({
+                url: ajaxURLStart + "app/removeFromCommittee/" + facID + "/" + capID,
+                success:function(result){
+                     $(".faculty-remove-from-committee-toast").fadeIn();
+                     setTimeout(function(){
+                         $(".faculty-remove-from-committee-toast").fadeOut();
+                     }, 3000);
+                },
+                error: function(){
+                    console.log("There was an error in the ajax call to leave the committee as faculty");
+                }
+            }).done(function(){
+                updateCommitteeList(facID);
+            });
+        });
     });
 }
 
