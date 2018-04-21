@@ -145,7 +145,7 @@ $(document).ready(function(){
             field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
             field += "</div></div>";
             field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-list-cap-title'><p>" + ele.title + "</p></div></div>"
-            field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-btn-wrapper clearfix'><div class='faculty-tracking-btn-div'><button type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='remove-tracking-btn'>Stop Tracking</button></div>"
+            field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-btn-wrapper clearfix'><div class='faculty-tracking-btn-div'><button class='faculty-tracking-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='remove-tracking-btn'>Stop Tracking</button></div>"
             field += "</div></div>";
             field += "</div></div></div>";
             $(".tracking-list-body").append(field);
@@ -238,24 +238,22 @@ $(document).ready(function(){
     });
 
 
-    $(".faculty-tracking-btn-div button").attr('name', 'remove-tracking-btn').on('click', function(){
+    $(".faculty-tracking-btn").on('click', function(){
         var capID = $(this).attr("cap-id");
         var facID = $(this).attr("fac-id");
         $.ajax({
             url: ajaxURLStart + "app/removeFromTracker/" + facID + "/" + capID,
             success:function(result){
-                 $(".faculty-remove-from-tracker-toast").fadeIn();
-                 setTimeout(function(){
-                     $(".faculty-remove-from-tracker-toast").fadeOut();
-                 }, 3000);
+                $(".faculty-remove-from-tracker-toast").fadeIn();
+                setTimeout(function(){
+                    $(".faculty-remove-from-tracker-toast").fadeOut();
+                }, 3000);
             },
             error: function(){
                 console.log("There was an error in the ajax call to stop tracking a capstone");
             }
         }).done(function(){
-            setTimeout(function(){
-                location.reload();
-            }, 3000);
+            updateTrackingList(facID);
         });
     });
 
@@ -441,6 +439,61 @@ function updateCommitteeList(facID){
                 }
             }).done(function(){
                 updateCommitteeList(facID);
+            });
+        });
+    });
+}
+
+
+function updateTrackingList(facID){
+    $.ajax({
+        url: ajaxURLStart + "api/getTrackingList/" + facID,
+        success:function(result){
+            result = JSON.parse(result);
+            if(result.length == 0){
+                $(".tracking-list-body").html("");
+                $(".tracking-list-body").html("<div class='col-sm-12'><h3>Nothing Being Tracked</h3></div>");
+            }
+            else{
+                $(".tracking-list-body").html("");
+                $.each(result, function(i, ele){
+                    let field = "";
+                    field += "<div class='col-sm-12'><div class='faculty-tracking-list clearfix'>";
+                    field += "<div class='faculty-tracking-field clearfix'>";
+                    field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-list-name'>";
+                    field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
+                    field += "</div></div>";
+                    field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-list-cap-title'><p>" + ele.title + "</p></div></div>"
+                    field += "<div class='col-sm-4 no-padding'><div class='faculty-tracking-btn-wrapper clearfix'><div class='faculty-tracking-btn-div'><button class='faculty-tracking-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='remove-tracking-btn'>Stop Tracking</button></div>"
+                    field += "</div></div>";
+                    field += "</div></div></div>";
+                    $(".tracking-list-body").append(field);
+                });
+            }
+             $(".faculty-remove-from-committee-toast").fadeIn();
+             setTimeout(function(){
+                 $(".faculty-remove-from-committee-toast").fadeOut();
+             }, 3000);
+        },
+        error: function(){
+            console.log("There was an error in the ajax call to leave the committee as faculty");
+        }
+    }).done(function(){
+        $(".faculty-tracking-btn").on('click', function(){
+            var capID = $(this).attr("cap-id");
+            $.ajax({
+                url: ajaxURLStart + "app/removeFromTracker/" + facID + "/" + capID,
+                success:function(result){
+                    updateTrackingList(facID);
+                },
+                error: function(){
+                    console.log("There was an error in the ajax call to stop tracking a capstone");
+                }
+            }).done(function(){
+                $(".faculty-remove-from-tracker-toast").fadeIn();
+                setTimeout(function(){
+                    $(".faculty-remove-from-tracker-toast").fadeOut();
+                }, 3000);
             });
         });
     });

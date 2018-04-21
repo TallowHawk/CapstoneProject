@@ -77,4 +77,15 @@ class Api extends CI_Controller {
             echo "Error: function getInvitations failed in Api.php";
         }
     }
+
+
+    public function getTrackingList($fac_id){
+        if(isset($fac_id)){
+            $this->load->model("facultytracker");
+            echo json_encode($this->facultytracker->showTrackedProjects($fac_id));
+        }
+        else{
+            echo "Error: function getInvitations failed in Api.php";
+        }
+    }
 }
