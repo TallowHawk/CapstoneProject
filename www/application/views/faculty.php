@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="tracking-add-btn-wrapper">
-                                        <button type="button" name="faculty-add-tracker-btn">Add</button>
+                                        <button class='tracking-add-btn' type="button" name="faculty-add-tracker-btn">Add</button>
                                     </div>
                                 </div>
                             </div>

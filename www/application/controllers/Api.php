@@ -52,8 +52,45 @@ class Api extends CI_Controller {
             echo json_encode($this->capstone->getCapstoneHistory($cap_id));
         }
         else{
-            echo "Error: function viewCapstoneHistory failed in App.php";
+            echo "Error: function viewCapstoneHistory failed in Api.php";
         }
     }
 
+
+    public function getInvitations($fac_id){
+        if(isset($fac_id)){
+            $this->load->model("committee");
+            echo json_encode($this->committee->viewInvitations($fac_id));
+        }
+        else{
+            echo "Error: function getInvitations failed in Api.php";
+        }
+    }
+
+
+    public function getCommitteeList($fac_id){
+        if(isset($fac_id)){
+            $this->load->model("committee");
+            echo json_encode($this->committee->viewAcceptedCommittee($fac_id));
+        }
+        else{
+            echo "Error: function getInvitations failed in Api.php";
+        }
+    }
+
+
+    public function getTrackingList($fac_id){
+        if(isset($fac_id)){
+            $this->load->model("facultytracker");
+            echo json_encode($this->facultytracker->showTrackedProjects($fac_id));
+        }
+        else{
+            echo "Error: function getInvitations failed in Api.php";
+        }
+    }
+
+    public function getAllCapstones(){
+        $this->load->model("capstone");
+        echo json_encode($this->capstone->getCapstoneAll($fac_id));
+    }
 }
