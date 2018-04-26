@@ -89,7 +89,7 @@ class Api extends CI_Controller {
         }
     }
 
-    public function getAllCapstones(){
+    public function getAllCapstones($fac_id){
         $this->load->model("capstone");
         echo json_encode($this->capstone->getCapstoneAll($fac_id));
     }
