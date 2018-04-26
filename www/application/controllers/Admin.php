@@ -121,7 +121,18 @@ class Admin extends CI_Controller {
                             $capId = $this->capstone->getCapstoneSpecific($account["username"]);
                             $this->capstone->setStatus($status[$statusNum],$capId["id"]);
                             if ($statusNum == 3) {
-                                $this->capstone->updateCapstoneGrade(rand(75,99),$capId["id"]);
+                                $grades = [
+                                    "A",
+                                    "A-",
+                                    "B",
+                                    "B-",
+                                    "C",
+                                    "C-",
+                                    "D",
+                                    "D-",
+                                    "F"
+                                ];
+                                $this->capstone->updateCapstoneGrade($grades[rand(0,8)],$capId["id"]);
                             }
                         }
                     }
