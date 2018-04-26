@@ -35,7 +35,7 @@ let faculty = {
 
 
             $("#project-title-header").html(json.title);
-
+            $("#project-owner-header").html(json.first_name + " " + json.last_name);
 
             $.ajax({
                 url: "/api/getCapstoneStatus/" + username,
