@@ -52,13 +52,21 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-12">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 no-padding">
+                <h4 id="search-btn-error-msg">Student not found</h4>
+            </div>
+            <div class="col-sm-2"></div>
+            </div>
+        </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-12 section-spacer">
             <div class="col-sm-12">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
                     <label>Project Username: </label><input type="text" name="project-username-input">
-                    <button onclick="faculty.getCapstone(this.parentElement.getElementsByTagName('input')[0].value); return false;" value="Search">Search</button>
+                    <button onclick="faculty.checkInDatabase(this.parentElement.getElementsByTagName('input')[0].value); return false;" value="Search">Search</button>
                 </div>
                 <div class="col-sm-2"></div>
             </div>

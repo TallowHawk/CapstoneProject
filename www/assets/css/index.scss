@@ -356,6 +356,10 @@ main#createAccount {
     margin-top: 25px;
 }
 
+#search-btn-error-msg{
+    color: red;
+    display:none;
+}
 #tracking-list-header{
     display: inline-block;
 }
