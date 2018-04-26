@@ -75,7 +75,7 @@ class Committee extends CI_Model {
     }
 
     function viewInvitations($fac_id) {
-        return DB::query("SELECT c.*, cs.*, u.first_name, u.last_name FROM committee c
+        return DB::query("SELECT c.*, cs.*, u.first_name, u.last_name, u.username FROM committee c
             JOIN capstone cs ON c.cap_id = cs.id
             JOIN student stu ON stu.id = cs.student_id
             JOIN user u ON u.uid = stu.uid

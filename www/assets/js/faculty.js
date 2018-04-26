@@ -1,6 +1,5 @@
 let faculty = {
     getCapstone: function(username) {
-
         $.ajax({
             url: "/api/getCapstoneByUsername/" + username,
             method: "get",
@@ -34,7 +33,9 @@ let faculty = {
             });
 
 
+            $("#cap-status-grade").html((json.grade) ? json.grade : "N/A");
             $("#project-title-header").html(json.title);
+
 
 
             $.ajax({
@@ -122,8 +123,8 @@ $(document).ready(function(){
             field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
             field += "</div></div>";
             field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-cap-title'><p>" + ele.title + "</p></div></div>"
-            field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button class='accepted-invite-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
-            field += "<div class='declined-invite-btn-div'><button class='declined-invite-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
+            field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button class='accepted-invite-btn' type='button' username=" + ele.username + " fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
+            field += "<div class='declined-invite-btn-div'><button class='declined-invite-btn' type='button' username=" + ele.username + " fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
             field += "</div></div>";
             $(".invitations-body").append(field);
         });
@@ -273,7 +274,6 @@ function updateInvitations(facID){
         url: ajaxURLStart + "api/getInvitations/" + facID,
         success:function(result){
             result = JSON.parse(result);
-            console.log(result);
             if(result.length < 1){
                 $(".invitations-body").html("");
                 $(".invitations-body").html("<div class='col-sm-12'><h3>No invitations at this time</h3></div>");
@@ -288,8 +288,8 @@ function updateInvitations(facID){
                     field += "<h4>" + ele.first_name + " " + ele.last_name + "</h4>";
                     field += "</div></div>";
                     field += "<div class='col-sm-4 no-padding'><div class='faculty-committee-list-cap-title'><p>" + ele.title + "</p></div></div>"
-                    field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button class='accepted-invite-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
-                    field += "<div class='declined-invite-btn-div'><button class='declined-invite-btn' type='button' fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
+                    field += "<div class='col-sm-4 no-padding'><div class='invitation-choice-wrapper clearfix'><div class='accepted-invite-btn-div'><button class='accepted-invite-btn' type='button' username=" + ele.username + " fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='accept-invite-btn'>&#10004;</button></div>"
+                    field += "<div class='declined-invite-btn-div'><button class='declined-invite-btn' type='button' username=" + ele.username + " fac-id = " + facultyID + " cap-id='" + ele.cap_id + "' name='reject-invite-btn'>X</button></div></div></div>";
                     field += "</div></div>";
                     $(".invitations-body").append(field);
                 });
