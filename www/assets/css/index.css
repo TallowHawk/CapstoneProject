@@ -289,4 +289,10 @@ main#createAccount {
   color: red;
   display: none; }
 
+#tracking-list-header {
+  display: inline-block; }
+
+.tracking-add-btn-wrapper {
+  display: inline-block; }
+
 /*# sourceMappingURL=index.css.map */

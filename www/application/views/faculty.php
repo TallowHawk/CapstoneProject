@@ -39,8 +39,15 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 <div class="project-title-wrapper clearfix">
-                    <div class="project-title">
-                        <h2 id="project-title-header">No Project Selected</h2>
+                    <div class="col-sm-12 no-padding">
+                        <div class="project-owner-div">
+                            <h2>Owner: <span id="project-owner-header"></span></h2>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 no-padding">
+                        <div class="project-title">
+                            <h2>Capstone Title: <span id="project-title-header"></span></h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,15 +70,28 @@
                 </div>
                 <div class="col-sm-2"></div>
             </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-4">
-                <div class="invitations-wrapper section-border clearfix">
+            <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
                     <div class="col-sm-12">
-                        <div class="col-sm-12">
+                        <div class="col-sm-6 no-padding">
                             <div class="invitations-header">
                                 <h2>Invitations</h2>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <div class="project-status-header">
+                                <h2>Capstone Information</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                    <div class="invitations-wrapper section-border clearfix">
                         <div class="col-sm-12 no-padding">
                             <div class="invitations-body clearfix">
                                 <div class="col-sm-12 no-padding">
@@ -82,73 +102,72 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="project-status-wrapper section-border clearfix">
-                    <div class="col-sm-12">
+                <div class="col-sm-4">
+                    <div class="project-status-wrapper section-border clearfix">
                         <div class="col-sm-12">
-                            <div class="col-sm-6 no-padding">
-                                <div class="project-status-header">
-                                    <h2>Capstone Status</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ">
-                            <div class="project-status">
-                                <h2 id="cap-status">N/A</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ">
-                            <div class="col-sm-6 no-padding">
-                                <div class="project-status" id="faculty-capstone-grade">
-                                    <h4>Grade: <span id="cap-status-grade">N/A</span></h4>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 no-padding">
+                            <div class="col-sm-12 ">
                                 <div class="project-status">
-                                    <button class="cap-status-grade-btn" type="button" name="cap-status-grade">Enter Grade</button>
+                                    <h2 id="cap-status">N/A</h2>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="project-status">
-                                <button class="cap-status-history-btn" type="button" name="cap-status-history">View History</button>
+                            <div class="col-sm-12 ">
+                                <div class="col-sm-6 no-padding">
+                                    <div class="project-status" id="faculty-capstone-grade">
+                                        <h4>Grade: <span id="cap-status-grade">N/A</span></h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 no-padding">
+                                    <div class="project-status">
+                                        <button class="cap-status-grade-btn" type="button" name="cap-status-grade">Enter Grade</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="project-status">
+                                    <button class="cap-status-history-btn" type="button" name="cap-status-history">View History</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-2"></div>
             </div>
-            <div class="col-sm-2"></div>
         </div>
         <div class="col-sm-12 section-spacer">
+            <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <h2>Committee List</h2>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 <div class="faculty-committee-list-wrapper section-border clearfix">
-                    <div class="col-sm-12">
-                        <h2>Committee List</h2>
-                    </div>
                     <div class="committee-list-field clearfix"></div>
                 </div>
             </div>
             <div class="col-sm-2"></div>
         </div>
         <div class="col-sm-12 section-spacer">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div class="faculty-tracking-list-wrapper section-border clearfix">
-                    <div class="col-sm-12 no-padding">
-                        <div class="col-sm-12 no-padding">
-                            <div class="faculty-tracking-list-header">
-                                <div class="col-sm-8">
-                                    <h2>Tracking List</h2>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="tracking-add-btn-wrapper">
-                                        <button class='tracking-add-btn' type="button" name="faculty-add-tracker-btn">Add</button>
-                                    </div>
+            <div class="col-sm-12 no-padding">
+                <div class="col-sm-12 no-padding">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <div class="faculty-tracking-list-header">
+                            <div class="col-sm-12">
+                                <h2 id="tracking-list-header">Tracking List</h2>
+                                <div class="tracking-add-btn-wrapper">
+                                    <button class='tracking-add-btn' type="button" name="faculty-add-tracker-btn">Add</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="faculty-tracking-list-wrapper section-border clearfix">
                         <div class="col-sm-12">
                             <div class="tracking-list-body clearfix">
                             </div>
