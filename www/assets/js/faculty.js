@@ -1,4 +1,16 @@
 let faculty = {
+    checkInDatabase: function(username){
+        inDatabase(username, function(inDatabase){
+            if(inDatabase){
+                $("#search-btn-error-msg").css("display", "none");
+                faculty.getCapstone(username);
+            }
+            else{
+                $("#search-btn-error-msg").css("display", "block");
+            }
+        });
+    },
+
     getCapstone: function(username) {
 
         $.ajax({
@@ -105,8 +117,6 @@ let faculty = {
 
 // ============================================================================================================================== BEGINS DOCUMENT READY
 $(document).ready(function(){
-
-
     // fills in all of the invitation data if any
     if(invitationData.length == 0){
         $(".invitations-body").html("");
@@ -519,6 +529,21 @@ function inCommittee(json){
 }
 
 
-function inDatabase(username){
 
+function inDatabase(username, callback){
+    $.ajax({
+        url: ajaxURLStart + "api/inDatabase/" + username,
+        success:function(ele){
+            let result = JSON.parse(ele);
+            if(result.length <= 0){
+                callback(false);
+            }
+            else{
+                callback(true);
+            }
+        },
+        error:function(){
+            console.log("Something happened when checking for username in database in the inDatabase function");
+        }
+    });
 }

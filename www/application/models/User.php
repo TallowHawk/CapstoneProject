@@ -153,6 +153,7 @@ class User extends CI_Model {
 
 
     function inDatabase($username){
-        return DB::query(SELECT username FROM user)
+        return DB::query("SELECT username FROM user
+            WHERE username = %s AND role_id = 1", $username);
     }
 }

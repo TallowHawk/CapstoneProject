@@ -285,4 +285,8 @@ main#createAccount {
   font-size: 1em;
   margin-top: 25px; }
 
+#search-btn-error-msg {
+  color: red;
+  display: none; }
+
 /*# sourceMappingURL=index.css.map */
