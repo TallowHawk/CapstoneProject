@@ -167,6 +167,9 @@ let staff = {
             });
         }
 
+    },
+    viewStatusHistory: function () {
+
     }
 };
 
@@ -190,5 +193,9 @@ $(document).ready(function() {
     $(".project-status-edit-btn button").on('click', function () {
         staff.editStatusModal();
     });
+
+    $(".project-status-history-btn button").on('click', function () {
+        staff.viewStatusHistory();
+    })
 
 });

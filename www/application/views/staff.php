@@ -103,19 +103,24 @@
                     <div class="col-sm-12">
                         <div class="project-status-wrapper" style="overflow: hidden;">
                             <div class="col-sm-12">
-                                <div class="col-sm-6 no-padding">
+                                <div class="col-sm-12 no-padding">
                                     <div class="project-status-header">
                                         <h2 class="detail">Capstone Status</h2>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 no-padding">
-                                    <div class="detail project-status-edit-btn">
+                                <div class="col-sm-4 no-padding">
+                                    <div class="project-status-edit-btn">
                                         <button class="statusButton" type="button" name="staff-edit-project-status">Edit Status</button>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 no-padding">
+                                <div class="col-sm-4 no-padding">
                                     <div class="project-status-plag-btn">
                                         <button class="statusButton" type="button" name="staff-enter-plag-score">Enter Plag Score</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="project-status-history-btn">
+                                        <button class="statusButton" type="button" name="staff-view-status-history">Status History</button>
                                     </div>
                                 </div>
                             </div>
