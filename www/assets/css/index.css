@@ -285,4 +285,10 @@ main#createAccount {
   font-size: 1em;
   margin-top: 25px; }
 
+#tracking-list-header {
+  display: inline-block; }
+
+.tracking-add-btn-wrapper {
+  display: inline-block; }
+
 /*# sourceMappingURL=index.css.map */
