@@ -517,3 +517,8 @@ function populateUntrackedCapstones(){
 function inCommittee(json){
     return committeeData.some(item => item.cap_id == json.id);
 }
+
+
+function inDatabase(username){
+
+}

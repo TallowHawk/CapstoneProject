@@ -150,4 +150,9 @@ class User extends CI_Model {
         return DB::queryFirstField("SELECT f.id FROM faculty f
         WHERE f.uid = %d", $uid);
     }
+
+
+    function inDatabase($username){
+        return DB::query(SELECT username FROM user)
+    }
 }
