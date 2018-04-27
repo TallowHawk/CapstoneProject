@@ -155,20 +155,68 @@ main#createAccount {
     margin: 5px;
     font-size: 1em; }
 
+.faculty-bar {
+  border-radius: 8px;
+  margin: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #4d4d4d; }
+
 .project-details-wrapper {
   border-color: #4d4d4d;
   border-radius: 15px;
   height: 230px;
-  overflow: scroll; }
+  overflow: scroll;
+  padding-top: 10px; }
 
 .project-status-wrapper {
   border-color: #4d4d4d;
   border-radius: 15px;
   height: 230px;
-  overflow: scroll; }
+  overflow: scroll;
+  padding-top: 10px; }
+
+.committee-list-wrapper {
+  border-color: #4d4d4d;
+  border-radius: 15px;
+  height: 75px; }
+
+.faculty-committee-list-wrapper {
+  padding-top: 18px; }
+
+.committee-list-title {
+  margin-top: 8px; }
+
+.faculty-tracking-list-wrapper {
+  height: 200px;
+  border-radius: 15px;
+  padding-top: 10px; }
+
+.invitations-wrapper {
+  height: 230px;
+  border-radius: 15px;
+  padding-top: 10px;
+  margin-top: 15px; }
+
+.project-status-wrapper {
+  height: 230px;
+  border-radius: 15px; }
 
 .invitation-choice-wrapper {
   text-align: center; }
+
+.box-label {
+  padding-right: 15px; }
+
+.username-box-wrapper {
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 35px; }
 
 #modal-staff {
   width: 80%; }

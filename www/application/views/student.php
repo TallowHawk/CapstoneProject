@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="project-status-field-wrapper section-border clearfix">
+            <div class="project-status-field-wrapper section-border clearfix project-status-wrapper">
                 <div class="col-sm-12">
                     <div class="project-status-field-wrapper">
                         <div class="col-sm-12">
@@ -133,7 +133,7 @@
 </div>
 <div class="logout-btn-wrapper">
     <div class="logout-btn" onclick="window.location.assign('<?php echo base_url(); ?>login/logout/');">
-        <h1>LOGOUT</h1>
+        <p>Log Out</p>
     </div>
 </div>
 

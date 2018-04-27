@@ -65,8 +65,10 @@
             <div class="col-sm-12">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
-                    <label>Project Username: </label><input type="text" name="project-username-input">
+                  <div class="username-box-wrapper">
+                    <label class="box-label">Project Username: </label><input type="text" name="project-username-input" class="faculty-bar">
                     <button onclick="faculty.checkInDatabase(this.parentElement.getElementsByTagName('input')[0].value); return false;" value="Search">Search</button>
+                  </div>
                 </div>
                 <div class="col-sm-2"></div>
             </div>
@@ -103,7 +105,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="project-status-wrapper section-border clearfix">
+                    <div class="project-status-wrapper section-border clearfix" style="margin-top: 15px;">
                         <div class="col-sm-12">
                             <div class="col-sm-12 ">
                                 <div class="project-status">
@@ -136,14 +138,14 @@
         <div class="col-sm-12 section-spacer">
             <div class="col-sm-12">
                 <div class="col-sm-2"></div>
-                <div class="col-sm-8">
+                <div class="col-sm-8" style="margin-bottom: 15px;">
                     <h2>Committee List</h2>
                 </div>
                 <div class="col-sm-2"></div>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-                <div class="faculty-committee-list-wrapper section-border clearfix">
+                <div class="faculty-committee-list-wrapper section-border clearfix committee-list-wrapper">
                     <div class="committee-list-field clearfix"></div>
                 </div>
             </div>
@@ -156,7 +158,7 @@
                     <div class="col-sm-8">
                         <div class="faculty-tracking-list-header">
                             <div class="col-sm-12">
-                                <h2 id="tracking-list-header">Tracking List</h2>
+                                <h2 id="tracking-list-header" style="margin-bottom: 15px; margin-right: 10px;">Tracking List</h2>
                                 <div class="tracking-add-btn-wrapper">
                                     <button class='tracking-add-btn' type="button" name="faculty-add-tracker-btn">Add</button>
                                 </div>
@@ -180,7 +182,7 @@
     </div>
     <div class="logout-btn-wrapper">
         <div class="logout-btn" onclick="window.location.assign('<?php echo base_url(); ?>login/logout/');">
-            <h1>LOGOUT</h1>
+            <p>Log Out</p>
         </div>
     </div>
 </div>
