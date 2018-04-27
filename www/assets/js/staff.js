@@ -98,7 +98,8 @@ let staff = {
                     {title:"Title",field:"title"},
                     {title:"Plagiarism Score",field:"plagerism_score"},
                     {title:"Type",field:"type"},
-                    {title:"Defense Date",field:"defense_date"}
+                    {title:"Defense Date",field:"defense_date"},
+                    {title:"Status",field:"status"}
                 ],
                 rowClick: function (e, row) {
                     staff.getCapstone(row.getData().username);
@@ -106,26 +107,24 @@ let staff = {
                 }
             });
 
+
+            for (let i=0, len=json.length; i<len; i++) {
+                $.ajax({
+                    url: ajaxURLStart + "/api/getCapstoneStatus/" + json[i].username,
+                    method: "get",
+                    dataType: "json"
+                }).done(function (status) {
+                    json[i].status = status.status_desc;
+
+                });
+
+            }
+
             ajaxAddition.tabulator("setData", json);
-            // console.log(json);
-            //
-            // $.each(json, function (i, ele) {
-            //     ajaxAddition += "<div class='col-sm-12'><div class='modal-cap-project clearfix'>";
-            //     ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-title'>";
-            //     ajaxAddition += "<h4>" + ele.defense_date + "</h4></div></div>";
-            //     ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-username'>";
-            //     ajaxAddition += "<h4>" + ele.title + "</h4></div></div>";
-            //     ajaxAddition += "<div class='col-sm-4'><div class='modal-cap-view-div'>";
-            //     ajaxAddition += "<button type='button' data-user='" + ele.username + "' name='modal-cap-view-btn'>VIEW</button>";
-            //     ajaxAddition += "</div></div></div></div>";
-            // });
+
             $(".modal-body").append(ajaxAddition);
 
-            // $(".modal-cap-view-div button").attr('name', 'modal-cap-view-btn').on('click', function () {
-            //     let username = $(this).attr("data-user");
-            //     staff.getCapstone(username);
-            //     $('#myModal').modal('hide');
-            // });
+
         });
     },
 
@@ -147,7 +146,7 @@ let staff = {
             modalBody += "</div></div>";
             modalBody += "<div class='col-sm-4'><div class='modal-cap-update-status'>";
             modalBody += "<button id='modal-cap-update-status-button'>UPDATE</button>";
-            modalBody += "</div></div></div></div>"
+            modalBody += "</div></div></div></div>";
 
             $(".modal-body").html(modalBody);
 
