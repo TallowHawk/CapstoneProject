@@ -98,4 +98,9 @@ class Api extends CI_Controller {
 	    $this->load->model("capstone");
 	    echo json_encode($this->capstone->getCapstoneId($username));
     }
+
+    public function inDatabase($username){
+        $this->load->model("user");
+        echo json_encode($this->user->inDatabase($username));
+    }
 }
