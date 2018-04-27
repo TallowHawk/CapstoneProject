@@ -20,6 +20,8 @@
                 <h1 class='program-title'>Capstone Tracker</h1>
             </div>
             <div class="col-sm-6">
-                <h1 class="project-name">Placeholder</h1>
+                <div class="logo-container">
+                    <img src="<?php echo base_url(); ?>assets/images/tigerlogo.png" alt="RIT Logo">
+                </div>
             </div>
         </div>
