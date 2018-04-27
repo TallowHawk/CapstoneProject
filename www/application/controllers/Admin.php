@@ -110,30 +110,28 @@ class Admin extends CI_Controller {
                     $capstone["title"] = "Default Title";
                     $capstone["description"] = "This is a generic description";
                     if($this->capstone->createCapstone($capstone["studentId"],$capstone["title"],$capstone["description"],"capstone","2018-05-19 05:29:57")>0) {
-                        if (rand(0,3)>0){
-                            $status = [
-                                "Approved",
-                                "Rejected",
-                                "Pending",
-                                "Complete"
+                        $status = [
+                            "Approved",
+                            "Rejected",
+                            "Pending",
+                            "Complete"
+                        ];
+                        $statusNum = rand(0,3);
+                        $capId = $this->capstone->getCapstoneSpecific($account["username"]);
+                        $this->capstone->setStatus($status[$statusNum],$capId["id"]);
+                        if ($statusNum == 3) {
+                            $grades = [
+                                "A",
+                                "A-",
+                                "B",
+                                "B-",
+                                "C",
+                                "C-",
+                                "D",
+                                "D-",
+                                "F"
                             ];
-                            $statusNum = rand(0,3);
-                            $capId = $this->capstone->getCapstoneSpecific($account["username"]);
-                            $this->capstone->setStatus($status[$statusNum],$capId["id"]);
-                            if ($statusNum == 3) {
-                                $grades = [
-                                    "A",
-                                    "A-",
-                                    "B",
-                                    "B-",
-                                    "C",
-                                    "C-",
-                                    "D",
-                                    "D-",
-                                    "F"
-                                ];
-                                $this->capstone->updateCapstoneGrade($grades[rand(0,8)],$capId["id"]);
-                            }
+                            $this->capstone->updateCapstoneGrade($grades[rand(0,8)],$capId["id"]);
                         }
                     }
                     else {
