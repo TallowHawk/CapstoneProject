@@ -204,6 +204,41 @@ let staff = {
             });
 
         }
+    },
+
+    enterPlagScore: function () {
+        if (capstoneUsername !== ""){
+            let modalBody = "";
+            $('#myModal').modal('show');
+
+            modalBody += "<div class='col-sm-12'><div class='modal-cap-edit-plag-score'>";
+            modalBody += "<div class='col-sm-8'><div class='modal-cap-enter-plag-score'>";
+            modalBody += "<input type='text' id='modal-plag-score-input'>";
+            modalBody += "</div></div>";
+            modalBody += "<div class='col-sm-4'><div class='modal-cap-submit-plag-score'>";
+            modalBody += "<button id='modal-cap-submit-plag-score-button'>Enter</button>";
+            modalBody += "</div></div></div></div>";
+
+            $(".modal-body").html(modalBody);
+
+            $("#modal-cap-update-status-button").on('click',function () {
+                let username = document.getElementById("staff-proj-det-username").innerText;
+                let statusUpdate = document.getElementById("modal-plag-score-input").value;
+                $.ajax({
+                    url: ajaxURLStart + "api/getCapstoneByUsername/" + username,
+                    method: "get",
+                    dataType: "json"
+                }).done(function (json) {
+                    $.ajax({
+                        url: ajaxURLStart + "app/updateStatus/" + statusUpdate + "/" + json.id,
+                        method: "get"
+                    }).done(function() {
+                        staff.getCapstone(username);
+                        $('#myModal').modal('hide');
+                    });
+                })
+            });
+        }
     }
 };
 
