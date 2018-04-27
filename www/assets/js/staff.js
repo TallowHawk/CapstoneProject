@@ -210,7 +210,7 @@ let staff = {
         $('#myModal').modal('show');
 
         $.ajax({
-            url: ajaxURLStart + "api/getCapstoneDefenseDates/",
+            url: ajaxURLStart + "api/getCapstonesByStatus/" + "Complete",
             method: "get",
             dataType: "json"
         }).done(function (json) {
@@ -273,7 +273,7 @@ $(document).ready(function() {
     });
 
     $("#staff-complete-proj").on('click', function () {
-
+        staff.viewCompletedProjects();
     });
 
     $(".project-status-edit-btn button").on('click', function () {
