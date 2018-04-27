@@ -295,4 +295,9 @@ main#createAccount {
 .tracking-add-btn-wrapper {
   display: inline-block; }
 
+.logo-container {
+  float: right; }
+  .logo-container img {
+    width: 80px; }
+
 /*# sourceMappingURL=index.css.map */
