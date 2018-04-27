@@ -211,6 +211,7 @@ let staff = {
 
             modalBody += "<div class='col-sm-12'><div class='modal-cap-edit-plag-score'>";
             modalBody += "<div class='col-sm-8'><div class='modal-cap-enter-plag-score'>";
+            modalBody += "<label>Enter Plag Score:</label>";
             modalBody += "<input type='text' id='modal-plag-score-input'>";
             modalBody += "</div></div>";
             modalBody += "<div class='col-sm-4'><div class='modal-cap-submit-plag-score'>";
