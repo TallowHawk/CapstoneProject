@@ -47,7 +47,7 @@ class Capstone extends CI_Model {
      * @return mixed
      */
     function getCapstonesByStatus($status) {
-        return DB::query("SELECT u.username, c.title, c.description, c.type
+        return DB::query("SELECT u.username, c.title, c.description, c.type, c.id, c.defense_date, c.type, u.first_name, u.last_name
             FROM capstone c JOIN student s ON c.student_id = s.id
             JOIN user u ON s.uid = u.uid
             JOIN status_history h ON c.id = h.capstone_id
@@ -63,7 +63,7 @@ class Capstone extends CI_Model {
         return DB::query("SELECT c.id, c.defense_date, c.title, u.username, u.first_name, u.last_name, c.type, c.plagerism_score
             FROM capstone c JOIN student s ON c.student_id = s.id
             JOIN user u ON s.uid = u.uid
-            ORDER BY defense_date ASC;");
+            ORDER BY defense_date DESC;");
     }
 
     /**
