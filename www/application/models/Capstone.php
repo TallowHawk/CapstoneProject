@@ -34,6 +34,13 @@ class Capstone extends CI_Model {
                                       WHERE u.username = %s;",$username);
     }
 
+    function getCapstoneId($username) {
+        return DB::queryFirstField("SELECT c.id
+                                        FROM capstone c JOIN student s ON c.student_id = s.id
+                                        JOIN user u ON s.uid = u.uid
+                                        WHERE u.username = %s;", $username);
+    }
+
     /**
      * This allows you to get all the
      * @param $status - the status of the projects to look for

@@ -166,6 +166,41 @@ let staff = {
             });
         }
 
+    },
+    viewStatusHistory: function () {
+        let username = document.getElementById("staff-proj-det-username").textContent;
+
+        if (username !== ""){
+            $('#myModal').modal('show');
+
+
+            $.ajax({
+                url: ajaxURLStart + "api/getCapstoneId/" + username,
+                method: "get",
+                dataType: "json"
+            }).done(function (cap_id) {
+                $.ajax({
+                    url: ajaxURLStart + "api/getCapstoneHistory/" + cap_id,
+                    method: "get",
+                    dataType: "json"
+                }).done(function (json) {
+                    let ajaxAdditon = $("<div>").tabulator({
+                        height: 500,
+                        layout: "fitColumns",
+                        columns: [
+                            {title:"Date",field:"date"},
+                            {title:"Status",field:"status_desc"}
+                        ]
+                    });
+
+                    ajaxAdditon.tabulator('setData',json);
+                    $('.modal-body').html(ajaxAdditon);
+                });
+
+
+            });
+
+        }
     }
 };
 
@@ -189,5 +224,9 @@ $(document).ready(function() {
     $(".project-status-edit-btn button").on('click', function () {
         staff.editStatusModal();
     });
+
+    $(".project-status-history-btn button").on('click', function () {
+        staff.viewStatusHistory();
+    })
 
 });
