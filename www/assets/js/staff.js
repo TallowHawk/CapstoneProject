@@ -204,6 +204,54 @@ let staff = {
             });
 
         }
+    },
+
+    viewCompletedProjects: function () {
+        $('#myModal').modal('show');
+
+        $.ajax({
+            url: ajaxURLStart + "api/getCapstoneDefenseDates/",
+            method: "get",
+            dataType: "json"
+        }).done(function (json) {
+            let ajaxAddition = $("<div>").tabulator({
+                height: 500,
+                layout: "fitColumns",
+                columns: [
+                    {title:"Username",field:"username"},
+                    {title:"First Name",field:"first_name"},
+                    {title:"Last Name",field:"last_name"},
+                    {title:"Title",field:"title"},
+                    {title:"Plagiarism Score",field:"plagerism_score"},
+                    {title:"Type",field:"type"},
+                    {title:"Defense Date",field:"defense_date"},
+                    {title:"Status",field:"status"}
+                ],
+                rowClick: function (e, row) {
+                    staff.getCapstone(row.getData().username);
+                    $('#myModal').modal('hide');
+                }
+            });
+
+
+            for (let i=0, len=json.length; i<len; i++) {
+                $.ajax({
+                    url: ajaxURLStart + "/api/getCapstoneStatus/" + json[i].username,
+                    method: "get",
+                    dataType: "json"
+                }).done(function (status) {
+                    json[i].status = status.status_desc;
+
+                });
+
+            }
+
+            ajaxAddition.tabulator("setData", json);
+
+            $(".modal-body").html(ajaxAddition);
+
+
+        });
     }
 };
 
@@ -222,6 +270,10 @@ $(document).ready(function() {
 
     $("#staff-defense-prop").on('click', function () {
         staff.defenseDateModal();
+    });
+
+    $("#staff-complete-proj").on('click', function () {
+
     });
 
     $(".project-status-edit-btn button").on('click', function () {
