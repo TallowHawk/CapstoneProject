@@ -192,4 +192,11 @@ class App extends CI_Controller {
 
         }
     }
+
+    public function setPlagScore($plag_score,$cap_id) {
+        if (isset($plag_score,$cap_id)) {
+            $this->load->model("capstone");
+            echo json_encode($this->capstone->setPlagScore($plag_score,$cap_id));
+        }
+    }
 }

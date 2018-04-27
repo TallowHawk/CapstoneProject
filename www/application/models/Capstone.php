@@ -138,4 +138,10 @@ class Capstone extends CI_Model {
             JOIN status s ON sh.status_id = s.id
             WHERE capstone_id = %i", $cap_id);
     }
+
+    function setPlagScore($plag_score,$cap_id) {
+        return DB::update('capstone', array(
+            'plagerism_score' => $plag_score
+        ), "id = %i", $cap_id);
+    }
 }

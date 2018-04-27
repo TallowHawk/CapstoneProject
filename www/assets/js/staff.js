@@ -206,6 +206,45 @@ let staff = {
         }
     },
 
+    enterPlagScore: function () {
+        if (capstoneUsername !== ""){
+            let modalBody = "";
+            $('#myModal').modal('show');
+
+            modalBody += "<div class='col-sm-12'><div class='modal-cap-edit-plag-score'>";
+            modalBody += "<div class='col-sm-8'><div class='modal-cap-enter-plag-score'>";
+            modalBody += "<label>Enter Plag Score:</label>";
+            modalBody += "<input type='text' id='modal-plag-score-input'>";
+            modalBody += "</div></div>";
+            modalBody += "<div class='col-sm-4'><div class='modal-cap-submit-plag-score'>";
+            modalBody += "<button id='modal-cap-submit-plag-score-button'>Enter</button>";
+            modalBody += "</div></div></div></div>";
+
+            $(".modal-body").html(modalBody);
+
+            $("#modal-cap-submit-plag-score-button").on('click',function () {
+                let username = document.getElementById("staff-proj-det-username").innerText;
+                let plagScore = document.getElementById("modal-plag-score-input").value;
+                $.ajax({
+                    url: ajaxURLStart + "api/getCapstoneByUsername/" + username,
+                    method: "get",
+                    dataType: "json"
+                }).done(function (json) {
+                    $.ajax({
+                        url: ajaxURLStart + "app/setPlagScore/" + plagScore + "/" + json.id,
+                        method: "get",
+                        error: function () {
+                            console.error("Error: Todd sucks at life");
+                        }
+                    }).done(function() {
+                        staff.getCapstone(username);
+                        $('#myModal').modal('hide');
+                    });
+                })
+            });
+        }
+    },
+
     viewCompletedProjects: function () {
         $('#myModal').modal('show');
 
@@ -282,6 +321,10 @@ $(document).ready(function() {
 
     $(".project-status-history-btn button").on('click', function () {
         staff.viewStatusHistory();
+    });
+
+    $(".project-status-plag-btn button").on('click', function () {
+       staff.enterPlagScore();
     })
 
 });
