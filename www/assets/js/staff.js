@@ -10,7 +10,6 @@ let staff = {
             method: "get",
             dataType: "json"
         }).done(function (json) {
-            console.log(json);
             let projectDetails = document.getElementsByClassName("project-details-wrapper")[0];
             document.getElementById("staff-proj-det-name").innerText = json.first_name + " " + json.last_name;
             document.getElementById("staff-proj-det-title").innerText = json.title;
@@ -49,7 +48,6 @@ let staff = {
             dataType: "json"
         }).done(function (json) {
             let ajaxAddition = "";
-            console.log(json);
 
             $.each(json, function (i, ele) {
                 ajaxAddition += "<div class='col-sm-12'><div class='modal-cap-project clearfix'>";
@@ -221,17 +219,20 @@ let staff = {
 
             $(".modal-body").html(modalBody);
 
-            $("#modal-cap-update-status-button").on('click',function () {
+            $("#modal-cap-submit-plag-score-button").on('click',function () {
                 let username = document.getElementById("staff-proj-det-username").innerText;
-                let statusUpdate = document.getElementById("modal-plag-score-input").value;
+                let plagScore = document.getElementById("modal-plag-score-input").value;
                 $.ajax({
                     url: ajaxURLStart + "api/getCapstoneByUsername/" + username,
                     method: "get",
                     dataType: "json"
                 }).done(function (json) {
                     $.ajax({
-                        url: ajaxURLStart + "app/updateStatus/" + statusUpdate + "/" + json.id,
-                        method: "get"
+                        url: ajaxURLStart + "app/setPlagScore/" + plagScore + "/" + json.id,
+                        method: "get",
+                        error: function () {
+                            console.error("Error: Todd sucks at life");
+                        }
                     }).done(function() {
                         staff.getCapstone(username);
                         $('#myModal').modal('hide');
@@ -265,6 +266,10 @@ $(document).ready(function() {
 
     $(".project-status-history-btn button").on('click', function () {
         staff.viewStatusHistory();
+    });
+
+    $(".project-status-plag-btn button").on('click', function () {
+       staff.enterPlagScore();
     })
 
 });
