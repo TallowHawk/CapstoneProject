@@ -158,10 +158,14 @@ let staff = {
                     method: "get",
                     dataType: "json"
                 }).done(function (json) {
+                    console.log(ajaxURLStart + "app/updateStatus/" + statusUpdate + "/" + json.id);
                     $.ajax({
                         url: ajaxURLStart + "app/updateStatus/" + statusUpdate + "/" + json.id,
                         method: "get"
-                    })
+                    }).done(function() {
+                        staff.getCapstone(username);
+                        $('#myModal').modal('hide');
+                    });
                 })
             });
         }
