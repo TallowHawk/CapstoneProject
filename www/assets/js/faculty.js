@@ -531,19 +531,26 @@ function inCommittee(json){
 
 
 function inDatabase(username, callback){
-    $.ajax({
-        url: ajaxURLStart + "api/inDatabase/" + username,
-        success:function(ele){
-            let result = JSON.parse(ele);
-            if(result.length <= 0){
-                callback(false);
+    if(username == ""){
+        $("#search-btn-error-msg").html("Please enter a username");
+        callback(false);
+    }
+    else{
+        $.ajax({
+            url: ajaxURLStart + "api/inDatabase/" + username,
+            success:function(ele){
+                let result = JSON.parse(ele);
+                if(result.length <= 0){
+                    $("#search-btn-error-msg").html("Student not found");
+                    callback(false);
+                }
+                else{
+                    callback(true);
+                }
+            },
+            error:function(){
+                console.log("Something happened when checking for username in database in the inDatabase function");
             }
-            else{
-                callback(true);
-            }
-        },
-        error:function(){
-            console.log("Something happened when checking for username in database in the inDatabase function");
-        }
-    });
+        });
+    }
 }
