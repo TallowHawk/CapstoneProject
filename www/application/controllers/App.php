@@ -14,6 +14,58 @@ class App extends CI_Controller {
 	}
 
 	public function student() {
+		if ($_POST)
+		{
+			$errors = [];
+			if(strlen( $_POST["fName"] ) <= 1 )
+			{
+				$errors[] = "Please enter a first name.<br/>";
+			}
+			if(strlen( $_POST["lName"] ) <= 1 )
+			{
+				$errors[] = "Please enter a last name.<br/>";
+			}
+			if(strlen( $_POST["defenceDate"] ) != 19 )
+			{
+				$errors[] = "Please enter a valid date.<br/>";
+			}
+			if(strlen( $_POST["title"] ) <= 1 )
+			{
+				$errors[] = "Please enter a first name.<br/>";
+			}
+			if(strlen( $_POST["description"] ) <= 1 )
+			{
+				$errors[] = "Please enter a last name.<br/>";
+			}
+			
+			if(count($errors)>0)
+			{
+				$message .= "The Following fields are invalid:<br/>";
+			  
+				for ( $i = 0; $i < count( $errors ); $i++ ) 
+				{
+					$message .= $errors[$i];
+				}
+			}
+			else
+			{
+				//pass data in to make a new capstone
+				$this->load->model("capstone");
+				$this->load->model("user");
+				//get the studentID from the current session
+				//echo($_SESSION["uid"]);
+				$studentID = $this->user->getStudentId($_SESSION["uid"]);
+				//echo($studentID);
+				//create a capstone project in the database
+				//echo("capstone created with the following information: " + $studentID +", " + $_POST["title"] +", " + $_POST["description"] +", " + $_POST[type].value +", " + $_POST["defenceDate"]);
+				$this->capstone->createCapstone($studentID,$_POST["title"],$_POST["description"],$_POST["type"], $_POST["defenceDate"]);
+				$cap_ID = $this->capstone->getCapstoneId($_SESSION["username"]);
+				$this->capstone->setStatus("Pending",$cap_ID);
+				//header("Location: app/" . $_SESSION["userType"]);
+			}
+		}
+		
+		//------------------------------------------
         if (!isset($_SESSION["uid"])){
             header("location: " .  base_url());
         }
