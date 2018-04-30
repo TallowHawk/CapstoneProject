@@ -138,6 +138,7 @@ class App extends CI_Controller {
             header("Location: " . base_url() . "app/" . $_SESSION["userType"]);
         }
         $data['userData'] = $this->user->getGeneralData($_SESSION["uid"]);
+        $data['username'] = $_SESSION["username"];
         $this->load->view("header");
         $this->load->view("staff", $data);
         $this->load->view("footer");
