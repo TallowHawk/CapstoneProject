@@ -133,7 +133,7 @@ function Staff() {
         if (capstoneUsername !== "" && status === "Approved"){
             let modalBody = "";
             let statuses = [
-                "Completed"
+                "Complete"
             ];
             $('#myModal').modal('show');
 
