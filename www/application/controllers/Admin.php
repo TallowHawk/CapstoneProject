@@ -109,17 +109,41 @@ class Admin extends CI_Controller {
                     $capstone["studentId"] = $this->user->getStudentId($this->user->getUid($account["username"]));
                     $capstone["title"] = "Default Title";
                     $capstone["description"] = "This is a generic description";
-                    if($this->capstone->createCapstone($capstone["studentId"],$capstone["title"],$capstone["description"],"capstone","2018-05-19 05:29:57")>0) {
+                    $capstoneType = [
+                        "capstone",
+                        "thesis"
+                    ];
+
+                    if($this->capstone->createCapstone($capstone["studentId"],$capstone["title"],$capstone["description"],$capstoneType[rand(0,1)],"2018-05-19 05:29:57")>0) {
                         $status = [
                             "Approved",
                             "Rejected",
                             "Pending",
                             "Complete"
                         ];
+
+                        $times = [
+                            "2018-01-25 12:11:57",
+                            "2018-03-28 08:19:31",
+                            "2018-04-29 23:52:15"
+                        ];
+
                         $statusNum = rand(0,3);
                         $capId = $this->capstone->getCapstoneSpecific($account["username"]);
-                        $this->capstone->setStatus($status[$statusNum],$capId["id"]);
-                        if ($statusNum == 3) {
+                        if ($status[$statusNum] == "Approved") {
+                            $this->capstone->setStatusAdmin($status[2],$capId["id"],$times[0]);
+                            $this->capstone->setStatusAdmin($status[0],$capId["id"],$times[1]);
+                            $this->capstone->setPlagScore(rand(1,70),$capId["id"]);
+                        }
+                        elseif ($status[$statusNum] == "Rejected") {
+                            $this->capstone->setStatusAdmin($status[2],$capId["id"],$times[0]);
+                            $this->capstone->setStatusAdmin($status[1],$capId["id"],$times[1]);
+                            $this->capstone->setPlagScore(rand(1,70),$capId["id"]);
+                        }
+                        elseif ($statusNum == 3) {
+                            $this->capstone->setStatusAdmin($status[2],$capId["id"],$times[0]);
+                            $this->capstone->setStatusAdmin($status[0],$capId["id"],$times[1]);
+                            $this->capstone->setStatusAdmin($status[3],$capId["id"],$times[2]);
                             $grades = [
                                 "A",
                                 "A-",
@@ -132,6 +156,10 @@ class Admin extends CI_Controller {
                                 "F"
                             ];
                             $this->capstone->updateCapstoneGrade($grades[rand(0,8)],$capId["id"]);
+                            $this->capstone->setPlagScore(rand(1,70),$capId["id"]);
+                        }
+                        else {
+                            $this->capstone->setStatusAdmin($status[2],$capId["id"],$times[0]);
                         }
                     }
                     else {
