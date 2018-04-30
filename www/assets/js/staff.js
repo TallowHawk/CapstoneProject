@@ -1,10 +1,10 @@
-let staff = {
+function Staff() {
 
     /**
      * This function gets a capstone based off of a username and then loads it into the view
      * @param username - the username of the persons capstone
      */
-    getCapstone: function(username) {
+    this.getCapstone = function(username) {
         $.ajax({
             url: "/api/getCapstoneByUsername/" + username,
             method: "get",
@@ -29,13 +29,13 @@ let staff = {
         }).done(function (json) {
             document.getElementById("staff-cap-status").innerText = json.status_desc;
         });
-    },
+    }
 
     /**
      * This function handles the generic modal for displaying the pending, rejected, and accepted proposals
      * @param ajaxUrlEndpoint - either approved, pending, or rejected depending on what button is selected
      */
-    handleModal: function (ajaxUrlEndpoint) {
+    this.handleModal = function (ajaxUrlEndpoint) {
         let modalBody = "";
         modalBody += "<div class='col-sm-12 modal-labels'><div class='col-sm-4'><h3>Name</h3></div>";
         modalBody += "<div class='col-sm-4'><h3>Username</h3></div></div>";
@@ -69,13 +69,13 @@ let staff = {
                 $('#myModal').modal('hide');
             });
         });
-    },
+    }
 
     /**
      * The defense date modal has similar code the to handleModal function but the data is different so some variables
      * are changed to reflect that
      */
-    defenseDateModal: function () {
+    this.defenseDateModal = function () {
         let modalBody = "";
         modalBody += "<div class='col-sm-12 modal-labels'><div class='col-sm-4'><h3>Defense Date</h3></div>";
         modalBody += "<div class='col-sm-4'><h3>Title</h3></div></div>";
@@ -126,15 +126,13 @@ let staff = {
 
 
         });
-    },
+    }
 
-    editStatusModal: function () {
+    this.editStatusModal = function () {
         if (capstoneUsername !== ""){
             let modalBody = "";
             let statuses = [
-                "Approved",
-                "Rejected",
-                "Pending"
+                "Completed"
             ];
             $('#myModal').modal('show');
 
@@ -169,8 +167,8 @@ let staff = {
             });
         }
 
-    },
-    viewStatusHistory: function () {
+    }
+    this.viewStatusHistory = function () {
         let username = document.getElementById("staff-proj-det-username").textContent;
 
         if (username !== ""){
@@ -204,9 +202,9 @@ let staff = {
             });
 
         }
-    },
+    }
 
-    enterPlagScore: function () {
+    this.enterPlagScore = function () {
         if (capstoneUsername !== ""){
             let modalBody = "";
             $('#myModal').modal('show');
@@ -243,9 +241,9 @@ let staff = {
                 })
             });
         }
-    },
+    }
 
-    viewCompletedProjects: function () {
+    this.viewCompletedProjects = function () {
         $('#myModal').modal('show');
 
         $.ajax({
@@ -292,11 +290,12 @@ let staff = {
 
         });
     }
-};
+}
 
 let capstoneUsername = "";
 
 $(document).ready(function() {
+    let staff = new Staff();
     $("#staff-pending-prop").on('click', function () {
         staff.handleModal("pending");
     });

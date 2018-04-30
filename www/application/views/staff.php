@@ -1,4 +1,9 @@
 <script src="<?php echo base_url() . "assets/js/staff.js"?>"></script>
+<?php
+    if ($username == "qyuvks") {
+        echo "<script src='" . base_url() . "assets/js/srStaffFunctions.js'></script>";
+    }
+?>
 <script>let ajaxURLStart = "<?php echo base_url() ?>";</script>
 <div class="clearfix staff-wrapper">
     <div class="col-sm-12">
