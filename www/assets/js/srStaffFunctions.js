@@ -13,7 +13,8 @@ Staff.prototype.srStaffEdit = function () {
         modalBody += "<div class='col-sm-8'><div class='modal-cap-select-status'>";
         modalBody += "<select id='modal-cap-statuses-input'><option value='"+ statuses[0] +"'>" + statuses[0] + "</option>" +
             "<option value='" + statuses[1] + "'>" + statuses[1] + "</option>" +
-            "<option value='" + statuses[2] + "'>" + statuses[2] + "</option></select>";
+            "<option value='" + statuses[2] + "'>" + statuses[2] + "</option>" +
+            "<option value='" + statuses[3] + "'>" + statuses[3] + "</option></select>";
         modalBody += "</div></div>";
         modalBody += "<div class='col-sm-4'><div class='modal-cap-update-status'>";
         modalBody += "<button id='modal-cap-update-status-button'>UPDATE</button>";
@@ -33,7 +34,7 @@ Staff.prototype.srStaffEdit = function () {
                     url: ajaxURLStart + "app/updateStatus/" + statusUpdate + "/" + json.id,
                     method: "get"
                 }).done(function() {
-                    Staff.getCapstone(username);
+                    staff.getCapstone(username);
                     $('#myModal').modal('hide');
                 });
             })

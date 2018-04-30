@@ -29,7 +29,7 @@ function Staff() {
         }).done(function (json) {
             document.getElementById("staff-cap-status").innerText = json.status_desc;
         });
-    }
+    };
 
     /**
      * This function handles the generic modal for displaying the pending, rejected, and accepted proposals
@@ -69,7 +69,7 @@ function Staff() {
                 $('#myModal').modal('hide');
             });
         });
-    }
+    };
 
     /**
      * The defense date modal has similar code the to handleModal function but the data is different so some variables
@@ -126,10 +126,11 @@ function Staff() {
 
 
         });
-    }
+    };
 
     this.editStatusModal = function () {
-        if (capstoneUsername !== ""){
+        let status = document.getElementById("staff-cap-status").innerText;
+        if (capstoneUsername !== "" && status === "Approved"){
             let modalBody = "";
             let statuses = [
                 "Completed"
@@ -139,8 +140,7 @@ function Staff() {
             modalBody += "<div class='col-sm-12'><div class='modal-cap-edit-status'>";
             modalBody += "<div class='col-sm-8'><div class='modal-cap-select-status'>";
             modalBody += "<select id='modal-cap-statuses-input'><option value='"+ statuses[0] +"'>" + statuses[0] + "</option>" +
-                "<option value='" + statuses[1] + "'>" + statuses[1] + "</option>" +
-                "<option value='" + statuses[2] + "'>" + statuses[2] + "</option></select>";
+                "</select>";
             modalBody += "</div></div>";
             modalBody += "<div class='col-sm-4'><div class='modal-cap-update-status'>";
             modalBody += "<button id='modal-cap-update-status-button'>UPDATE</button>";
@@ -167,7 +167,7 @@ function Staff() {
             });
         }
 
-    }
+    };
     this.viewStatusHistory = function () {
         let username = document.getElementById("staff-proj-det-username").textContent;
 
@@ -202,7 +202,7 @@ function Staff() {
             });
 
         }
-    }
+    };
 
     this.enterPlagScore = function () {
         if (capstoneUsername !== ""){
@@ -241,7 +241,7 @@ function Staff() {
                 })
             });
         }
-    }
+    };
 
     this.viewCompletedProjects = function () {
         $('#myModal').modal('show');
@@ -265,6 +265,7 @@ function Staff() {
                     {title:"Status",field:"status"}
                 ],
                 rowClick: function (e, row) {
+
                     staff.getCapstone(row.getData().username);
                     $('#myModal').modal('hide');
                 }
@@ -291,11 +292,10 @@ function Staff() {
         });
     }
 }
-
+let staff = new Staff();
 let capstoneUsername = "";
 
 $(document).ready(function() {
-    let staff = new Staff();
     $("#staff-pending-prop").on('click', function () {
         staff.handleModal("pending");
     });
