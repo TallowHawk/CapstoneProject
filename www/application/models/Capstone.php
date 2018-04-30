@@ -98,6 +98,14 @@ class Capstone extends CI_Model {
         ));
     }
 
+    function setStatusAdmin($status,$capID,$date) {
+        return DB::insert('status_history',array(
+            'capstone_id' => $capID,
+            'status_id' => DB::queryOneField('id',"SELECT id FROM status WHERE status_desc = %s", $status),
+            'date' => $date
+        ));
+    }
+
     /**
      * This will create a new capstone record for the selected student
      * @param $student_id - the student who's capstone this is
