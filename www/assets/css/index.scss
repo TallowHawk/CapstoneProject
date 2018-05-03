@@ -238,7 +238,7 @@ main#createAccount {
 .committee-list-wrapper {
     border-color: $accent-color;
     border-radius: 15px; 
-    height: 75px; 
+    padding-bottom: 15px; 
 }
 
 .faculty-committee-list-wrapper {
@@ -250,9 +250,9 @@ main#createAccount {
 }
 
 .faculty-tracking-list-wrapper {
-    height: 200px; 
     border-radius: 15px; 
     padding-top: 10px; 
+    padding-bottom: 20px; 
 }
 
 .invitations-wrapper {
