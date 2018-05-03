@@ -170,7 +170,8 @@ main#createAccount {
   border-color: #4d4d4d;
   border-radius: 15px;
   height: 230px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding-top: 10px; }
 
 .project-status-wrapper {

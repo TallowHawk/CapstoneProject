@@ -223,7 +223,8 @@ main#createAccount {
     border-color: $accent-color;
     border-radius: 15px;
     height: 230px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding-top: 10px; 
 }
 
