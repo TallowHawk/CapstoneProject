@@ -17,6 +17,7 @@ class App extends CI_Controller {
 		if ($_POST)
 		{
 			$errors = [];
+			/*
 			if(strlen( $_POST["fName"] ) <= 1 )
 			{
 				$errors[] = "Please enter a first name.<br/>";
@@ -25,6 +26,7 @@ class App extends CI_Controller {
 			{
 				$errors[] = "Please enter a last name.<br/>";
 			}
+			*/
 			if(strlen( $_POST["defenceDate"] ) != 19 )
 			{
 				$errors[] = "Please enter a valid date.<br/>";
