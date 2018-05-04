@@ -5,25 +5,7 @@
 	{
 		var msg="";
 		
-		if(!document.getElementById( "fName" ).value)
-		{
-			errMsg += "First Name<br/>";
-			document.getElementById("fName").style.backgroundColor = "red";
-		}
-		else
-		{
-			document.getElementById("fName").style.backgroundColor = "white";
-		}
-		
-		if(!document.getElementById( "lName" ).value)
-		{
-			errMsg += "Last Name<br/>";
-			document.getElementById("lName").style.backgroundColor = "red";
-		}
-		else
-		{
-			document.getElementById("lName").style.backgroundColor = "white";
-		}
+
 		/*
 		//regex from http://regexlib.com/REDetails.aspx?regexp_id=93
 		var regtest = 20\d{2}(-|\/)((0[1-9])|(1[0-2]))(-|\/)((0[1-9])|([1-2][0-9])|(3[0-1]))(T|\s)(([0-1][0-9])|(2[0-3])):([0-5][0-9]):([0-5][0-9]);
@@ -82,14 +64,6 @@
 		method="post"
 		onsubmit="return Validate()"
 		action="">
-		<div class="form-group">
-			<label for="fName">First Name</label>
-            <input type="text" class="form-control" id="fName" name="fName" maxlength="20" size="20" required>
-        </div>
-		<div class="form-group">
-			<label for="lName">Last Name</label>
-            <input type="text" class="form-control" id="lName" name="lName" maxlength="20" size="20" required>
-        </div>
 		<div class="form-group">
 			<label for="defenceDate">Desired Defence Date</label>
             <input type="text" class="form-control" id="defenceDate" name="defenceDate" maxlength="19" size="19" value="2018/05/07 16:30:00" required>
