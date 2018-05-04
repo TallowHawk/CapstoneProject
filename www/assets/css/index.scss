@@ -223,7 +223,8 @@ main#createAccount {
     border-color: $accent-color;
     border-radius: 15px;
     height: 230px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding-top: 10px; 
 }
 
@@ -296,6 +297,10 @@ main#createAccount {
         padding-top: 2%;
         padding-bottom: 2%;
     }
+}
+
+#search-btn-error-msg {
+    text-align: center; 
 }
 
 .invite-success-toast{
