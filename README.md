@@ -6,3 +6,6 @@ Created for ISTE 330 at Rochester Institute of Technology.
 Created by: 
 - Mitchell Sweet
 - Todd Bednarczyk
+- Joshua Schader
+- Ryan Wren
+- Alex Heerding
